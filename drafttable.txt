@@ -1,0 +1,44 @@
+
+	[ MAGAZYN 2 ]
+	
+	
+===========
+user
+===========
+id => 
+login
+pass
+access
+
+
+
+============
+belt
+============
+id => 
+length
+width
+type
+
+
+
+===========
+client
+===========
+id => 
+name
+adress
+note
+
+
+
+===========
+transactions
+===========
+id
+=> id.user 
+=> id.belt
+=> id.client
+
+
+
