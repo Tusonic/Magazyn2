@@ -14,15 +14,26 @@ session_start();
 <body>
 
 <?php
-/* require class */
-require 'conf.php';
-require 'class.belt.php';
+
+
+
+
+//echo "TESTclass";
+//require 'class/conf.class.php';
+//require 'class/belt.class.php';
+
+//echo "TEST4444";
+//require 'conf.class.php';
+//require 'belt.class.php';
 
 
 $conf = new Database();
 
 $viewBelt = new Belt();
 $viewBelt->confBelt();
+$viewBelt->viewBelt();
+echo 'edit';
+$viewBelt->editBelt();
 
 
 ?>

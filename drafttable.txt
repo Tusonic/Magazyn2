@@ -40,5 +40,3 @@ id
 => id.belt
 => id.client
 
-
-
