@@ -1,13 +1,5 @@
 <?php
 
-ob_start();
-session_start();
-
-
-
-
-
-
 echo 'tomek14';
 
 require 'belt.class.php';
@@ -102,7 +94,5 @@ $edit1->editBeltTest();
 $edit1->editBelt();
 
 
-ob_end_flush();
-//session_destroy();
 ?>
 

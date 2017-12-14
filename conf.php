@@ -1,7 +1,6 @@
 <?php
 
-
-class Database
+class conf
 {
 
     public $server = 'localhost';
@@ -10,10 +9,13 @@ class Database
     public $database = 'kazik123_magazyn';
     public $pdo;
 
+
     public function __construct()
     {
         $this->openConnection();
     }
+
+
 
     public function openConnection()
     {
@@ -22,7 +24,7 @@ class Database
 
                 $this->pdo = new PDO('mysql:host='.$this->server.';dbname='.$this->database.'', $this->username, $this->password, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'UTF8'"));
                 $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                echo "</br>connected database2</br>";
+                echo "</br>connected!!!</br>";
 
             }
 
@@ -38,3 +40,8 @@ class Database
 
 
 }
+
+
+
+
+?>

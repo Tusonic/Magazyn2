@@ -1,8 +1,17 @@
-<?php ob_start();
-session_start();
+<?php
+
+class belt extends conf {
 
 
-class Belt extends Database {
+
+
+
+    public function __construct()
+    {
+            echo '</br> </br> tomek klasa belts 66</br>';
+    }
+
+
 
 
     public function viewBelt()
@@ -191,11 +200,51 @@ class Belt extends Database {
 
     }
 
+    public function testecho()
+    {
+        echo' test public function test echo!';
+    }
+
+    public function testconnect()
+    {
+
+        try {
+            $stmt = $this->pdo->prepare('select * from belt');
+            $stmt->execute();
+        }
+        catch
+        {
+            echo "error";
+        }
+
+
+        $stmt->close();
+        $pdo->close();
+
+
+        echo' 
+ 
+            <table class="table">
+                 <thead>
+                       <tr> 
+                             <th scope="col">#</th>
+                             <th scope="col">Length</th>
+                             <th scope="col">Width</th>
+                             <th scope="col">Typee</th>
+                             <th scope="col">Edit</th>
+                             <th scope="col">Delete</th>
+                        </tr>
+                   </thead>
+                <tbody>
+                   
+  
+         ';
+    }
+
+
 
 
 }
 
 
 
-ob_end_flush();
-?>
