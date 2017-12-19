@@ -185,6 +185,10 @@ class belt extends database
     public function editorbelt()
     {
 
+        // debuger
+        echo $_POST['id'];
+        // debuger
+
         $viewBelt = $this->pdo->prepare("select * from belt where ID = :value");
         $viewBelt->execute(array(':value' => $_POST['id']));
 
@@ -198,6 +202,7 @@ class belt extends database
                              <th scope="col">Length</th>
                              <th scope="col">Width</th>
                              <th scope="col">Type</th>
+                             <th scope="col"></th>
                         </tr>
                    </thead>
                 <tbody>
@@ -215,12 +220,38 @@ class belt extends database
 
             echo '
 
-                <tr>
+
+                 <tr>
+                 <tr>
                             <th scope="row">' . $id . '</th>
                             <td>' . $length . '</td>
                             <td>' . $width . '</td>
                             <td>' . $type . '</td>
+
                 </tr>
+
+                <tr>
+                            <th scope="row"> # </th>
+                            
+                            <td>
+                                <input class="form-control" type="text" placeholder=" '. $length .'">
+                            </td>
+                            
+                            <td>
+                                <input class="form-control" type="text" placeholder=" '. $width .'">
+                            </td>
+                            
+                            <td>
+                                <input class="form-control" type="text" placeholder=" '. $type.'">
+                            </td>
+                            
+                            <td>
+                                <button type="button" class="btn btn-primary">Change</button>
+                            </td>
+                </tr>
+                
+             
+            
                             ';
 
         }
