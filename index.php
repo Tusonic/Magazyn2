@@ -1,5 +1,5 @@
 <?php
-require_once 'config\Loader.php';
+require_once 'config/loader.php';
 spl_autoload_register('loader::loaderRoot');
 
 ob_start();
@@ -14,6 +14,8 @@ $site->starthead();
 $belt->viewbelt();
 $belt->deletebelt();
 $belt->editbelt();
+$belt->editorbelt();
+
 
 $site->endhead();
 
