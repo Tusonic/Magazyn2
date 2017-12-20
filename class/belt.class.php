@@ -181,7 +181,6 @@ class belt extends database
 
     }
 
-
     public function editorbelt()
     {
 
@@ -229,32 +228,42 @@ class belt extends database
                             <td>' . $type . '</td>
 
                 </tr>
-
-                <tr>
-                            <th scope="row"> # </th>
-                            
-                            <td>
-                                <input class="form-control" type="text" placeholder=" '. $length .'">
-                            </td>
-                            
-                            <td>
-                                <input class="form-control" type="text" placeholder=" '. $width .'">
-                            </td>
-                            
-                            <td>
-                                <input class="form-control" type="text" placeholder=" '. $type.'">
-                            </td>
-                            
-                            <td>
-                                <button type="button" class="btn btn-primary">Change</button>
-                            </td>
-                </tr>
                 
-             
+                
+                
+            <form method="POST" action="editbeltchange.php">
+            
+                <tr>
+                            <th scope="row"> 
+                            # 
+                            <input type="hidden" value="' . $row['id'] . '" name="id"/>
+                            </th>
+                            
+                            <td>
+                                <input  name="length" class="form-control" type="text"  value="'.$length.'" placeholder=" ' . $length . ' ">
+                             
+                            </td>
+                            
+                            <td>
+                                <input name="width" class="form-control" type="text" value="' . $width . '" placeholder=" ' . $width . '">
+                            </td>
+                            
+                            <td>
+                                <input name="type" class="form-control" type="text" value="' . $type . '" placeholder=" ' . $type . '">
+                            </td>
+                            
+                            <td>
+                                    <input type="submit" class="btn btn-info" value="Edit ID=' . $row['id'] . '"/> 
+                            </td>
+ 
+                </tr>
+            </form>                    
             
                             ';
 
         }
+
+
 
         echo '
         
@@ -264,10 +273,63 @@ class belt extends database
          ';
 
 
+    }
+
+    public function checkeditorbelt()
+    {
+
+
+
+        if (!empty($_POST["length"]) || ($_POST["width"]) || ($_POST["type"]) )
+        {
+
+            echo "Yes, POST is set </br>";
+            $z0 = $_POST["id"];
+            $z1 = $_POST["length"];
+            $z2 = $_POST["width"];
+            $z3 = $_POST["type"];
+
+
+
+            if (empty($z1))
+            {
+                echo 'z1 to null';
+
+                echo '
+            <form method="POST" action="editbelt.php">
+            <input type="hidden" value="' .$z0. '" name="id"/>
+            <input type="submit" class="btn btn-info" value="Edit ID=' . $z0 . '"/>
+            </form>
+            
+            ';
+
+            }
+
+            if (empty($z2))
+            {
+                echo 'z2 to null';
+            }
+
+            if (empty($z2))
+            {
+                echo 'z2 to null';
+            }
+            echo"$z0";
+            echo"$z1";
+            echo"$z2";
+            echo"$z3";
+        }
+
+        else
+        {
+            echo "N0, mail is not set";
+            $z1 = $_POST["length"];
+            echo"$z1";
+        }
+
 
 
     }
-
 
 }
 
