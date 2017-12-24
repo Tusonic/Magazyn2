@@ -250,6 +250,9 @@ class belt extends database
                             <td>  
                                     <input type="submit" class="btn btn-info" value="Delete ID=' . $row['id'] . '"/>
                                     <input type="hidden" value="' . $row['id'] . '" name="id"/>
+                                    
+                                    
+                                    
                             </td>
             </form> 
             
@@ -348,42 +351,98 @@ class belt extends database
     public function addbelt()
     {
         echo'
-        
-  <form>
+
+
+<form  method="POST" action="belt/addbelt.php" class="container" id="needs-validation" novalidate>
   
-   <div class="row">
-   
-       <div class="col-md-3 mb-3">
-              <label for="validationDefault03">City</label>
-              <input type="text" class="form-control" id="validationDefault03" placeholder="City" required>
-              <div class="invalid-feedback">Please provide a valid city.</div>
-       </div>
-   
-        <div class="col-md-2 mb-3">
-              <label for="validationDefault04">State</label>
-              <input type="text" class="form-control" id="validationDefault04" placeholder="State" required>
-              <div class="invalid-feedback"> Please provide a valid state.</div>
-        </div>
-        
-        <div class="col-md-2 mb-3">
-              <label for="validationDefault05">Zip</label>
-              <input type="text" class="form-control" id="validationDefault05" placeholder="Zip" required>
-              <div class="invalid-feedback"> Please provide a valid zip. </div>
-        </div>
-        
-        <div class="col-md-2 mb-3">
-              <label for="validationDefault05">Zip</label>
-              <input type="text" class="form-control" id="validationDefault05" placeholder="Zip" required>
-              <div class="invalid-feedback"> Please provide a valid zip. </div>
-        </div>
-        
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <label for="validationCustom03">Type</label>
+      <input name="addtype" type="text" class="form-control" id="validationCustom03" placeholder="Type" required>
+      <div class="invalid-feedback">
+        Please provide a valid type.
+      </div>
     </div>
-              <button class="btn btn-primary" type="submit">Submit form</button>
+    <div class="col-md-3 mb-3">
+      <label for="validationCustom04">Length</label>
+      <input name="addlength" type="text" class="form-control" id="validationCustom04" placeholder="Length in millimeters" required>
+      <div class="invalid-feedback">
+        Please provide a valid length.
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="validationCustom05">Width</label>
+      <input name="addwidth" type="text" class="form-control" id="validationCustom05" placeholder="Width in millimeters" required>
+      <div class="invalid-feedback">
+        Please provide a valid width.
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-primary" type="submit">Submit form</button>
 </form>
+
+<script>
+
+(function() {
+  \'use strict\';
+
+  window.addEventListener(\'load\', function() {
+    var form = document.getElementById(\'needs-validation\');
+    form.addEventListener(\'submit\', function(event) {
+      if (form.checkValidity() === false) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+      form.classList.add(\'was-validated\');
+    }, false);
+  }, false);
+})();
+</script>
+
+
+
+  
 
         
         
         ';
+
+    }
+
+    public function addbeltdata()
+    {
+
+        echo $_POST["addtype"];
+        echo $_POST["addlength"];
+        echo $_POST["addwidth"];
+
+
+        $addbelttype = $_POST["addtype"];
+        $addbeltlength = $_POST["addlength"];
+        $addbeltwidth = $_POST["addwidth"];
+
+
+
+        $editorBelt = $this->pdo->prepare("INSERT INTO belt (length, width, type) VALUES (:length,:width,:type)");
+        $editorBelt->bindValue(':length', $addbeltlength, PDO::PARAM_INT);
+        $editorBelt->bindValue(':width', $addbeltwidth, PDO::PARAM_INT);
+        $editorBelt->bindValue(':type', $addbelttype, PDO::PARAM_STR);
+        $editorBelt->execute();
+
+
+
+    }
+
+    public function deletebeltdata()
+    {
+
+        echo '</br> post=';
+        $deletebeltid = $_POST['id'];
+        echo $deletebeltid;
+
+        $editorBelt = $this->pdo->prepare("DELETE FROM belt WHERE id=:id");
+        $editorBelt->bindValue(':id', $deletebeltid, PDO::PARAM_INT);
+        $editorBelt->execute();
 
     }
 
