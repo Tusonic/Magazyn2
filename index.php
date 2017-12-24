@@ -14,7 +14,8 @@ $site->starthead();
 $belt->viewbelt();
 $belt->deletebelt();
 $belt->editbelt();
-$belt->editorbelt();
+
+$belt->addbelt();
 
 
 $site->endhead();

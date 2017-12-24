@@ -100,7 +100,7 @@ class belt extends database
                             <td>' . $width . '</td>
                             <td>' . $type . '</td>
                             <td>
-                                    <form method="POST" action="belt/deleteBelt.php">
+                                    <form method="POST" action="belt/deletebelt.php">
                                     <input type="hidden" value="' . $row['id'] . '" name="id"/>
                                     <input type="submit" class="btn btn-info" value="Delete ID=' . $row['id'] . '"/>
                                     </form>
@@ -161,7 +161,7 @@ class belt extends database
                             <td>' . $width . '</td>
                             <td>' . $type . '</td>
                             <td>
-                                    <form method="POST" action="belt/EditBelt.php">
+                                    <form method="POST" action="belt/editbelt.php">
                                     <input type="hidden" value="' . $row['id'] . '" name="id"/>
                                     <input type="submit" class="btn btn-info" value="Edit ID=' . $row['id'] . '"/>
                                     </form>
@@ -184,9 +184,6 @@ class belt extends database
     public function editorbelt()
     {
 
-        // debuger
-        echo $_POST['id'];
-        // debuger
 
         $viewBelt = $this->pdo->prepare("select * from belt where ID = :value");
         $viewBelt->execute(array(':value' => $_POST['id']));
@@ -201,7 +198,8 @@ class belt extends database
                              <th scope="col">Length</th>
                              <th scope="col">Width</th>
                              <th scope="col">Type</th>
-                             <th scope="col"></th>
+                             <th scope="col">Change</th>
+                             <th scope="col">Delete</th>
                         </tr>
                    </thead>
                 <tbody>
@@ -220,22 +218,13 @@ class belt extends database
             echo '
 
 
-                 <tr>
-                 <tr>
-                            <th scope="row">' . $id . '</th>
-                            <td>' . $length . '</td>
-                            <td>' . $width . '</td>
-                            <td>' . $type . '</td>
-
-                </tr>
-                
                 
                 
             <form method="POST" action="editbeltchange.php">
             
                 <tr>
                             <th scope="row"> 
-                            # 
+                            ' . $id . '
                             <input type="hidden" value="' . $row['id'] . '" name="id"/>
                             </th>
                             
@@ -253,11 +242,19 @@ class belt extends database
                             </td>
                             
                             <td>
-                                    <input type="submit" class="btn btn-info" value="Edit ID=' . $row['id'] . '"/> 
+                                <input type="submit" class="btn btn-info" value="Change ID=' . $row['id'] . '"/> 
                             </td>
- 
+             </form>  
+                    
+            <form method="POST" action="deletebelt.php">
+                            <td>  
+                                    <input type="submit" class="btn btn-info" value="Delete ID=' . $row['id'] . '"/>
+                                    <input type="hidden" value="' . $row['id'] . '" name="id"/>
+                            </td>
+            </form> 
+            
                 </tr>
-            </form>                    
+                            
             
                             ';
 
@@ -284,40 +281,57 @@ class belt extends database
         {
 
             echo "Yes, POST is set </br>";
-            $z0 = $_POST["id"];
-            $z1 = $_POST["length"];
-            $z2 = $_POST["width"];
-            $z3 = $_POST["type"];
+            $beltid = $_POST["id"];
+            $beltlength = $_POST["length"];
+            $beltwidth = $_POST["width"];
+            $belttype = $_POST["type"];
 
+        /* Check varible editor */
 
+            if ( (empty($beltlength)) || (empty($beltwidth)) || (empty($belttype)) )
+                {
 
-            if (empty($z1))
-            {
-                echo 'z1 to null';
+                            if (empty($beltlength)) {
+                                echo '
+                            <form method="POST" action="editbelt.php">
+                            <input type="hidden" value="' . $beltid . '" name="id"/>
+                            <input type="submit" class="btn btn-info" value="BackEdit ID=' . $beltid. '"/>
+                            </form>
+                        
+                        ';  }
 
-                echo '
-            <form method="POST" action="editbelt.php">
-            <input type="hidden" value="' .$z0. '" name="id"/>
-            <input type="submit" class="btn btn-info" value="Edit ID=' . $z0 . '"/>
-            </form>
-            
-            ';
+                            if (empty($beltwidth)) {
+                                echo '
+                            <form method="POST" action="editbelt.php">
+                            <input type="hidden" value="' . $beltid . '" name="id"/>
+                            <input type="submit" class="btn btn-info" value="BackEdit ID=' . $beltid . '"/>
+                            </form>
+                            
+                        '; }
+
+                            if (empty($belttype)) {
+                                echo '
+                            <form method="POST" action="editbelt.php">
+                            <input type="hidden" value="' . $beltid . '" name="id"/>
+                            <input type="submit" class="btn btn-info" value="BackEdit ID=' . $beltid . '"/>
+                            </form>
+                        
+                        '; }
 
             }
 
-            if (empty($z2))
+            else
             {
-                echo 'z2 to null';
+                $editorBelt = $this->pdo->prepare("UPDATE belt SET id = :id, length=:length, width = :width, type = :type WHERE belt.id = :id");
+                $editorBelt->bindValue(':id', $beltid, PDO::PARAM_INT);
+                $editorBelt->bindValue(':length', $beltlength, PDO::PARAM_INT);
+                $editorBelt->bindValue(':width', $beltwidth, PDO::PARAM_INT);
+                $editorBelt->bindValue(':type', $belttype, PDO::PARAM_STR);
+                $editorBelt->execute();
+                echo 'change OK';
+                echo $beltid;
             }
 
-            if (empty($z2))
-            {
-                echo 'z2 to null';
-            }
-            echo"$z0";
-            echo"$z1";
-            echo"$z2";
-            echo"$z3";
         }
 
         else
@@ -328,6 +342,48 @@ class belt extends database
         }
 
 
+
+    }
+
+    public function addbelt()
+    {
+        echo'
+        
+  <form>
+  
+   <div class="row">
+   
+       <div class="col-md-3 mb-3">
+              <label for="validationDefault03">City</label>
+              <input type="text" class="form-control" id="validationDefault03" placeholder="City" required>
+              <div class="invalid-feedback">Please provide a valid city.</div>
+       </div>
+   
+        <div class="col-md-2 mb-3">
+              <label for="validationDefault04">State</label>
+              <input type="text" class="form-control" id="validationDefault04" placeholder="State" required>
+              <div class="invalid-feedback"> Please provide a valid state.</div>
+        </div>
+        
+        <div class="col-md-2 mb-3">
+              <label for="validationDefault05">Zip</label>
+              <input type="text" class="form-control" id="validationDefault05" placeholder="Zip" required>
+              <div class="invalid-feedback"> Please provide a valid zip. </div>
+        </div>
+        
+        <div class="col-md-2 mb-3">
+              <label for="validationDefault05">Zip</label>
+              <input type="text" class="form-control" id="validationDefault05" placeholder="Zip" required>
+              <div class="invalid-feedback"> Please provide a valid zip. </div>
+        </div>
+        
+    </div>
+              <button class="btn btn-primary" type="submit">Submit form</button>
+</form>
+
+        
+        
+        ';
 
     }
 

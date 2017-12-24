@@ -1,5 +1,5 @@
 <?php
-require_once '..\config\loader.php';
+require_once '../config/loader.php';
 spl_autoload_register('loader::loaderDir');
 
 
@@ -12,6 +12,8 @@ $site->starthead();
 $belt = new belt();
 $belt->viewbelt();
 $belt->editorbelt();
+
+
 
 $site->endhead();
 
