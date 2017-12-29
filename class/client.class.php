@@ -1,14 +1,13 @@
 <?php
 
-class belt extends database
+
+class client extends database
 {
-
-
-    public function viewbelt()
+    public function viewclient()
     {
 
 
-        $viewBelt = $this->pdo->prepare('select * from belt');
+        $viewBelt = $this->pdo->prepare('select * from client');
         $viewBelt->execute();
 
 
@@ -18,9 +17,9 @@ class belt extends database
                  <thead>
                        <tr> 
                              <th scope="col">#</th>
-                             <th scope="col">Length</th>
-                             <th scope="col">Width</th>
-                             <th scope="col">Type</th>
+                             <th scope="col">Name</th>
+                             <th scope="col">Adres</th>
+                             <th scope="col">Note</th>
                         </tr>
                    </thead>
                 <tbody>
@@ -31,18 +30,18 @@ class belt extends database
 
         while ($row = $viewBelt->fetch(PDO::FETCH_ASSOC)) {
             $id = $row['id'];
-            $length = $row['length'];
-            $width = $row['width'];
-            $type = $row['type'];
+            $name = $row['name'];
+            $adres = $row['adres'];
+            $note = $row['note'];
 
 
             echo '
 
                 <tr>
                             <th scope="row">' . $id . '</th>
-                            <td>' . $length . '</td>
-                            <td>' . $width . '</td>
-                            <td>' . $type . '</td>
+                            <td>' . $name . '</td>
+                            <td>' . $adres . '</td>
+                            <td>' . $note . '</td>
 
                 </tr>
                             ';
@@ -59,11 +58,11 @@ class belt extends database
 
     }
 
-    public function deletebelt()
+    public function deleteclient()
     {
 
 
-        $viewBelt = $this->pdo->prepare('select * from belt');
+        $viewBelt = $this->pdo->prepare('select * from client');
         $viewBelt->execute();
 
 
@@ -73,9 +72,9 @@ class belt extends database
                  <thead>
                        <tr> 
                              <th scope="col">#</th>
-                             <th scope="col">Length</th>
-                             <th scope="col">Width</th>
-                             <th scope="col">Type</th>
+                             <th scope="col">Name</th>
+                             <th scope="col">Adres</th>
+                             <th scope="col">Note</th>
                              <th scope="col">Delete</th>
                         </tr>
                    </thead>
@@ -87,20 +86,20 @@ class belt extends database
 
         while ($row = $viewBelt->fetch(PDO::FETCH_ASSOC)) {
             $id = $row['id'];
-            $length = $row['length'];
-            $width = $row['width'];
-            $type = $row['type'];
+            $name = $row['name'];
+            $adres = $row['adres'];
+            $note = $row['note'];
 
 
             echo '
 
                 <tr>
                             <th scope="row">' . $id . '</th>
-                            <td>' . $length . '</td>
-                            <td>' . $width . '</td>
-                            <td>' . $type . '</td>
+                            <td>' . $name . '</td>
+                            <td>' . $adres . '</td>
+                            <td>' . $note . '</td>
                             <td>
-                                    <form method="POST" action="belt/deletebelt.php">
+                                    <form method="POST" action="client/deleteclient.php">
                                     <input type="hidden" value="' . $row['id'] . '" name="id"/>
                                     <input type="submit" class="btn btn-info" value="Delete ID=' . $row['id'] . '"/>
                                     </form>
@@ -120,24 +119,24 @@ class belt extends database
 
     }
 
-    public function deletebeltdata()
+    public function deleteclientdata()
     {
 
         echo '</br> post=';
-        $deletebeltid = $_POST['id'];
-        echo $deletebeltid;
+        $deleteclientid = $_POST['id'];
+        echo $deleteclientid ;
 
-        $editorBelt = $this->pdo->prepare("DELETE FROM belt WHERE id=:id");
-        $editorBelt->bindValue(':id', $deletebeltid, PDO::PARAM_INT);
+        $editorBelt = $this->pdo->prepare("DELETE FROM client WHERE id=:id");
+        $editorBelt->bindValue(':id', $deleteclientid, PDO::PARAM_INT);
         $editorBelt->execute();
 
     }
 
-    public function editbelt()
+    public function editclient()
     {
 
 
-        $viewBelt = $this->pdo->prepare('select * from belt');
+        $viewBelt = $this->pdo->prepare('select * from client');
         $viewBelt->execute();
 
 
@@ -147,9 +146,9 @@ class belt extends database
                  <thead>
                        <tr> 
                              <th scope="col">#</th>
-                             <th scope="col">Length</th>
-                             <th scope="col">Width</th>
-                             <th scope="col">Type</th>
+                             <th scope="col">Name</th>
+                             <th scope="col">Adress</th>
+                             <th scope="col">Note</th>
                              <th scope="col">Edit</th>
                         </tr>
                    </thead>
@@ -161,20 +160,20 @@ class belt extends database
 
         while ($row = $viewBelt->fetch(PDO::FETCH_ASSOC)) {
             $id = $row['id'];
-            $length = $row['length'];
-            $width = $row['width'];
-            $type = $row['type'];
+            $name = $row['name'];
+            $adres = $row['adres'];
+            $note = $row['note'];
 
 
             echo '
 
                 <tr>
                             <th scope="row">' . $id . '</th>
-                            <td>' . $length . '</td>
-                            <td>' . $width . '</td>
-                            <td>' . $type . '</td>
+                            <td>' . $name . '</td>
+                            <td>' . $adres . '</td>
+                            <td>' . $note . '</td>
                             <td>
-                                    <form method="POST" action="belt/editbelt.php">
+                                    <form method="POST" action="client/editclient.php">
                                     <input type="hidden" value="' . $row['id'] . '" name="id"/>
                                     <input type="submit" class="btn btn-info" value="Edit ID=' . $row['id'] . '"/>
                                     </form>
@@ -194,11 +193,11 @@ class belt extends database
 
     }
 
-    public function editorbelt()
+    public function editorclient()
     {
 
 
-        $viewBelt = $this->pdo->prepare("select * from belt where ID = :value");
+        $viewBelt = $this->pdo->prepare("select * from client where ID = :value");
         $viewBelt->execute(array(':value' => $_POST['id']));
 
 
@@ -208,9 +207,9 @@ class belt extends database
                  <thead>
                        <tr> 
                              <th scope="col">#</th>
-                             <th scope="col">Length</th>
-                             <th scope="col">Width</th>
-                             <th scope="col">Type</th>
+                             <th scope="col">Nameh</th>
+                             <th scope="col">Adres</th>
+                             <th scope="col">Note</th>
                              <th scope="col">Change</th>
                              <th scope="col">Delete</th>
                         </tr>
@@ -223,9 +222,9 @@ class belt extends database
 
         while ($row = $viewBelt->fetch(PDO::FETCH_ASSOC)) {
             $id = $row['id'];
-            $length = $row['length'];
-            $width = $row['width'];
-            $type = $row['type'];
+            $name = $row['name'];
+            $adres = $row['adres'];
+            $note = $row['note'];
 
 
             echo '
@@ -233,7 +232,7 @@ class belt extends database
 
                 
                 
-            <form method="POST" action="editbeltchange.php">
+            <form method="POST" action="editclientchange.php">
             
                 <tr>
                             <th scope="row"> 
@@ -242,16 +241,16 @@ class belt extends database
                             </th>
                             
                             <td>
-                                <input  name="length" class="form-control" type="text"  value="'.$length.'" placeholder=" ' . $length . ' ">
+                                <input  name="name" class="form-control" type="text"  value="'. $name .'" placeholder=" ' . $name . ' ">
                              
                             </td>
                             
                             <td>
-                                <input name="width" class="form-control" type="text" value="' . $width . '" placeholder=" ' . $width . '">
+                                <input name="adres" class="form-control" type="text" value="' . $adres . '" placeholder=" ' . $adres . '">
                             </td>
                             
                             <td>
-                                <input name="type" class="form-control" type="text" value="' . $type . '" placeholder=" ' . $type . '">
+                                <input name="note" class="form-control" type="text" value="' . $note . '" placeholder=" ' . $note . '">
                             </td>
                             
                             <td>
@@ -259,7 +258,7 @@ class belt extends database
                             </td>
              </form>  
                     
-            <form method="POST" action="deletebelt.php">
+            <form method="POST" action="deleteclient.php">
                             <td>  
                                     <input type="submit" class="btn btn-info" value="Delete ID=' . $row['id'] . '"/>
                                     <input type="hidden" value="' . $row['id'] . '" name="id"/>
@@ -293,22 +292,22 @@ class belt extends database
 
 
 
-        if (!empty($_POST["length"]) || ($_POST["width"]) || ($_POST["type"]) )
+        if (!empty($_POST["name"]) || ($_POST["adres"]) || ($_POST["note"]) )
         {
 
             echo "Yes, POST is set </br>";
-            $beltid = $_POST["id"];
-            $beltlength = $_POST["length"];
-            $beltwidth = $_POST["width"];
-            $belttype = $_POST["type"];
+            $clientid = $_POST["id"];
+            $clientname = $_POST["name"];
+            $clientadres = $_POST["adres"];
+            $clientnote = $_POST["note"];
 
-        /* Check varible editor */
+            /* Check varible editor */
 
-            if ( (empty($beltlength)) || (empty($beltwidth)) || (empty($belttype)) )
-                {
+            if ( (empty($clientname)) || (empty($clientadres)) || (empty($clientnote)) )
+            {
 
-                            if (empty($beltlength)) {
-                                echo '
+                if (empty($clientname)) {
+                    echo '
                             <form method="POST" action="editbelt.php">
                             <input type="hidden" value="' . $beltid . '" name="id"/>
                             <input type="submit" class="btn btn-info" value="BackEdit ID=' . $beltid. '"/>
@@ -316,8 +315,8 @@ class belt extends database
                         
                         ';  }
 
-                            if (empty($beltwidth)) {
-                                echo '
+                if (empty($clientadres)) {
+                    echo '
                             <form method="POST" action="editbelt.php">
                             <input type="hidden" value="' . $beltid . '" name="id"/>
                             <input type="submit" class="btn btn-info" value="BackEdit ID=' . $beltid . '"/>
@@ -325,8 +324,8 @@ class belt extends database
                             
                         '; }
 
-                            if (empty($belttype)) {
-                                echo '
+                if (empty($clientnote)) {
+                    echo '
                             <form method="POST" action="editbelt.php">
                             <input type="hidden" value="' . $beltid . '" name="id"/>
                             <input type="submit" class="btn btn-info" value="BackEdit ID=' . $beltid . '"/>
@@ -338,14 +337,14 @@ class belt extends database
 
             else
             {
-                $editorBelt = $this->pdo->prepare("UPDATE belt SET id = :id, length=:length, width = :width, type = :type WHERE belt.id = :id");
-                $editorBelt->bindValue(':id', $beltid, PDO::PARAM_INT);
-                $editorBelt->bindValue(':length', $beltlength, PDO::PARAM_INT);
-                $editorBelt->bindValue(':width', $beltwidth, PDO::PARAM_INT);
-                $editorBelt->bindValue(':type', $belttype, PDO::PARAM_STR);
+                $editorBelt = $this->pdo->prepare("UPDATE client SET id = :id, name = :name, adres = :adres, note = :note WHERE client.id = :id");
+                $editorBelt->bindValue(':id', $clientid, PDO::PARAM_INT);
+                $editorBelt->bindValue(':name', $clientname, PDO::PARAM_INT);
+                $editorBelt->bindValue(':adres', $clientadres, PDO::PARAM_INT);
+                $editorBelt->bindValue(':note', $clientnote, PDO::PARAM_STR);
                 $editorBelt->execute();
                 echo 'change OK';
-                echo $beltid;
+                echo $clientid;
             }
 
         }
@@ -359,31 +358,31 @@ class belt extends database
 
     }
 
-    public function addbelt()
+    public function addclient()
     {
         echo'
 
 
-<form  method="POST" action="belt/addbelt.php" class="container" id="needs-validation" novalidate>
+<form  method="POST" action="client/addclient.php" class="container" id="needs-validation" novalidate>
   
   <div class="row">
     <div class="col-md-6 mb-3">
-      <label for="validationCustom03">Type</label>
-      <input name="addtype" type="text" class="form-control" id="validationCustom03" placeholder="Type" required>
+      <label for="validationCustom03">Name</label>
+      <input name="addname" type="text" class="form-control" id="validationCustom03" placeholder="Name" required>
       <div class="invalid-feedback">
-        Please provide a valid type.
+        Please provide a valid Name.
       </div>
     </div>
     <div class="col-md-3 mb-3">
-      <label for="validationCustom04">Length</label>
-      <input name="addlength" type="text" class="form-control" id="validationCustom04" placeholder="Length in millimeters" required>
+      <label for="validationCustom04">Adres</label>
+      <input name="addadres" type="text" class="form-control" id="validationCustom04" placeholder="Adres" required>
       <div class="invalid-feedback">
-        Please provide a valid length.
+        Please provide a valid adres.
       </div>
     </div>
     <div class="col-md-3 mb-3">
-      <label for="validationCustom05">Width</label>
-      <input name="addwidth" type="text" class="form-control" id="validationCustom05" placeholder="Width in millimeters" required>
+      <label for="validationCustom05">Note</label>
+      <input name="addnote" type="text" class="form-control" id="validationCustom05" placeholder="Note" required>
       <div class="invalid-feedback">
         Please provide a valid width.
       </div>
@@ -420,34 +419,28 @@ class belt extends database
 
     }
 
-    public function addbeltdata()
+    public function addclientdata()
     {
 
-        echo $_POST["addtype"];
-        echo $_POST["addlength"];
-        echo $_POST["addwidth"];
+        echo $_POST["addname"];
+        echo $_POST["addadres"];
+        echo $_POST["addnote"];
 
 
-        $addbelttype = $_POST["addtype"];
-        $addbeltlength = $_POST["addlength"];
-        $addbeltwidth = $_POST["addwidth"];
+        $addcientname = $_POST["addname"];
+        $addclientadres = $_POST["addadres"];
+        $addclienttype = $_POST["addnote"];
 
 
 
-        $editorBelt = $this->pdo->prepare("INSERT INTO belt (length, width, type) VALUES (:length,:width,:type)");
-        $editorBelt->bindValue(':length', $addbeltlength, PDO::PARAM_INT);
-        $editorBelt->bindValue(':width', $addbeltwidth, PDO::PARAM_INT);
-        $editorBelt->bindValue(':type', $addbelttype, PDO::PARAM_STR);
-        $editorBelt->execute();
+        $editorClient = $this->pdo->prepare("INSERT INTO client (name, adres, note) VALUES (:name,:adres,:note)");
+        $editorClient->bindValue(':name', $addcientname, PDO::PARAM_STR);
+        $editorClient->bindValue(':adres', $addclientadres, PDO::PARAM_STR);
+        $editorClient->bindValue(':note', $addclienttype, PDO::PARAM_STR);
+        $editorClient->execute();
 
 
 
     }
 
-
-
 }
-
-
-
-

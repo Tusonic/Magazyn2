@@ -7,6 +7,7 @@ session_start();
 
 $site = new viewsite();
 $belt = new belt();
+$client = new client();
 
 
 $site->starthead();
@@ -16,6 +17,14 @@ $belt->deletebelt();
 $belt->editbelt();
 
 $belt->addbelt();
+
+$client->viewclient();
+$client->deleteclient();
+$client->editclient();
+
+$client->addclient();
+
+
 
 
 $site->endhead();

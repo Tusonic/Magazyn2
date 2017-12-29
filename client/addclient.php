@@ -7,8 +7,11 @@ session_start();
 $site = new viewsite();
 $site->starthead();
 
-$belt = new belt();
-$belt->addbeltdata();
+$client = new client();
+$client->addclientdata();
+
+
+
 
 
 ob_end_flush();
