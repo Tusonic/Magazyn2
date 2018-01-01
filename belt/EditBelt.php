@@ -2,7 +2,6 @@
 require_once '../config/loader.php';
 spl_autoload_register('loader::loaderDir');
 
-
 ob_start();
 session_start();
 
@@ -13,10 +12,7 @@ $belt = new belt();
 $belt->viewbelt();
 $belt->editorbelt();
 
-
-
 $site->endhead();
-
 
 ob_end_flush();
 ?>

@@ -8,9 +8,11 @@ session_start();
 $site = new viewsite();
 $site->starthead();
 
-$belt = new belt();
-$belt->addbeltdata();
+$user = new user();
+$user->deleteuserdata();
 
 
+
+$site->endhead();
 ob_end_flush();
 ?>

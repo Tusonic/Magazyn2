@@ -11,9 +11,7 @@ $site->starthead();
 $belt = new belt();
 $belt->checkeditorbelt();
 
-
 $site->endhead();
-
 
 ob_end_flush();
 

@@ -24,6 +24,10 @@ $client->editclient();
 
 $client->addclient();
 
+$user = new user();
+$user->viewuser();
+$user->deleteuser();
+
 
 
 
