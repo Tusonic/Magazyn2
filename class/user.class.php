@@ -287,6 +287,160 @@ class user extends database
 
     }
 
-   // checkeditoruser()
+    public function checkeditoruser()
+    {
+
+
+
+        if (!empty($_POST["login"]) || ($_POST["pass"]) || ($_POST["access"]) )
+        {
+
+            echo "Yes, POST is set </br>";
+            $userid = $_POST["id"];
+            $userlogin = $_POST["login"];
+            $userpass = $_POST["pass"];
+            $useraccess = $_POST["access"];
+
+            /* Check varible editor */
+
+            if ( (empty($userlogin)) || (empty($userpass)) || (empty($useraccess)) )
+            {
+
+                if (empty($userlogin)) {
+                    echo '
+                            <form method="POST" action="edituser.php">
+                            <input type="hidden" value="' . $beltid . '" name="id"/>
+                            <input type="submit" class="btn btn-info" value="BackEdit ID=' . $beltid. '"/>
+                            </form>
+                        
+                        ';  }
+
+                if (empty($userpass)) {
+                    echo '
+                            <form method="POST" action="edituser.php">
+                            <input type="hidden" value="' . $beltid . '" name="id"/>
+                            <input type="submit" class="btn btn-info" value="BackEdit ID=' . $beltid . '"/>
+                            </form>
+                            
+                        '; }
+
+                if (empty($useraccess)) {
+                    echo '
+                            <form method="POST" action="edituser.php">
+                            <input type="hidden" value="' . $beltid . '" name="id"/>
+                            <input type="submit" class="btn btn-info" value="BackEdit ID=' . $beltid . '"/>
+                            </form>
+                        
+                        '; }
+
+            }
+
+            else
+            {
+                $editorUser = $this->pdo->prepare("UPDATE user SET id = :id, login = :login, pass = :pass, access = :access WHERE user.id = :id");
+                $editorUser->bindValue(':id', $userid, PDO::PARAM_INT);
+                $editorUser->bindValue(':login', $userlogin, PDO::PARAM_INT);
+                $editorUser->bindValue(':pass', $userpass, PDO::PARAM_INT);
+                $editorUser->bindValue(':access', $useraccess, PDO::PARAM_STR);
+                $editorUser->execute();
+                echo 'change OK';
+                echo $userid;
+            }
+
+        }
+
+        else
+        {
+            echo "N0, mail is not set";
+        }
+
+
+
+    }
+
+    public function adduser()
+    {
+        echo'
+
+
+<form  method="POST" action="user/adduser.php" class="container" id="needs-validation" novalidate>
+  
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <label for="validationCustom03">Name</label>
+      <input name="addlogin" type="text" class="form-control" id="validationCustom03" placeholder="Login" required>
+      <div class="invalid-feedback">
+        Please provide a valid Name.
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="validationCustom04">Adres</label>
+      <input name="addpass" type="text" class="form-control" id="validationCustom04" placeholder="Pass" required>
+      <div class="invalid-feedback">
+        Please provide a valid adres.
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="validationCustom05">Note</label>
+      <input name="addaccess" type="text" class="form-control" id="validationCustom05" placeholder="Access" required>
+      <div class="invalid-feedback">
+        Please provide a valid width.
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-primary" type="submit">Dodaj</button>
+</form>
+
+<script>
+
+(function() {
+  \'use strict\';
+
+  window.addEventListener(\'load\', function() {
+    var form = document.getElementById(\'needs-validation\');
+    form.addEventListener(\'submit\', function(event) {
+      if (form.checkValidity() === false) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+      form.classList.add(\'was-validated\');
+    }, false);
+  }, false);
+})();
+</script>
+
+
+
+  
+
+        
+        
+        ';
+
+    }
+
+    public function adduserdata()
+    {
+
+        echo $_POST["addlogin"];
+        echo $_POST["addpass"];
+        echo $_POST["addaccess"];
+
+
+        $adduserlogin = $_POST["addlogin"];
+        $addusertadres = $_POST["addpass"];
+        $adduseraccess = $_POST["addaccess"];
+
+
+
+        $editorUser = $this->pdo->prepare("INSERT INTO client (login, pass, access) VALUES (:login, :pass, :access)");
+        $editorUser->bindValue(':login', $adduserlogin, PDO::PARAM_STR);
+        $editorUser->bindValue(':pass', $addusertadres, PDO::PARAM_STR);
+        $editorUser->bindValue(':access', $adduseraccess, PDO::PARAM_INT);
+        $editorUser->execute();
+
+
+
+    }
 
 }

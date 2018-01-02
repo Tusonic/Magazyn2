@@ -9,10 +9,8 @@ $site = new viewsite();
 $site->starthead();
 
 $user = new user();
-$user->checkeditoruser();
+$user->adduserdata();
 
-$site->endhead();
 
 ob_end_flush();
-
-
+?>

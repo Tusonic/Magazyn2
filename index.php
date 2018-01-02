@@ -27,7 +27,8 @@ $client->addclient();
 $user = new user();
 $user->viewuser();
 $user->deleteuser();
-
+$user->edituser();
+$user->adduser();
 
 
 
