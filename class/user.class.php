@@ -433,7 +433,7 @@ class user extends database
 
 
 
-        $editorUser = $this->pdo->prepare("INSERT INTO client (login, pass, access) VALUES (:login, :pass, :access)");
+        $editorUser = $this->pdo->prepare("INSERT INTO user (login, pass, access) VALUES (:login, :pass, :access)");
         $editorUser->bindValue(':login', $adduserlogin, PDO::PARAM_STR);
         $editorUser->bindValue(':pass', $addusertadres, PDO::PARAM_STR);
         $editorUser->bindValue(':access', $adduseraccess, PDO::PARAM_INT);

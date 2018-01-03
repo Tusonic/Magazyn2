@@ -8,6 +8,7 @@ session_start();
 $site = new viewsite();
 $belt = new belt();
 $client = new client();
+$transaction = new transaction();
 
 
 $site->starthead();
@@ -29,6 +30,8 @@ $user->viewuser();
 $user->deleteuser();
 $user->edituser();
 $user->adduser();
+
+$transaction->viewtransaction();
 
 
 
