@@ -32,6 +32,8 @@ $user->edituser();
 $user->adduser();
 
 $transaction->viewtransaction();
+$transaction->addclinettransaction();
+
 
 
 
