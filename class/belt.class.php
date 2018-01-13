@@ -174,7 +174,7 @@ class belt extends database
                             <td>' . $width . '</td>
                             <td>' . $type . '</td>
                             <td>
-                                    <form method="POST" action="belt/editbelt.php">
+                                    <form method="POST" action="editbelt.php">
                                     <input type="hidden" value="' . $row['id'] . '" name="id"/>
                                     <input type="submit" class="btn btn-info" value="Edit ID=' . $row['id'] . '"/>
                                     </form>
@@ -308,7 +308,7 @@ class belt extends database
                 {
 
                             if (empty($beltlength)) {
-                                echo '
+                                echo ' 
                             <form method="POST" action="editbelt.php">
                             <input type="hidden" value="' . $beltid . '" name="id"/>
                             <input type="submit" class="btn btn-info" value="BackEdit ID=' . $beltid. '"/>

@@ -47,6 +47,7 @@ $site->starthead();
 <?php
 $site->endhead();
 
+
 ob_end_flush();
 
 ?>
