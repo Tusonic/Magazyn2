@@ -99,7 +99,7 @@ class client extends database
                             <td>' . $adres . '</td>
                             <td>' . $note . '</td>
                             <td>
-                                    <form method="POST" action="client/deleteclient.php">
+                                    <form method="POST" action="deleteclient.php">
                                     <input type="hidden" value="' . $row['id'] . '" name="id"/>
                                     <input type="submit" class="btn btn-info" value="Delete ID=' . $row['id'] . '"/>
                                     </form>
@@ -173,7 +173,7 @@ class client extends database
                             <td>' . $adres . '</td>
                             <td>' . $note . '</td>
                             <td>
-                                    <form method="POST" action="client/editclient.php">
+                                    <form method="POST" action="editclient.php">
                                     <input type="hidden" value="' . $row['id'] . '" name="id"/>
                                     <input type="submit" class="btn btn-info" value="Edit ID=' . $row['id'] . '"/>
                                     </form>
@@ -363,7 +363,7 @@ class client extends database
         echo'
 
 
-<form  method="POST" action="client/addclient.php" class="container" id="needs-validation" novalidate>
+<form  method="POST" action="addclient.php" class="container" id="needs-validation" novalidate>
   
   <div class="row">
     <div class="col-md-6 mb-3">

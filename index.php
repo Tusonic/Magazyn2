@@ -19,23 +19,23 @@ $site->starthead();
         <h2><p class="text-center">BELT</p></h2>
         <p></p>
         <p><a class="btn btn-primary btn-lg btn-block" href="belt/view.php" role="button">View &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="belt/edit.php" role="button">Add &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="belt/add.php" role="button">Add &raquo;</a></p>
         <p><a class="btn btn-primary btn-lg btn-block" href="belt/edit.php" role="button">Edit &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="#" role="button">Delete &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="belt/delete.php" role="button">Delete &raquo;</a></p>
     </div>
     <div class="col-md-4">
         <h2><p class="text-center">CLIENT</p></h2>
         <p></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="#" role="button">View &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="belt/edit.php" role="button">Add &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="#" role="button">Edit &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="#" role="button">Delete &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="client/view.php" role="button">View &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="client/add.php" role="button">Add &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="client/edit.php" role="button">Edit &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="client/delete.php" role="button">Delete &raquo;</a></p>
     </div>
     <div class="col-md-4">
         <h2><p class="text-center">USER</p></h2>
         <p></p>
         <p><a class="btn btn-primary btn-lg btn-block" href="#" role="button">View &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="belt/edit.php" role="button">Add &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="#" role="button">Add &raquo;</a></p>
         <p><a class="btn btn-primary btn-lg btn-block" href="#" role="button">Edit &raquo;</a></p>
         <p><a class="btn btn-primary btn-lg btn-block" href="#" role="button">Delete &raquo;</a></p>
     </div>

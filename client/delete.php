@@ -6,11 +6,11 @@ ob_start();
 session_start();
 
 $site = new viewsite();
-$viewbelt = new belt();
+$deleteclint = new client();
 
 $site->starthead();
 
-$viewbelt->deletebelt();
+$deleteclint->deleteclient();
 
 
 $site->endhead();

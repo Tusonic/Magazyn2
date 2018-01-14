@@ -364,7 +364,7 @@ class belt extends database
         echo'
 
 
-<form  method="POST" action="belt/addbelt.php" class="container" id="needs-validation" novalidate>
+<form  method="POST" action="addbelt.php" class="container" id="needs-validation" novalidate>
   
   <div class="row">
     <div class="col-md-6 mb-3">
@@ -389,7 +389,7 @@ class belt extends database
       </div>
     </div>
   </div>
-  <button class="btn btn-primary" type="submit">Dodaj</button>
+  <button class="btn btn-primary" type="submit">Add Belt</button>
 </form>
 
 <script>

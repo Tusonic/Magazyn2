@@ -6,13 +6,11 @@ ob_start();
 session_start();
 
 $site = new viewsite();
-$viewbelt = new belt();
-
 $site->starthead();
 
-$viewbelt->deletebelt();
+$belt = new belt();
+$belt->addbelt();
 
 
-$site->endhead();
 ob_end_flush();
 ?>
