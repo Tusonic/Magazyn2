@@ -98,7 +98,7 @@ class transaction extends database
                             <td>' . $adres . '</td>
                             <td>' . $note . '</td>
                             <td>
-                                    <form method="GET" action="transaction/addclienttransaction.php">
+                                    <form method="GET" action="addclienttransaction.php">
                                     <input type="hidden" value="' . $row['id'] . '" name="id_client"/>
                                     <input type="submit" class="btn btn-info" value="Client ADD ID=' . $row['id'] . '"/>
                                     </form>
@@ -116,7 +116,7 @@ class transaction extends database
          ';
 
 
-    }
+    } //firts
 
     public function addbelttransaction()
     {
@@ -178,7 +178,23 @@ class transaction extends database
          ';
 
 
-    }
+    } //second
+
+    public function addtransaction()
+    {
+
+        $idbelt = $_GET['id_belt'];
+        echo $idbelt;
+
+        $idclient = $_GET['id_client'];
+        echo $idclient;
+
+        $iduser = 44;
+        echo $iduser; //login account
+
+
+    } //third
+
 
 
 

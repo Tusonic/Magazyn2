@@ -6,11 +6,8 @@ ob_start();
 session_start();
 
 
-$idbelt = $_GET['id_belt'];
-echo $idbelt;
-
-$idclient = $_GET['id_client'];
-echo $idclient;
+$idclinttransaction = new transaction();
+$idclinttransaction->addtransaction();
 
 
 ob_end_flush();

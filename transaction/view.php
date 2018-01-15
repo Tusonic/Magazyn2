@@ -6,12 +6,13 @@ ob_start();
 session_start();
 
 $site = new viewsite();
+$viewtransaction = new transaction();
+
 $site->starthead();
 
-$belt = new client();
-$belt->addclient();
+$viewtransaction->viewtransaction();
+
 
 $site->endhead();
-
 ob_end_flush();
 ?>

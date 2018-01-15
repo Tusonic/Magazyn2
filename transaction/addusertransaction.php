@@ -5,13 +5,16 @@ spl_autoload_register('loader::loaderDir');
 ob_start();
 session_start();
 
-$site = new viewsite();
-$site->starthead();
 
-$belt = new client();
-$belt->addclient();
+$idbelt = $_GET['id_belt'];
+echo $idbelt;
 
-$site->endhead();
+$idclient = $_GET['id_client'];
+echo $idclient;
+
+$iduser = 44;
+
 
 ob_end_flush();
+
 ?>

@@ -99,7 +99,7 @@ class user extends database
                             <td>' . $pass . '</td>
                             <td>' . $access . '</td>
                             <td>
-                                    <form method="POST" action="user/deleteuser.php">
+                                    <form method="POST" action="deleteuser.php">
                                     <input type="hidden" value="' . $row['id'] . '" name="id"/>
                                     <input type="submit" class="btn btn-info" value="Delete ID=' . $row['id'] . '"/>
                                     </form>
@@ -173,7 +173,7 @@ class user extends database
                             <td>' . $pass . '</td>
                             <td>' . $access . '</td>
                             <td>
-                                    <form method="POST" action="user/edituser.php">
+                                    <form method="POST" action="edituser.php">
                                     <input type="hidden" value="' . $row['id'] . '" name="id"/>
                                     <input type="submit" class="btn btn-info" value="Edit ID=' . $row['id'] . '"/>
                                     </form>
@@ -363,7 +363,7 @@ class user extends database
         echo'
 
 
-<form  method="POST" action="user/adduser.php" class="container" id="needs-validation" novalidate>
+<form  method="POST" action="adduser.php" class="container" id="needs-validation" novalidate>
   
   <div class="row">
     <div class="col-md-6 mb-3">

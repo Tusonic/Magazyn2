@@ -15,6 +15,35 @@ $site->starthead();
 <p></p>
 
 <div class="row">
+    <div class="col-md-6">
+        <h2><p class="text-center">TRANSACTION</p></h2>
+        <p></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="transaction/add.php" role="button">Add &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="transaction/view.php" role="button">View &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="#" role="button">Edit &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="#" role="button">Delete &raquo;</a></p>
+    </div>
+    <div class="col-md-3">
+        <h2><p class="text-center">#</p></h2>
+        <p></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="#" role="button"># &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="#" role="button"># &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="#" role="button"># &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="#" role="button"># &raquo;</a></p>
+    </div>
+    <div class="col-md-3">
+        <h2><p class="text-center">#</p></h2>
+        <p></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="#" role="button"># &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="#" role="button"># &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="#" role="button"># &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="#" role="button"># &raquo;</a></p>
+    </div>
+
+
+</div>
+
+<div class="row">
     <div class="col-md-4">
         <h2><p class="text-center">BELT</p></h2>
         <p></p>
@@ -34,10 +63,10 @@ $site->starthead();
     <div class="col-md-4">
         <h2><p class="text-center">USER</p></h2>
         <p></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="#" role="button">View &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="#" role="button">Add &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="#" role="button">Edit &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="#" role="button">Delete &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="user/view.php" role="button">View &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="user/add.php" role="button">Add &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="user/edit.php" role="button">Edit &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="user/delete.php" role="button">Delete &raquo;</a></p>
     </div>
 
 </div>

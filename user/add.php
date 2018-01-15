@@ -8,10 +8,9 @@ session_start();
 $site = new viewsite();
 $site->starthead();
 
-$belt = new client();
-$belt->addclient();
+$adduser = new user();
+$adduser->adduser();
 
-$site->endhead();
 
 ob_end_flush();
 ?>
