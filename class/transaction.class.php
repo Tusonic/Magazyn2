@@ -6,7 +6,14 @@ class transaction extends database
     {
 
 
-        $viewBelt = $this->pdo->prepare('select * from transaction');
+        $viewBelt = $this->pdo->prepare('
+        SELECT *
+FROM transaction
+INNER JOIN belt ON transaction.belt = belt.id
+INNER JOIN client ON transaction.client = client.id
+INNER JOIN user ON transaction.user = user.id
+        
+        ');
         $viewBelt->execute();
 
 
@@ -16,9 +23,11 @@ class transaction extends database
                  <thead>
                        <tr> 
                              <th scope="col">#</th>
-                             <th scope="col">User</th>
-                             <th scope="col">Belt</th>
-                             <th scope="col">Client</th>
+                             <th scope="col">Type</th>
+                             <th scope="col">Length</th>
+                             <th scope="col">Width</th>
+                             <th scope="col">Name</th>
+                             <th scope="col">Login</th>
                         </tr>
                    </thead>
                 <tbody>
@@ -26,21 +35,25 @@ class transaction extends database
   
          ';
 
-
+                                                // ASSOC or NUM
         while ($row = $viewBelt->fetch(PDO::FETCH_ASSOC)) {
             $id = $row['id'];
-            $user = $row['user'];
-            $belt = $row['belt'];
-            $client = $row['client'];
+            $type = $row['type'];
+            $length = $row['length'];
+            $width = $row['width'];
+            $name = $row['name'];
+            $login = $row['login'];
 
 
             echo '
 
                 <tr>
                             <th scope="row">' . $id . '</th>
-                            <td>' . $user . '</td>
-                            <td>' . $belt . '</td>
-                            <td>' . $client . '</td>
+                            <td>' . $type . '</td>
+                            <td>' . $length . '</td>
+                            <td>' . $width . '</td>
+                            <td>' . $name . '</td>
+                            <td>' . $login . '</td>
 
                 </tr>
                             ';
@@ -98,7 +111,7 @@ class transaction extends database
                             <td>' . $adres . '</td>
                             <td>' . $note . '</td>
                             <td>
-                                    <form method="GET" action="addclienttransaction.php">
+                                    <form method="GET" action="add.php?id_client=' . $row['id'] . '">
                                     <input type="hidden" value="' . $row['id'] . '" name="id_client"/>
                                     <input type="submit" class="btn btn-info" value="Client ADD ID=' . $row['id'] . '"/>
                                     </form>
@@ -159,10 +172,10 @@ class transaction extends database
                             <td>' . $width . '</td>
                             <td>' . $type . '</td>
                             <td>
-                                    <form method="GET" action="addbelttransaction.php">
+                                    <form method="GET" action="add.php?id_client=' . $_GET['id_client'] . '&id_belt=' . $row['id'] . '">
                                     <input type="hidden" value="' . $_GET['id_client'] . '" name="id_client"/>
                                     <input type="hidden" value="' . $row['id'] . '" name="id_belt"/>
-                                    <input type="submit" class="btn btn-info" value="Delete ID=' . $row['id'] . '"/>
+                                    <input type="submit" class="btn btn-info" value="Belt ID=' . $row['id'] . '"/>
                                     </form>
                            </td>
                 </tr>
@@ -183,14 +196,21 @@ class transaction extends database
     public function addtransaction()
     {
 
-        $idbelt = $_GET['id_belt'];
-        echo $idbelt;
-
         $idclient = $_GET['id_client'];
         echo $idclient;
 
-        $iduser = 44;
+        $idbelt = $_GET['id_belt'];
+        echo $idbelt;
+
+        $iduser = 2;
         echo $iduser; //login account
+
+
+        $addtransaction = $this->pdo->prepare("INSERT INTO transaction (user, belt, client) VALUES (:user,:belt,:client)");
+        $addtransaction->bindValue(':user', $iduser, PDO::PARAM_INT);
+        $addtransaction->bindValue(':belt', $idbelt, PDO::PARAM_INT);
+        $addtransaction->bindValue(':client', $idclient, PDO::PARAM_INT);
+        $addtransaction->execute();
 
 
     } //third
