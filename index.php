@@ -20,7 +20,7 @@ $site->starthead();
         <p></p>
         <p><a class="btn btn-primary btn-lg btn-block" href="transaction/add.php" role="button">Add &raquo;</a></p>
         <p><a class="btn btn-primary btn-lg btn-block" href="transaction/view.php" role="button">View &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="#" role="button">Edit &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="transaction/edit.php" role="button">Edit &raquo;</a></p>
         <p><a class="btn btn-primary btn-lg btn-block" href="#" role="button">Delete &raquo;</a></p>
     </div>
     <div class="col-md-3">
