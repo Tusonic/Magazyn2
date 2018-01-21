@@ -306,9 +306,9 @@ INNER JOIN user ON transaction.user = user.id
 
         while ($row = $viewBelt->fetch(PDO::FETCH_ASSOC)) {
             $id = $row['id'];
-            $length = $row['user'];
-            $width = $row['belt'];
-            $type = $row['client'];
+            $iduser = $row['user'];
+            $idbelt = $row['belt'];
+            $idclient = $row['client'];
 
 
             echo '
@@ -316,7 +316,7 @@ INNER JOIN user ON transaction.user = user.id
 
                 
                 
-            <form method="POST" action="editbeltchange.php">
+            <form method="POST" action="edittransactionchange.php">
             
                 <tr>
                             <th scope="row"> 
@@ -325,16 +325,16 @@ INNER JOIN user ON transaction.user = user.id
                             </th>
                             
                             <td>
-                                <input  name="length" class="form-control" type="text"  value="'.$length.'" placeholder=" ' . $length . ' ">
+                                <input  name="iduser" class="form-control" type="text"  value="'.$iduser.'" placeholder=" ' . $iduser . ' ">
                              
                             </td>
                             
                             <td>
-                                <input name="width" class="form-control" type="text" value="' . $width . '" placeholder=" ' . $width . '">
+                                <input name="idbelt" class="form-control" type="text" value="' . $idbelt . '" placeholder=" ' . $idbelt . '">
                             </td>
                             
                             <td>
-                                <input name="type" class="form-control" type="text" value="' . $type . '" placeholder=" ' . $type . '">
+                                <input name="idclient" class="form-control" type="text" value="' . $idclient . '" placeholder=" ' . $idclient . '">
                             </td>
                             
                             <td>
@@ -342,7 +342,7 @@ INNER JOIN user ON transaction.user = user.id
                             </td>
              </form>  
                     
-            <form method="POST" action="deletebelt.php">
+            <form method="POST" action="deletetransaction.php">
                             <td>  
                                     <input type="submit" class="btn btn-info" value="Delete ID=' . $row['id'] . '"/>
                                     <input type="hidden" value="' . $row['id'] . '" name="id"/>
@@ -369,50 +369,50 @@ INNER JOIN user ON transaction.user = user.id
          ';
 
 
-    } // poprawiać (!)
+    }
 
     public function edittransactionchange()
     {
 
 
 
-        if (!empty($_POST["length"]) || ($_POST["width"]) || ($_POST["type"]) )
+        if (!empty($_POST["iduser"]) || ($_POST["idbelt"]) || ($_POST["idclient"]) )
         {
 
             echo "Yes, POST is set </br>";
-            $beltid = $_POST["id"];
-            $beltlength = $_POST["length"];
-            $beltwidth = $_POST["width"];
-            $belttype = $_POST["type"];
+            $id = $_POST["id"];
+            $iduser = $_POST["iduser"];
+            $idbelt = $_POST["idbelt"];
+            $idclient = $_POST["idclient"];
 
             /* Check varible editor */
 
-            if ( (empty($beltlength)) || (empty($beltwidth)) || (empty($belttype)) )
+            if ( (empty($iduser)) || (empty($idbelt)) || (empty($idclient)) )
             {
 
-                if (empty($beltlength)) {
+                if (empty($iduser)) {
                     echo ' 
-                            <form method="POST" action="editbelt.php">
-                            <input type="hidden" value="' . $beltid . '" name="id"/>
-                            <input type="submit" class="btn btn-info" value="BackEdit ID=' . $beltid. '"/>
+                            <form method="POST" action="edittransaction.php">
+                            <input type="hidden" value="' . $id . '" name="id"/>
+                            <input type="submit" class="btn btn-info" value="BackEdit ID=' . $id . '"/>
                             </form>
                         
                         ';  }
 
-                if (empty($beltwidth)) {
+                if (empty($idbelt)) {
                     echo '
-                            <form method="POST" action="editbelt.php">
-                            <input type="hidden" value="' . $beltid . '" name="id"/>
-                            <input type="submit" class="btn btn-info" value="BackEdit ID=' . $beltid . '"/>
+                            <form method="POST" action="edittransaction.php">
+                            <input type="hidden" value="' . $id . '" name="id"/>
+                            <input type="submit" class="btn btn-info" value="BackEdit ID=' . $id . '"/>
                             </form>
                             
                         '; }
 
-                if (empty($belttype)) {
+                if (empty($idclient)) {
                     echo '
-                            <form method="POST" action="editbelt.php">
-                            <input type="hidden" value="' . $beltid . '" name="id"/>
-                            <input type="submit" class="btn btn-info" value="BackEdit ID=' . $beltid . '"/>
+                            <form method="POST" action="edittransaction.php">
+                            <input type="hidden" value="' . $id . '" name="id"/>
+                            <input type="submit" class="btn btn-info" value="BackEdit ID=' . $id. '"/>
                             </form>
                         
                         '; }
@@ -421,14 +421,14 @@ INNER JOIN user ON transaction.user = user.id
 
             else
             {
-                $editorBelt = $this->pdo->prepare("UPDATE belt SET id = :id, length=:length, width = :width, type = :type WHERE belt.id = :id");
-                $editorBelt->bindValue(':id', $beltid, PDO::PARAM_INT);
-                $editorBelt->bindValue(':length', $beltlength, PDO::PARAM_INT);
-                $editorBelt->bindValue(':width', $beltwidth, PDO::PARAM_INT);
-                $editorBelt->bindValue(':type', $belttype, PDO::PARAM_STR);
+                $editorBelt = $this->pdo->prepare("UPDATE transaction SET id = :id, user=:user, belt=:belt, client=:client WHERE id = :id");
+                $editorBelt->bindValue(':id', $id, PDO::PARAM_INT);
+                $editorBelt->bindValue(':user', $iduser, PDO::PARAM_INT);
+                $editorBelt->bindValue(':belt', $idbelt, PDO::PARAM_INT);
+                $editorBelt->bindValue(':client', $idclient, PDO::PARAM_INT);
                 $editorBelt->execute();
                 echo 'change OK';
-                echo $beltid;
+                echo $id;
             }
 
         }
@@ -438,13 +438,99 @@ INNER JOIN user ON transaction.user = user.id
             echo "N0, mail is not set";
         }
 
+    }
+
+    public function deletetransaction()
+    {
+
+        echo '</br> post=';
+        $deletetransactionid = $_POST['id'];
+        echo $deletetransactionid;
+
+        $editorBelt = $this->pdo->prepare("DELETE FROM transaction WHERE id=:id");
+        $editorBelt->bindValue(':id', $deletetransactionid, PDO::PARAM_INT);
+        $editorBelt->execute();
+
+    }
+
+    public function delete()
+    {
 
 
-    } // poprawiać (!)
+        $viewBelt = $this->pdo->prepare('
+        SELECT *
+FROM transaction
+INNER JOIN belt ON transaction.belt = belt.id
+INNER JOIN client ON transaction.client = client.id
+INNER JOIN user ON transaction.user = user.id
+        
+        ');
+        $viewBelt->execute();
 
-    // public function delete !!!
+
+        echo ' 
+ 
+            <table class="table">
+                 <thead>
+                       <tr> 
+                             <th scope="col">#</th>
+                             <th scope="col">Type</th>
+                             <th scope="col">Length</th>
+                             <th scope="col">Width</th>
+                             <th scope="col">Name</th>
+                             <th scope="col">Login</th>
+                             <th scope="col">Delete</th>
+                        </tr>
+                   </thead>
+                <tbody>
+                   
+  
+         ';
+
+        // ASSOC or NUM
+        while ($row = $viewBelt->fetch(PDO::FETCH_NUM)) {
+            $id = $row['0'];
+            $type = $row['7'];
+            $length = $row['5'];
+            $width = $row['6'];
+            $name = $row['9'];
+            $login = $row['13'];
 
 
+            echo '
+
+                <tr>
+                            <th scope="row">' . $id . '</th>
+                            <td>' . $type . '</td>
+                            <td>' . $length . '</td>
+                            <td>' . $width . '</td>
+                            <td>' . $name . '</td>
+                            <td>' . $login . '</td>
+                            
+                             <form method="POST" action="deletetransaction.php">
+                            <td>  
+                                    <input type="submit" class="btn btn-info" value="Delete ID=' . $row['id'] . '"/>
+                                    <input type="hidden" value="' . $row['id'] . '" name="id"/>
+                                    
+                                    
+                                    
+                            </td>
+            </form> 
+
+                </tr>
+                            ';
+
+        }
+
+        echo '
+        
+                  </tbody>
+               </table>
+        
+         ';
+
+
+    }
 
 
 }

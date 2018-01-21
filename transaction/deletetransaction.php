@@ -8,9 +8,10 @@ session_start();
 $site = new viewsite();
 $site->starthead();
 
-$editorchange = new transaction();
-$editorchange->edittransactionchange();
+$deletetransaction = new transaction();
+$deletetransaction->deletetransaction();
+
 
 $site->endhead();
-
 ob_end_flush();
+?>
