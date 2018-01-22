@@ -45,34 +45,9 @@ else
     echo 'login error';
 }
 
-//$idbelt = $_GET['id_belt'];
-//echo $idbelt;
-
-
-//$addtransaction = new transaction();
-//$addtransaction->addclinettransaction();
 
 $site->starthead();
-
-
 
 ob_end_flush();
 ?>
 
-<!--
-
-SELECT *
-FROM transaction
-INNER JOIN belt ON transaction.belt = belt.id
-INNER JOIN client ON transaction.client = client.id
-INNER JOIN user ON transaction.user = user.id
-
-SELECT transaction.id, belt.type, belt.length, belt.width, client.name, user.login
-FROM transaction
-INNER JOIN belt ON transaction.belt = belt.id
-INNER JOIN client ON transaction.client = client.id
-INNER JOIN user ON transaction.user = user.id
-ORDER BY transaction.id ASC
-
-
--->

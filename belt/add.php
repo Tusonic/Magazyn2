@@ -11,7 +11,5 @@ $site->starthead();
 $belt = new belt();
 $belt->addbelt();
 
-
-
 ob_end_flush();
 ?>

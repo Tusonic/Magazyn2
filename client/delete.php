@@ -6,13 +6,11 @@ ob_start();
 session_start();
 
 $site = new viewsite();
-$deleteclint = new client();
+$client = new client();
 
 $site->starthead();
-
-$deleteclint->deleteclient();
-
-
+$client->deleteclient();
 $site->endhead();
+
 ob_end_flush();
 ?>

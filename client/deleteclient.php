@@ -10,7 +10,7 @@ $site->starthead();
 
 $client = new client();
 $client->deleteclientdata();
-
 $site->endhead();
+
 ob_end_flush();
 ?>

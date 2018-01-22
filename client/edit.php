@@ -6,12 +6,11 @@ ob_start();
 session_start();
 
 $site = new viewsite();
-$editclient = new client();
+$client = new client();
 
 $site->starthead();
-$editclient->editclient();
-
-
+$client->editclient();
 $site->endhead();
+
 ob_end_flush();
 ?>

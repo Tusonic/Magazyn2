@@ -10,9 +10,8 @@ $site->starthead();
 
 $editbelt = new belt();
 $editbelt->checkeditorbelt();
-
 $site->endhead();
 
 ob_end_flush();
-
+?>
 

@@ -14,9 +14,5 @@ $idbelttransaction->addbelttransaction();
 $idclient = $_GET['id_client'];
 echo $idclient;
 
-
-
-
 ob_end_flush();
-
 ?>

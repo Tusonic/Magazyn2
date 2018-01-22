@@ -6,13 +6,11 @@ ob_start();
 session_start();
 
 $site = new viewsite();
-$edittransaction = new transaction();
+$transaction = new transaction();
 
 $site->starthead();
-
-$edittransaction->edittransaction();
-
-
+$transaction->edittransaction();
 $site->endhead();
+
 ob_end_flush();
 ?>

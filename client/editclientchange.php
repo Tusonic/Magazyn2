@@ -10,10 +10,7 @@ $site->starthead();
 
 $client = new client();
 $client->checkeditorbelt();
-
-
-
 $site->endhead();
 
-
 ob_end_flush();
+?>
