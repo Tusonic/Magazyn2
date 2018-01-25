@@ -19,7 +19,7 @@ class viewsite {
                         <link rel="stylesheet" type="text/css" href="/css/tablebootstrap.css">
                    
                         <script src="/js/jquery.1.12.4.js"></script>
-                        <script src="/js/jquery.dataTables.js"></script>
+                        <script src="/js/jquery.dataTables.js"></script> 
                         <script src="/js/datatables.bootstrap.js"></script>
 
                      

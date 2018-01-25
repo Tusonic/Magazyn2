@@ -13,7 +13,7 @@ class client extends database
 
         echo ' 
  
-            <table class="table">
+            <table id="table-full" class="table table-striped table-bordered" width="100%" cellspacing="0">
                  <thead>
                        <tr> 
                              <th scope="col">#</th>
