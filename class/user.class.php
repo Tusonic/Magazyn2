@@ -444,3 +444,5 @@ class user extends database
     }
 
 }
+
+?>

@@ -1,4 +1,3 @@
-
 <?php
 require_once 'config/loader.php';
 spl_autoload_register('loader::loaderRoot');
@@ -75,9 +74,7 @@ $site->starthead();
 
 <?php
 $site->endhead();
-
 ob_end_flush();
-
 ?>
 
 
