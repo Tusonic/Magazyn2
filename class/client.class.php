@@ -60,11 +60,8 @@ class client extends database
 
     public function deleteclient()
     {
-
-
         $viewBelt = $this->pdo->prepare('select * from client');
         $viewBelt->execute();
-
 
         echo ' 
  
@@ -196,10 +193,8 @@ class client extends database
     public function editorclient()
     {
 
-
         $viewBelt = $this->pdo->prepare("select * from client where ID = :value");
         $viewBelt->execute(array(':value' => $_POST['id']));
-
 
         echo ' 
  
@@ -219,19 +214,14 @@ class client extends database
   
          ';
 
-
         while ($row = $viewBelt->fetch(PDO::FETCH_ASSOC)) {
             $id = $row['id'];
             $name = $row['name'];
             $adres = $row['adres'];
             $note = $row['note'];
 
-
             echo '
-
-
-                
-                
+              
             <form method="POST" action="editclientchange.php">
             
                 <tr>
@@ -275,22 +265,15 @@ class client extends database
 
         }
 
-
-
         echo '
-        
                   </tbody>
                </table>
         
          ';
-
-
     }
 
     public function checkeditorbelt()
     {
-
-
 
         if (!empty($_POST["name"]) || ($_POST["adres"]) || ($_POST["note"]) )
         {
@@ -353,8 +336,6 @@ class client extends database
         {
             echo "N0, mail is not set";
         }
-
-
 
     }
 

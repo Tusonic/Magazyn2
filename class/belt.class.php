@@ -201,7 +201,6 @@ class belt extends database
         $viewBelt = $this->pdo->prepare("select * from belt where ID = :value");
         $viewBelt->execute(array(':value' => $_POST['id']));
 
-
         echo ' 
  
             <table class="table">
