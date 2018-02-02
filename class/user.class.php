@@ -228,10 +228,7 @@ class user extends database
 
 
             echo '
-
-
-                
-                
+               
             <form method="POST" action="edituserchange.php">
             
                 <tr>
@@ -366,27 +363,27 @@ class user extends database
 <form  method="POST" action="adduser.php" class="container" id="needs-validation" novalidate>
   
   <div class="row">
-    <div class="col-md-6 mb-3">
-      <label for="validationCustom03">Name</label>
-      <input name="addlogin" type="text" class="form-control" id="validationCustom03" placeholder="Login" required>
-      <div class="invalid-feedback">
-        Please provide a valid Name.
-      </div>
-    </div>
+        <div class="col-md-6 mb-3">
+          <label for="validationCustom03">Name</label>
+          <input name="addlogin" type="text" class="form-control" id="validationCustom03" placeholder="Login" required>
+              <div class="invalid-feedback">
+                Please provide a valid Name.
+              </div>
+        </div>
     <div class="col-md-3 mb-3">
       <label for="validationCustom04">Adres</label>
       <input name="addpass" type="text" class="form-control" id="validationCustom04" placeholder="Pass" required>
-      <div class="invalid-feedback">
-        Please provide a valid adres.
-      </div>
+          <div class="invalid-feedback">
+            Please provide a valid adres.
+          </div>
     </div>
-    <div class="col-md-3 mb-3">
-      <label for="validationCustom05">Note</label>
-      <input name="addaccess" type="text" class="form-control" id="validationCustom05" placeholder="Access" required>
-      <div class="invalid-feedback">
-        Please provide a valid width.
-      </div>
-    </div>
+        <div class="col-md-3 mb-3">
+          <label for="validationCustom05">Note</label>
+          <input name="addaccess" type="text" class="form-control" id="validationCustom05" placeholder="Access" required>
+              <div class="invalid-feedback">
+                Please provide a valid width.
+              </div>
+        </div>
   </div>
   <button class="btn btn-primary" type="submit">Dodaj</button>
 </form>
@@ -408,12 +405,7 @@ class user extends database
   }, false);
 })();
 </script>
-
-
-
-  
-
-        
+     
         
         ';
 
@@ -426,20 +418,15 @@ class user extends database
         echo $_POST["addpass"];
         echo $_POST["addaccess"];
 
-
         $adduserlogin = $_POST["addlogin"];
         $addusertadres = $_POST["addpass"];
         $adduseraccess = $_POST["addaccess"];
-
-
 
         $editorUser = $this->pdo->prepare("INSERT INTO user (login, pass, access) VALUES (:login, :pass, :access)");
         $editorUser->bindValue(':login', $adduserlogin, PDO::PARAM_STR);
         $editorUser->bindValue(':pass', $addusertadres, PDO::PARAM_STR);
         $editorUser->bindValue(':access', $adduseraccess, PDO::PARAM_INT);
         $editorUser->execute();
-
-
 
     }
 

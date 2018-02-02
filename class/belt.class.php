@@ -7,10 +7,8 @@ class belt extends database
     public function viewbelt()
     {
 
-
         $viewBelt = $this->pdo->prepare('select * from belt');
         $viewBelt->execute();
-
 
         echo ' 
 
@@ -23,11 +21,8 @@ class belt extends database
                              <th scope="col">Type</th>
                         </tr>
                    </thead>
-                <tbody>
-                   
-  
+                <tbody>               
          ';
-
 
         while ($row = $viewBelt->fetch(PDO::FETCH_ASSOC)) {
             $id = $row['id'];
@@ -43,7 +38,6 @@ class belt extends database
                             <td>' . $length . '</td>
                             <td>' . $width . '</td>
                             <td>' . $type . '</td>
-
                 </tr>
                             ';
 
@@ -62,7 +56,6 @@ class belt extends database
     public function deletebelt()
     {
 
-
         $viewBelt = $this->pdo->prepare('select * from belt');
         $viewBelt->execute();
 
@@ -79,9 +72,7 @@ class belt extends database
                              <th scope="col">Delete</th>
                         </tr>
                    </thead>
-                <tbody>
-                   
-  
+                <tbody>               
          ';
 
 
@@ -99,6 +90,7 @@ class belt extends database
                             <td>' . $length . '</td>
                             <td>' . $width . '</td>
                             <td>' . $type . '</td>
+                            
                             <td>
                                     <form method="POST" action="belt/deletebelt.php">
                                     <input type="hidden" value="' . $row['id'] . '" name="id"/>
@@ -135,7 +127,6 @@ class belt extends database
 
     public function editbelt()
     {
-
 
         $viewBelt = $this->pdo->prepare('select * from belt');
         $viewBelt->execute();
@@ -190,7 +181,6 @@ class belt extends database
                </table>
         
          ';
-
 
     }
 
@@ -366,27 +356,27 @@ class belt extends database
 <form  method="POST" action="addbelt.php" class="container" id="needs-validation" novalidate>
   
   <div class="row">
-    <div class="col-md-6 mb-3">
-      <label for="validationCustom03">Type</label>
-      <input name="addtype" type="text" class="form-control" id="validationCustom03" placeholder="Type" required>
-      <div class="invalid-feedback">
-        Please provide a valid type.
-      </div>
-    </div>
+        <div class="col-md-6 mb-3">
+          <label for="validationCustom03">Type</label>
+          <input name="addtype" type="text" class="form-control" id="validationCustom03" placeholder="Type" required>
+              <div class="invalid-feedback">
+                Please provide a valid type.
+              </div>
+        </div>
     <div class="col-md-3 mb-3">
       <label for="validationCustom04">Length</label>
       <input name="addlength" type="text" class="form-control" id="validationCustom04" placeholder="Length in millimeters" required>
-      <div class="invalid-feedback">
-        Please provide a valid length.
-      </div>
+          <div class="invalid-feedback">
+            Please provide a valid length.
+          </div>
     </div>
-    <div class="col-md-3 mb-3">
-      <label for="validationCustom05">Width</label>
-      <input name="addwidth" type="text" class="form-control" id="validationCustom05" placeholder="Width in millimeters" required>
-      <div class="invalid-feedback">
-        Please provide a valid width.
-      </div>
-    </div>
+        <div class="col-md-3 mb-3">
+          <label for="validationCustom05">Width</label>
+          <input name="addwidth" type="text" class="form-control" id="validationCustom05" placeholder="Width in millimeters" required>
+              <div class="invalid-feedback">
+                Please provide a valid width.
+              </div>
+         </div>
   </div>
   <button class="btn btn-primary" type="submit">Add Belt</button>
 </form>
@@ -408,12 +398,7 @@ class belt extends database
   }, false);
 })();
 </script>
-
-
-
-  
-
-        
+ 
         
         ';
 
@@ -426,11 +411,9 @@ class belt extends database
         echo $_POST["addlength"];
         echo $_POST["addwidth"];
 
-
         $addbelttype = $_POST["addtype"];
         $addbeltlength = $_POST["addlength"];
         $addbeltwidth = $_POST["addwidth"];
-
 
 
         $editorBelt = $this->pdo->prepare("INSERT INTO belt (length, width, type) VALUES (:length,:width,:type)");
@@ -440,9 +423,7 @@ class belt extends database
         $editorBelt->execute();
 
 
-
     }
-
 
 
 }

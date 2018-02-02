@@ -73,10 +73,8 @@ INNER JOIN user ON transaction.user = user.id
     public function addclinettransaction()
     {
 
-
         $viewBelt = $this->pdo->prepare('select * from client');
         $viewBelt->execute();
-
 
         echo ' 
  
@@ -92,8 +90,7 @@ INNER JOIN user ON transaction.user = user.id
                    </thead>
                 <tbody>
                    
-  
-         ';
+          ';
 
 
         while ($row = $viewBelt->fetch(PDO::FETCH_ASSOC)) {
@@ -134,10 +131,8 @@ INNER JOIN user ON transaction.user = user.id
     public function addbelttransaction()
     {
 
-
         $viewBelt = $this->pdo->prepare('select * from belt');
         $viewBelt->execute();
-
 
         echo ' 
  
@@ -155,7 +150,6 @@ INNER JOIN user ON transaction.user = user.id
                    
   
          ';
-
 
         while ($row = $viewBelt->fetch(PDO::FETCH_ASSOC)) {
             $id = $row['id'];
@@ -280,10 +274,8 @@ INNER JOIN user ON transaction.user = user.id
     public function editortransaction()
     {
 
-
         $viewBelt = $this->pdo->prepare("select * from transaction where ID = :value");
         $viewBelt->execute(array(':value' => $_POST['id']));
-
 
         echo ' 
  
@@ -373,8 +365,6 @@ INNER JOIN user ON transaction.user = user.id
 
     public function edittransactionchange()
     {
-
-
 
         if (!empty($_POST["iduser"]) || ($_POST["idbelt"]) || ($_POST["idclient"]) )
         {
@@ -510,10 +500,7 @@ INNER JOIN user ON transaction.user = user.id
                              <form method="POST" action="deletetransaction.php">
                             <td>  
                                     <input type="submit" class="btn btn-info" value="Delete ID=' . $row['id'] . '"/>
-                                    <input type="hidden" value="' . $row['id'] . '" name="id"/>
-                                    
-                                    
-                                    
+                                    <input type="hidden" value="' . $row['id'] . '" name="id"/>                     
                             </td>
             </form> 
 

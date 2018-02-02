@@ -209,8 +209,7 @@ class client extends database
                              <th scope="col">Delete</th>
                         </tr>
                    </thead>
-                <tbody>
-                   
+                <tbody>          
   
          ';
 
@@ -252,9 +251,7 @@ class client extends database
                             <td>  
                                     <input type="submit" class="btn btn-info" value="Delete ID=' . $row['id'] . '"/>
                                     <input type="hidden" value="' . $row['id'] . '" name="id"/>
-                                    
-                                    
-                                    
+                                                                                                        
                             </td>
             </form> 
             
@@ -329,7 +326,6 @@ class client extends database
                 echo 'change OK';
                 echo $clientid;
             }
-
         }
 
         else
@@ -347,27 +343,27 @@ class client extends database
 <form  method="POST" action="addclient.php" class="container" id="needs-validation" novalidate>
   
   <div class="row">
-    <div class="col-md-6 mb-3">
-      <label for="validationCustom03">Name</label>
-      <input name="addname" type="text" class="form-control" id="validationCustom03" placeholder="Name" required>
-      <div class="invalid-feedback">
-        Please provide a valid Name.
-      </div>
-    </div>
+        <div class="col-md-6 mb-3">
+          <label for="validationCustom03">Name</label>
+          <input name="addname" type="text" class="form-control" id="validationCustom03" placeholder="Name" required>
+              <div class="invalid-feedback">
+                Please provide a valid Name.
+              </div>
+        </div>
     <div class="col-md-3 mb-3">
       <label for="validationCustom04">Adres</label>
       <input name="addadres" type="text" class="form-control" id="validationCustom04" placeholder="Adres" required>
-      <div class="invalid-feedback">
-        Please provide a valid adres.
-      </div>
+          <div class="invalid-feedback">
+            Please provide a valid adres.
+          </div>
     </div>
-    <div class="col-md-3 mb-3">
-      <label for="validationCustom05">Note</label>
-      <input name="addnote" type="text" class="form-control" id="validationCustom05" placeholder="Note" required>
-      <div class="invalid-feedback">
-        Please provide a valid width.
-      </div>
-    </div>
+        <div class="col-md-3 mb-3">
+          <label for="validationCustom05">Note</label>
+          <input name="addnote" type="text" class="form-control" id="validationCustom05" placeholder="Note" required>
+              <div class="invalid-feedback">
+                Please provide a valid width.
+              </div>
+        </div>
   </div>
   <button class="btn btn-primary" type="submit">Dodaj</button>
 </form>
@@ -389,12 +385,7 @@ class client extends database
   }, false);
 })();
 </script>
-
-
-
-  
-
-        
+    
         
         ';
 
@@ -419,8 +410,6 @@ class client extends database
         $editorClient->bindValue(':adres', $addclientadres, PDO::PARAM_STR);
         $editorClient->bindValue(':note', $addclienttype, PDO::PARAM_STR);
         $editorClient->execute();
-
-
 
     }
 

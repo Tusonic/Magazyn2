@@ -2,7 +2,7 @@
 -- version 4.0.10.18
 -- https://www.phpmyadmin.net
 --
--- Host: 192.168.101.134
+
 -- Czas wygenerowania: 04 Sty 2018, 22:42
 -- Wersja serwera: 5.6.36-82.1-log
 -- Wersja PHP: 5.6.30

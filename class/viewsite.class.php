@@ -33,9 +33,6 @@ class viewsite {
 
         }
 
-
-
-
      public function endhead()
         {
 

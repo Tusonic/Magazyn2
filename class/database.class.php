@@ -16,7 +16,6 @@ class database
     }
 
 
-
     public function openConnection()
     {
 
@@ -34,9 +33,6 @@ class database
             }
 
     }
-
-
-
 
 }
 
