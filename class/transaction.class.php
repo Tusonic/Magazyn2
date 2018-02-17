@@ -499,8 +499,8 @@ INNER JOIN user ON transaction.user = user.id
                             
                              <form method="POST" action="deletetransaction.php">
                             <td>  
-                                    <input type="submit" class="btn btn-info" value="Delete ID=' . $row['id'] . '"/>
-                                    <input type="hidden" value="' . $row['id'] . '" name="id"/>                     
+                                    <input type="submit" class="btn btn-info" value="Delete ID=' . $row['0'] . '"/>
+                                    <input type="hidden" value="' . $row['0'] . '" name="id"/>                     
                             </td>
             </form> 
 

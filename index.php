@@ -9,12 +9,14 @@ $site = new viewsite();
 $site->starthead();
 
 ?>
+
+
 <p></p>
 <p class="text-center">Magazyn 2</p>
 <p></p>
 
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
         <h2><p class="text-center">TRANSACTION</p></h2>
         <p></p>
         <p><a class="btn btn-primary btn-lg btn-block" href="transaction/view.php" role="button">View &raquo;</a></p>
@@ -22,21 +24,14 @@ $site->starthead();
         <p><a class="btn btn-primary btn-lg btn-block" href="transaction/edit.php" role="button">Edit &raquo;</a></p>
         <p><a class="btn btn-primary btn-lg btn-block" href="transaction/delete.php" role="button">Delete &raquo;</a></p>
     </div>
-    <div class="col-md-3">
-        <h2><p class="text-center">#</p></h2>
-        <p></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="#" role="button"># &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="#" role="button"># &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="#" role="button"># &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="#" role="button"># &raquo;</a></p>
+    <div class="col-md-4">
     </div>
-    <div class="col-md-3">
-        <h2><p class="text-center">#</p></h2>
-        <p></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="#" role="button"># &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="#" role="button"># &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="#" role="button"># &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="#" role="button"># &raquo;</a></p>
+    <div class="col-md-4">
+        <h2><p class="text-center">ACCOUNT</p></h2>
+        <p><a class="btn btn-primary btn-lg btn-block" href="#" role="button">LOGOUT &raquo;</a></p>
+        <p>INFO</p>
+        <p>INFO</p>
+        <p>INFO</p>
     </div>
 
 
