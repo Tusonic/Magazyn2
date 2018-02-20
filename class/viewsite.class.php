@@ -1,6 +1,6 @@
 <?php
 
-class viewsite {
+class viewsite extends database {
 
 
     public function starthead()
@@ -95,7 +95,59 @@ class viewsite {
        ';
     }
 
-    public function loginin() {
+    public function login() {
+
+        echo $_POST['login'];
+        echo $_POST['password'];
+
+        $login = ($_POST['login']);
+        $password = ($_POST['password']);
+
+        $systemlogin = $this->pdo->prepare("SELECT COUNT(*) from user WHERE login = '$login'");
+        $systemlogin->execute();
+
+        $num_rows = $systemlogin->fetchColumn();
+        echo $num_rows;
+
+        $_SESSION['123'] = $num_rows;
+        echo $_SESSION['123'];
+
+        if ($_SESSION['123'] == '0') {
+
+            echo '
+    <form action="index.php" method="POST">
+        <div class="col-md-12">
+            <div class="modal-dialog" style="margin-bottom:0">
+                <div class="modal-content">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">LOGIN</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form role="form">
+                            <fieldset>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Login" name="login" type="login">
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Password" name="password" type="password">
+                                </div>
+                                <button class="btn btn-primary" type="submit">ENTER</button>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    ';
+
+        }
+        else
+
+        {
+    echo 'sesion 0';
+
+        }
 
     }
 
