@@ -95,61 +95,104 @@ class viewsite extends database {
        ';
     }
 
-    public function login() {
+    public function login()
+    {
 
-        echo $_POST['login'];
-        echo $_POST['password'];
 
-        $login = ($_POST['login']);
-        $password = ($_POST['password']);
+        if (isset($_POST['login'])) {
 
-        $systemlogin = $this->pdo->prepare("SELECT COUNT(*) from user WHERE login = '$login'");
-        $systemlogin->execute();
+            $login = ($_POST['login']);
+            $password = ($_POST['password']);
 
-        $num_rows = $systemlogin->fetchColumn();
-        echo $num_rows;
+            echo $_POST['login'];
+            echo $_POST['password'];
 
-        $_SESSION['123'] = $num_rows;
-        echo $_SESSION['123'];
+            $systemlogin = $this->pdo->prepare("SELECT COUNT(*) from user WHERE login = '$login' AND pass = '$password'");
+            $systemlogin->execute();
 
-        if ($_SESSION['123'] == '0') {
+            $num_rows = $systemlogin->fetchColumn();
+            echo $num_rows;
 
-            echo '
-    <form action="index.php" method="POST">
-        <div class="col-md-12">
-            <div class="modal-dialog" style="margin-bottom:0">
-                <div class="modal-content">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">LOGIN</h3>
-                    </div>
-                    <div class="panel-body">
-                        <form role="form">
-                            <fieldset>
-                                <div class="form-group">
-                                    <input class="form-control" placeholder="Login" name="login" type="login">
-                                </div>
-                                <div class="form-group">
-                                    <input class="form-control" placeholder="Password" name="password" type="password">
-                                </div>
-                                <button class="btn btn-primary" type="submit">ENTER</button>
-                            </fieldset>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
-    ';
+            $_SESSION['login_in'] = $num_rows;
+            echo '</br> ZMIENNA ECHO 123=';
+            echo $_SESSION['login_in'];
 
         }
+
         else
 
         {
-    echo 'sesion 0';
+        echo 'EMPTY LOGIN';
+        }
+
+        if (isset($_SESSION['login_in']))
+        {
+                if ($_SESSION['login_in'] == 0) {
+                    echo '
+                        <form action="index.php" method="POST">
+                            <div class="col-md-12">
+                                <div class="modal-dialog" style="margin-bottom:0">
+                                    <div class="modal-content">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title">LOGIN</h3>
+                                        </div>
+                                        <div class="panel-body">
+                                            <form role="form">
+                                                <fieldset>
+                                                    <div class="form-group">
+                                                        <input class="form-control" placeholder="Login" name="login" type="login">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input class="form-control" placeholder="Password" name="password" type="password">
+                                                    </div>
+                                                    <button class="btn btn-primary" type="submit">ENTER</button>
+                                                </fieldset>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        ';
+
+                } else {
+                    echo 'login successful'; // ustawienie zmiennych do zarzadzania!
+                }
 
         }
 
-    }
+        else
+
+        {
+            echo '
+                        <form action="index.php" method="POST">
+                            <div class="col-md-12">
+                                <div class="modal-dialog" style="margin-bottom:0">
+                                    <div class="modal-content">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title">LOGIN</h3>
+                                        </div>
+                                        <div class="panel-body">
+                                            <form role="form">
+                                                <fieldset>
+                                                    <div class="form-group">
+                                                        <input class="form-control" placeholder="Login" name="login" type="login">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input class="form-control" placeholder="Password" name="password" type="password">
+                                                    </div>
+                                                    <button class="btn btn-primary" type="submit">ENTER</button>
+                                                </fieldset>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        ';
+        }
+
+    } //end function
 
     public function endhead()
         {
