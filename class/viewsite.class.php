@@ -2,6 +2,7 @@
 
 class viewsite extends database {
 
+   public $_login = null;
 
     public function starthead()
         {
@@ -35,6 +36,10 @@ class viewsite extends database {
 
     public function menu()
     {
+        echo '</br>getloginid = '.$this->_login;
+
+        // NEXT IF -> LOGIN CHECK -> NEXT DAY
+
        echo '
        
        <p></p>
@@ -50,8 +55,15 @@ class viewsite extends database {
         <p><a class="btn btn-primary btn-lg btn-block" href="transaction/edit.php" role="button">Edit &raquo;</a></p>
         <p><a class="btn btn-primary btn-lg btn-block" href="transaction/delete.php" role="button">Delete &raquo;</a></p>
     </div>
+    
     <div class="col-md-4">
+        <h2><p class="text-center">INFO</p></h2>
+        <p>INFO</p>
+        <p>INFO</p>
+        <p>INFO</p>
+        <p>INFO</p>
     </div>
+    
     <div class="col-md-4">
         <h2><p class="text-center">ACCOUNT</p></h2>
         <p><a class="btn btn-primary btn-lg btn-block" href="#" role="button">LOGOUT &raquo;</a></p>
@@ -157,7 +169,7 @@ class viewsite extends database {
 
                 } else {
                     echo 'login successful'; // ustawienie zmiennych do zarzadzania!
-                }
+                     }
 
         }
 
@@ -225,6 +237,20 @@ class viewsite extends database {
             ';
 
         }
+
+    public function setlogin($loginid)
+    {
+        if($this->_login === null)
+        {
+            $this->_login = $loginid;
+        }
+
+    }
+
+    public function getlogin()
+    {
+        echo '</br>getloginid = '.$this->_login;
+    }
 
 
 }
