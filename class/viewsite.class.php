@@ -4,6 +4,12 @@ class viewsite extends database {
 
    public $_login = null;
 
+    // CONFIG ACCESS
+
+    public $_user = 1;
+    public $_moderator = 2;
+    public $_adminstrator = 3;
+
     public function starthead()
         {
             echo'
@@ -34,17 +40,98 @@ class viewsite extends database {
 
         }
 
-    public function menu()
+    public function login()
     {
-        echo '</br>getloginid = '.$this->_login;
 
-        // NEXT IF -> LOGIN CHECK -> NEXT DAY
 
-       echo '
+        if (isset($_POST['login'])) {
+
+
+            $_SESSION['login'] = ($_POST['login']);
+            $_SESSION['password'] = ($_POST['password']);
+
+           // CHECK WORK LOGIN & PASSWORD
+           // echo $_POST['login'];
+           // echo $_POST['password'];
+
+           // echo 'CHECK SESION WORK LOGIN & PASSWORD </br>';
+           // echo $_SESSION['login'].'</br>';
+           // echo $_SESSION['password'].'</br>';
+
+            $systemlogin = $this->pdo->prepare("SELECT COUNT(*) from user WHERE login = '{$_SESSION['login']}' AND pass = '{$_SESSION['password']}'");
+            $systemlogin->execute();
+
+            $num_rows = $systemlogin->fetchColumn();
+
+           // CHECK COUNT ROW LOGIN + PASS 1=ok/0=error
+           // echo $num_rows;
+
+            $_SESSION['login_in'] = $num_rows;
+            $this->_login = $num_rows;
+
+
+        }
+
+        else
+
+        {
+        // COULD START
+        // echo 'EMPTY LOGIN';
+        }
+
+        if (isset($_SESSION['login_in']))
+        {
+                if ($_SESSION['login_in'] == 0) {
+                    echo '
+                        <form action="index.php" method="POST">
+                            <div class="col-md-12">
+                                <div class="modal-dialog" style="margin-bottom:0">
+                                    <div class="modal-content">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title">LOGIN</h3>
+                                        </div>
+                                        <div class="panel-body">
+                                            <form role="form">
+                                                <fieldset>
+                                                    <div class="form-group">
+                                                        <input class="form-control" placeholder="Login" name="login" type="login">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input class="form-control" placeholder="Password" name="password" type="password">
+                                                    </div>
+                                                    <button class="btn btn-primary" type="submit">ENTER</button>
+                                                </fieldset>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        ';
+
+                } else {
+
+                    // ==============PANEL ACCESS =========== //
+
+                    $systemaccess = $this->pdo->prepare("SELECT access from user WHERE login = '{$_SESSION['login']}' AND pass = '{$_SESSION['password']}'");
+                    $systemaccess->execute();
+                    $num_access = $systemaccess->fetchColumn();
+
+                    // DISPLAY ACTUALITY ACCESS
+                    echo $num_access;
+
+
+                    // START ACCESS USER
+                    if ($num_access == $this->_user) {
+
+
+                        echo '
        
        <p></p>
         <p class="text-center">Magazyn 2</p>
         <p></p>
+        
+        <!-- START MENU -->
 
    <div class="row">
     <div class="col-md-4">
@@ -58,15 +145,15 @@ class viewsite extends database {
     
     <div class="col-md-4">
         <h2><p class="text-center">INFO</p></h2>
-        <p>INFO</p>
-        <p>INFO</p>
-        <p>INFO</p>
-        <p>INFO</p>
+        <p>YOU ARE LOGIN IN</p>
+        <p>TO: YOUR LOGIN</p>
+        <p>YOUR ACCESS IS</p>
+        <p>USER</p>
     </div>
-    
+        
     <div class="col-md-4">
         <h2><p class="text-center">ACCOUNT</p></h2>
-        <p><a class="btn btn-primary btn-lg btn-block" href="#" role="button">LOGOUT &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="logout.php" role="button">LOGOUT &raquo;</a></p>
         <p>INFO</p>
         <p>INFO</p>
         <p>INFO</p>
@@ -102,74 +189,174 @@ class viewsite extends database {
     </div>
 
 </div>
-       
-       
+
+        <!-- EDN MENU -->
+
        ';
-    }
 
-    public function login()
-    {
+                    } // IF USER
+
+      // ---------- END ACCESS USER
 
 
-        if (isset($_POST['login'])) {
+                    // START ACCESS MODERATOR
+                    if ($num_access == $this->_moderator) {
 
-            $login = ($_POST['login']);
-            $password = ($_POST['password']);
 
-            echo $_POST['login'];
-            echo $_POST['password'];
+                        echo '
+       
+       <p></p>
+        <p class="text-center">Magazyn 2</p>
+        <p></p>
+        
+        <!-- START MENU -->
 
-            $systemlogin = $this->pdo->prepare("SELECT COUNT(*) from user WHERE login = '$login' AND pass = '$password'");
-            $systemlogin->execute();
+   <div class="row">
+    <div class="col-md-4">
+        <h2><p class="text-center">TRANSACTION</p></h2>
+        <p></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="transaction/view.php" role="button">View &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="transaction/add.php" role="button">Add &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="transaction/edit.php" role="button">Edit &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="transaction/delete.php" role="button">Delete &raquo;</a></p>
+    </div>
+    
+    <div class="col-md-4">
+        <h2><p class="text-center">INFO</p></h2>
+        <p>YOU ARE LOGIN IN</p>
+        <p>TO: YOUR LOGIN</p>
+        <p>YOUR ACCESS IS</p>
+        <p>MODERATOR</p>
+    </div>
+    
+    <div class="col-md-4">
+        <h2><p class="text-center">ACCOUNT</p></h2>
+        <p><a class="btn btn-primary btn-lg btn-block" href="logout.php" role="button">LOGOUT &raquo;</a></p>
+        <p>INFO</p>
+        <p>INFO</p>
+        <p>INFO</p>
+    </div>
 
-            $num_rows = $systemlogin->fetchColumn();
-            echo $num_rows;
 
-            $_SESSION['login_in'] = $num_rows;
-            echo '</br> ZMIENNA ECHO 123=';
-            echo $_SESSION['login_in'];
+</div>
 
-        }
+<div class="row">
+    <div class="col-md-4">
+        <h2><p class="text-center">BELT</p></h2>
+        <p></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="belt/view.php" role="button">View &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="belt/add.php" role="button">Add &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="belt/edit.php" role="button">Edit &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="belt/delete.php" role="button">Delete &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2><p class="text-center">CLIENT</p></h2>
+        <p></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="client/view.php" role="button">View &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="client/add.php" role="button">Add &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="client/edit.php" role="button">Edit &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="client/delete.php" role="button">Delete &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2><p class="text-center">USER</p></h2>
+        <p></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="user/view.php" role="button">View &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="user/add.php" role="button">Add &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="user/edit.php" role="button">Edit &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="user/delete.php" role="button">Delete &raquo;</a></p>
+    </div>
 
-        else
+</div>
 
-        {
-        echo 'EMPTY LOGIN';
-        }
+        <!-- EDN MENU -->
 
-        if (isset($_SESSION['login_in']))
-        {
-                if ($_SESSION['login_in'] == 0) {
-                    echo '
-                        <form action="index.php" method="POST">
-                            <div class="col-md-12">
-                                <div class="modal-dialog" style="margin-bottom:0">
-                                    <div class="modal-content">
-                                        <div class="panel-heading">
-                                            <h3 class="panel-title">LOGIN</h3>
-                                        </div>
-                                        <div class="panel-body">
-                                            <form role="form">
-                                                <fieldset>
-                                                    <div class="form-group">
-                                                        <input class="form-control" placeholder="Login" name="login" type="login">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <input class="form-control" placeholder="Password" name="password" type="password">
-                                                    </div>
-                                                    <button class="btn btn-primary" type="submit">ENTER</button>
-                                                </fieldset>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                        ';
+       ';
 
-                } else {
-                    echo 'login successful'; // ustawienie zmiennych do zarzadzania!
-                     }
+                    } // IF USER
+
+                    // ---------- END ACCESS ADMINISTRATOR
+
+
+                    // START ACCESS USER
+                    if ($num_access == $this->_adminstrator) {
+
+
+                        echo '
+       
+       <p></p>
+        <p class="text-center">Magazyn 2</p>
+        <p></p>
+        
+        <!-- START MENU -->
+
+   <div class="row">
+    <div class="col-md-4">
+        <h2><p class="text-center">TRANSACTION</p></h2>
+        <p></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="transaction/view.php" role="button">View &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="transaction/add.php" role="button">Add &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="transaction/edit.php" role="button">Edit &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="transaction/delete.php" role="button">Delete &raquo;</a></p>
+    </div>
+    
+    <div class="col-md-4">
+        <h2><p class="text-center">INFO</p></h2>
+        <p>YOU ARE LOGIN IN</p>
+        <p>TO: YOUR LOGIN</p>
+        <p>YOUR ACCESS IS</p>
+        <p>MODERATOR</p>
+    </div>
+        
+    <div class="col-md-4">
+        <h2><p class="text-center">ACCOUNT</p></h2>
+        <p><a class="btn btn-primary btn-lg btn-block" href="logout.php" role="button">LOGOUT &raquo;</a></p>
+        <p>INFO</p>
+        <p>INFO</p>
+        <p>INFO</p>
+    </div>
+
+
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2><p class="text-center">BELT</p></h2>
+        <p></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="belt/view.php" role="button">View &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="belt/add.php" role="button">Add &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="belt/edit.php" role="button">Edit &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="belt/delete.php" role="button">Delete &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2><p class="text-center">CLIENT</p></h2>
+        <p></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="client/view.php" role="button">View &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="client/add.php" role="button">Add &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="client/edit.php" role="button">Edit &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="client/delete.php" role="button">Delete &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2><p class="text-center">USER</p></h2>
+        <p></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="user/view.php" role="button">View &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="user/add.php" role="button">Add &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="user/edit.php" role="button">Edit &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="user/delete.php" role="button">Delete &raquo;</a></p>
+    </div>
+
+</div>
+
+        <!-- EDN MENU -->
+
+       ';
+
+                    } // IF USER
+
+                    // ---------- END ACCESS USER
+
+
+
+            } // ELSE
 
         }
 
@@ -249,7 +436,7 @@ class viewsite extends database {
 
     public function getlogin()
     {
-        echo '</br>getloginid = '.$this->_login;
+        echo '</br> getloginid function = '.$this->_login;
     }
 
 
