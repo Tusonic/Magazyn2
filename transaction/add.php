@@ -7,9 +7,11 @@ session_start();
 
 $site = new viewsite();
 $site->starthead();
+$site->backmenu();
+
+// dopisac sprawdzanie po accessie(!)
 
 $id_user = 3; // login system
-
 
 if ($id_user == 3)
 {
@@ -44,6 +46,7 @@ else
 {
     echo 'login error';
 }
+
 
 
 $site->starthead();

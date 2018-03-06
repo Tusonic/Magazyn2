@@ -144,20 +144,17 @@ class viewsite extends database {
     </div>
     
     <div class="col-md-4">
-        <h2><p class="text-center">INFO</p></h2>
-        <p>YOU ARE LOGIN IN</p>
-        <p>TO: YOUR LOGIN</p>
-        <p>YOUR ACCESS IS</p>
-        <p>USER</p>
+        <h2><p class="text-center">INFO</p></h2></br>
+        <p class="text-center">YOU ARE LOGGED IN AS:</p>
+        <p class="text-center"><b>'. $_SESSION['login'] .'</b></p></br>
+        <p class="text-center">YOUR ACCESS:</p>
+        <p class="text-center"><b>USER</b></p>
     </div>
         
     <div class="col-md-4">
         <h2><p class="text-center">ACCOUNT</p></h2>
         <p><a class="btn btn-primary btn-lg btn-block" href="logout.php" role="button">LOGOUT &raquo;</a></p>
-        <p>INFO</p>
-        <p>INFO</p>
-        <p>INFO</p>
-    </div>
+      </div>
 
 
 </div>
@@ -222,20 +219,17 @@ class viewsite extends database {
     </div>
     
     <div class="col-md-4">
-        <h2><p class="text-center">INFO</p></h2>
-        <p>YOU ARE LOGIN IN</p>
-        <p>TO: YOUR LOGIN</p>
-        <p>YOUR ACCESS IS</p>
-        <p>MODERATOR</p>
+        <h2><p class="text-center">INFO</p></h2></br>
+        <p class="text-center">YOU ARE LOGGED IN AS:</p>
+        <p class="text-center"><b>'. $_SESSION['login'] .'</b></p></br>
+        <p class="text-center">YOUR ACCESS:</p>
+        <p class="text-center"><b>MODERATOR</b></p>
     </div>
     
     <div class="col-md-4">
         <h2><p class="text-center">ACCOUNT</p></h2>
         <p><a class="btn btn-primary btn-lg btn-block" href="logout.php" role="button">LOGOUT &raquo;</a></p>
-        <p>INFO</p>
-        <p>INFO</p>
-        <p>INFO</p>
-    </div>
+     </div>
 
 
 </div>
@@ -300,20 +294,17 @@ class viewsite extends database {
     </div>
     
     <div class="col-md-4">
-        <h2><p class="text-center">INFO</p></h2>
-        <p>YOU ARE LOGIN IN</p>
-        <p>TO: YOUR LOGIN</p>
-        <p>YOUR ACCESS IS</p>
-        <p>MODERATOR</p>
+        <h2><p class="text-center">INFO</p></h2></br>
+        <p class="text-center">YOU ARE LOGGED IN AS:</p>
+        <p class="text-center"><b>'. $_SESSION['login'] .'</b></p></br>
+        <p class="text-center">YOUR ACCESS:</p>
+        <p class="text-center"><b>ADMINISTRATOR</b></p>
     </div>
         
     <div class="col-md-4">
         <h2><p class="text-center">ACCOUNT</p></h2>
         <p><a class="btn btn-primary btn-lg btn-block" href="logout.php" role="button">LOGOUT &raquo;</a></p>
-        <p>INFO</p>
-        <p>INFO</p>
-        <p>INFO</p>
-    </div>
+       </div>
 
 
 </div>
@@ -353,8 +344,6 @@ class viewsite extends database {
                     } // IF USER
 
                     // ---------- END ACCESS USER
-
-
 
             } // ELSE
 
@@ -437,6 +426,35 @@ class viewsite extends database {
     public function getlogin()
     {
         echo '</br> getloginid function = '.$this->_login;
+    }
+
+    public function backmenu()
+    {
+
+        echo '</br>
+        
+        <div class="row">
+        
+    <div class="col-md-4">
+        <p class="text-center"> LOGIN: <b> '. $_SESSION['login'] .'</b></p>
+       
+    </div>
+    
+    <div class="col-md-4">
+        <p class="text-center">MAGAZYN 2</p>
+      
+    </div>
+
+    <div class="col-md-4">
+        <p class="text-center"></p>
+        <p><a class="btn btn-primary btn-lg btn-block" href="../index.php" role="button">Back &raquo;</a></p>
+    </div>
+
+        </div> 
+               </br>
+        ';
+
+
     }
 
 

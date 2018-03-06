@@ -9,10 +9,9 @@ $site = new viewsite();
 $deleteuser = new user();
 
 $site->starthead();
-
+$site->backmenu();
 $deleteuser->deleteuser();
-
-
 $site->endhead();
+
 ob_end_flush();
 ?>

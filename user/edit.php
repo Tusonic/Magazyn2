@@ -9,9 +9,9 @@ $site = new viewsite();
 $edituser = new user();
 
 $site->starthead();
+$site->backmenu();
 $edituser->edituser();
-
-
 $site->endhead();
+
 ob_end_flush();
 ?>

@@ -9,6 +9,7 @@ $site = new viewsite();
 $belt = new belt();
 
 $site->starthead();
+$site->backmenu();
 $belt->deletebelt();
 $site->endhead();
 

@@ -6,9 +6,9 @@ ob_start();
 session_start();
 
 $site = new viewsite();
-$site->starthead();
-
 $belt = new belt();
+
+$site->starthead();
 $belt->addbeltdata();
 
 ob_end_flush();

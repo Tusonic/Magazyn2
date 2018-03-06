@@ -6,11 +6,11 @@ ob_start();
 session_start();
 
 $site = new viewsite();
-$site->starthead();
-
 $adduser = new user();
-$adduser->adduser();
 
+$site->starthead();
+$site->backmenu();
+$adduser->adduser();
 
 ob_end_flush();
 ?>

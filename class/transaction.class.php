@@ -219,7 +219,7 @@ INNER JOIN user ON transaction.user = user.id
 
         echo ' 
  
-            <table class="table">
+             <table id="table-full" class="table table-striped table-bordered" width="100%" cellspacing="0">
                  <thead>
                        <tr> 
                              <th scope="col">#</th>
@@ -460,7 +460,7 @@ INNER JOIN user ON transaction.user = user.id
 
         echo ' 
  
-            <table class="table">
+             <table id="table-full" class="table table-striped table-bordered" width="100%" cellspacing="0">
                  <thead>
                        <tr> 
                              <th scope="col">#</th>

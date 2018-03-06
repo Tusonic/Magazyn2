@@ -68,7 +68,7 @@ class user extends database
 
         echo ' 
  
-            <table class="table">
+            <table id="table-full" class="table table-striped table-bordered" width="100%" cellspacing="0">
                  <thead>
                        <tr> 
                              <th scope="col">#</th>
@@ -385,7 +385,7 @@ class user extends database
               </div>
         </div>
   </div>
-  <button class="btn btn-primary" type="submit">Dodaj</button>
+  <button class="btn btn-primary" type="submit">Add User</button>
 </form>
 
 <script>

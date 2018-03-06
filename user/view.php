@@ -9,10 +9,9 @@ $site = new viewsite();
 $viewuser = new user();
 
 $site->starthead();
-
+$site->backmenu();
 $viewuser->viewuser();
-
-
 $site->endhead();
+
 ob_end_flush();
 ?>
