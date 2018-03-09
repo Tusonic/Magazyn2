@@ -78,7 +78,9 @@ INNER JOIN user ON transaction.user = user.id
 
         echo ' 
  
-            <table class="table">
+        <h2><p class="text-center">INFO1</p></h2></br>
+ 
+            <table id="table-full" class="table table-striped table-bordered" width="100%" cellspacing="0">
                  <thead>
                        <tr> 
                              <th scope="col">#</th>
@@ -136,7 +138,9 @@ INNER JOIN user ON transaction.user = user.id
 
         echo ' 
  
-            <table class="table">
+        <h2><p class="text-center">INFO2</p></h2></br>
+ 
+            <table id="table-full" class="table table-striped table-bordered" width="100%" cellspacing="0">
                  <thead>
                        <tr> 
                              <th scope="col">#</th>

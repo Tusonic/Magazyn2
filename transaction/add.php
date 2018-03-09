@@ -49,7 +49,7 @@ else
 
 
 
-$site->starthead();
+$site->endhead();
 
 ob_end_flush();
 ?>

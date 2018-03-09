@@ -118,7 +118,7 @@ class viewsite extends database {
                     $num_access = $systemaccess->fetchColumn();
 
                     // DISPLAY ACTUALITY ACCESS
-                    echo $num_access;
+                   // echo $num_access;
 
 
                     // START ACCESS USER
