@@ -19,6 +19,8 @@ INNER JOIN user ON transaction.user = user.id
 
         echo ' 
  
+        <h3><p class="text-center">View Transaction</p></h3></br>
+ 
             <table id="table-full" class="table table-striped table-bordered" width="100%" cellspacing="0">
                  <thead>
                        <tr> 
@@ -78,7 +80,7 @@ INNER JOIN user ON transaction.user = user.id
 
         echo ' 
  
-        <h2><p class="text-center">INFO1</p></h2></br>
+        <h3><p class="text-center">ADD A CLIENT FOR TRANSACTION</p></h3></br>
  
             <table id="table-full" class="table table-striped table-bordered" width="100%" cellspacing="0">
                  <thead>
@@ -87,7 +89,7 @@ INNER JOIN user ON transaction.user = user.id
                              <th scope="col">Name</th>
                              <th scope="col">Adres</th>
                              <th scope="col">Note</th>
-                             <th scope="col">Delete</th>
+                             <th scope="col">Add Client</th>
                         </tr>
                    </thead>
                 <tbody>
@@ -112,7 +114,7 @@ INNER JOIN user ON transaction.user = user.id
                             <td>
                                     <form method="GET" action="add.php?id_client=' . $row['id'] . '">
                                     <input type="hidden" value="' . $row['id'] . '" name="id_client"/>
-                                    <input type="submit" class="btn btn-info" value="Client ADD ID=' . $row['id'] . '"/>
+                                    <input type="submit" class="btn btn-info" value="ADD CLIENT"/>
                                     </form>
                            </td>
                 </tr>
@@ -138,7 +140,7 @@ INNER JOIN user ON transaction.user = user.id
 
         echo ' 
  
-        <h2><p class="text-center">INFO2</p></h2></br>
+        <h3><p class="text-center">ADD A BELT FOR THE TRANSACTION</p></h3></br>
  
             <table id="table-full" class="table table-striped table-bordered" width="100%" cellspacing="0">
                  <thead>
@@ -173,7 +175,7 @@ INNER JOIN user ON transaction.user = user.id
                                     <form method="GET" action="add.php?id_client=' . $_GET['id_client'] . '&id_belt=' . $row['id'] . '">
                                     <input type="hidden" value="' . $_GET['id_client'] . '" name="id_client"/>
                                     <input type="hidden" value="' . $row['id'] . '" name="id_belt"/>
-                                    <input type="submit" class="btn btn-info" value="Belt ID=' . $row['id'] . '"/>
+                                    <input type="submit" class="btn btn-info" value="ADD BELT"/>
                                     </form>
                            </td>
                 </tr>
@@ -195,20 +197,51 @@ INNER JOIN user ON transaction.user = user.id
     {
 
         $idclient = $_GET['id_client'];
-        echo $idclient;
+        // echo $idclient;
 
         $idbelt = $_GET['id_belt'];
-        echo $idbelt;
+        // echo $idbelt;
 
-        $iduser = 2;
-        echo $iduser; //login account
-
+        $iduser = $_SESSION['login'];
+        // echo $iduser;
 
         $addtransaction = $this->pdo->prepare("INSERT INTO transaction (user, belt, client) VALUES (:user,:belt,:client)");
         $addtransaction->bindValue(':user', $iduser, PDO::PARAM_INT);
         $addtransaction->bindValue(':belt', $idbelt, PDO::PARAM_INT);
         $addtransaction->bindValue(':client', $idclient, PDO::PARAM_INT);
         $addtransaction->execute();
+
+        // START - successful add
+
+        echo '
+
+<div class="row">
+
+    <div class="col-md-3">
+    </div>
+    
+    <div class="col-md-6">
+        <div class="alert alert-success text-center" role="alert">
+            <h4 class="alert-heading">Well done!</h4>
+                 <p class="text-center">The transaction has been successfully added!</p>
+                 <p><a class="btn btn-success btn-lg btn-block" href="../index.php" role="button">OK &raquo;</a></p>
+         </div>
+    </div>
+        
+    <div class="col-md-3">
+        
+    </div>
+
+</div>
+
+
+     
+
+            ';
+
+        // END - successful add
+
+
 
 
     } //third

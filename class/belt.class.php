@@ -11,6 +11,8 @@ class belt extends database
         $viewBelt->execute();
 
         echo ' 
+ 
+        <h3><p class="text-center">View Belt</p></h3></br>
 
             <table id="table-full" class="table table-striped table-bordered" width="100%" cellspacing="0"> 
                  <thead>

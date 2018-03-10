@@ -27,9 +27,8 @@ class viewsite extends database {
                    
                         <script src="/js/jquery.1.12.4.js"></script>
                         <script src="/js/jquery.dataTables.js"></script> 
-                        <script src="/js/datatables.bootstrap.js"></script>
-
-                     
+                        <script src="/js/datatables.bootstrap.js"></script>   
+                 
                     </head>
                 <body>
                 <div class="container">
