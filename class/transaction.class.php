@@ -470,13 +470,47 @@ INNER JOIN user ON transaction.user = user.id
     public function deletetransaction()
     {
 
-        echo '</br> post=';
+
         $deletetransactionid = $_POST['id'];
-        echo $deletetransactionid;
+        // CHECK DELETE ID
+        // echo '</br> post=';
+        // echo $deletetransactionid;
 
         $editorBelt = $this->pdo->prepare("DELETE FROM transaction WHERE id=:id");
         $editorBelt->bindValue(':id', $deletetransactionid, PDO::PARAM_INT);
         $editorBelt->execute();
+
+        // START - successful add
+
+        echo '
+
+            </br>
+
+            <div class="row">
+            
+                <div class="col-md-3">
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="alert alert-success text-center" role="alert">
+                        <h4 class="alert-heading">Deleted!</h4>
+                             <p class="text-center">The transaction  has been successfully deleteded!</p>
+                             <p><a class="btn btn-success btn-lg btn-block" href="../index.php" role="button">OK &raquo;</a></p>
+                     </div>
+                </div>
+                    
+                <div class="col-md-3">
+                    
+                </div>
+            
+            </div>
+
+
+     
+
+            ';
+
+        // END - successful add
 
     }
 
@@ -536,8 +570,9 @@ INNER JOIN user ON transaction.user = user.id
                             
                              <form method="POST" action="deletetransaction.php">
                             <td>  
-                                    <input type="submit" class="btn btn-info" value="Delete ID=' . $row['0'] . '"/>
-                                    <input type="hidden" value="' . $row['0'] . '" name="id"/>                     
+                                     <input type="hidden" value="' . $row['0'] . '" name="id"/>
+                                    <input type="submit" class="btn btn-info" value="Delete"/>
+                                                         
                             </td>
             </form> 
 

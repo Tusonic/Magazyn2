@@ -9,6 +9,7 @@ $site = new viewsite();
 $transaction = new transaction();
 
 $site->starthead();
+$site->backmenu();
 $transaction->deletetransaction();
 $site->endhead();
 

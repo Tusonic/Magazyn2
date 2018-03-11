@@ -339,6 +339,8 @@ class client extends database
     {
         echo'
 
+<h3><p class="text-center">Add Client</p></h3></br>
+
 
 <form  method="POST" action="addclient.php" class="container" id="needs-validation" novalidate>
   
@@ -394,22 +396,52 @@ class client extends database
     public function addclientdata()
     {
 
-        echo $_POST["addname"];
-        echo $_POST["addadres"];
-        echo $_POST["addnote"];
-
+        // CHECK ADD CLIENT
+        // echo $_POST["addname"];
+        // echo $_POST["addadres"];
+        // echo $_POST["addnote"];
 
         $addcientname = $_POST["addname"];
         $addclientadres = $_POST["addadres"];
         $addclienttype = $_POST["addnote"];
-
-
 
         $editorClient = $this->pdo->prepare("INSERT INTO client (name, adres, note) VALUES (:name,:adres,:note)");
         $editorClient->bindValue(':name', $addcientname, PDO::PARAM_STR);
         $editorClient->bindValue(':adres', $addclientadres, PDO::PARAM_STR);
         $editorClient->bindValue(':note', $addclienttype, PDO::PARAM_STR);
         $editorClient->execute();
+
+        // START - successful add
+
+        echo '
+
+            </br>
+
+            <div class="row">
+            
+                <div class="col-md-3">
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="alert alert-success text-center" role="alert">
+                        <h4 class="alert-heading">Well Done!</h4>
+                             <p class="text-center">The client has been successfully added!</p>
+                             <p><a class="btn btn-success btn-lg btn-block" href="../index.php" role="button">OK &raquo;</a></p>
+                     </div>
+                </div>
+                    
+                <div class="col-md-3">
+                    
+                </div>
+            
+            </div>
+
+
+     
+
+            ';
+
+        // END - successful add
 
     }
 

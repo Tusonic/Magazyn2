@@ -94,9 +94,9 @@ class belt extends database
                             <td>' . $type . '</td>
                             
                             <td>
-                                    <form method="POST" action="belt/deletebelt.php">
+                                    <form method="POST" action="deletebelt.php">
                                     <input type="hidden" value="' . $row['id'] . '" name="id"/>
-                                    <input type="submit" class="btn btn-info" value="Delete ID=' . $row['id'] . '"/>
+                                    <input type="submit" class="btn btn-info" value="Delete"/>
                                     </form>
                            </td>
                 </tr>
@@ -117,13 +117,47 @@ class belt extends database
     public function deletebeltdata()
     {
 
-        echo '</br> post=';
+
         $deletebeltid = $_POST['id'];
-        echo $deletebeltid;
+        // CHECK DELETE BELT
+        // echo '</br> post=';
+        // echo $deletebeltid;
 
         $editorBelt = $this->pdo->prepare("DELETE FROM belt WHERE id=:id");
         $editorBelt->bindValue(':id', $deletebeltid, PDO::PARAM_INT);
         $editorBelt->execute();
+
+        // START - successful add
+
+        echo '
+
+        </br>
+
+            <div class="row">
+            
+                <div class="col-md-3">
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="alert alert-success text-center" role="alert">
+                        <h4 class="alert-heading">Deleted!</h4>
+                             <p class="text-center">The belt has been successfully deleted!</p>
+                             <p><a class="btn btn-success btn-lg btn-block" href="../index.php" role="button">OK &raquo;</a></p>
+                     </div>
+                </div>
+                    
+                <div class="col-md-3">
+                    
+                </div>
+            
+            </div>
+
+
+     
+
+            ';
+
+        // END - successful add
 
     }
 
@@ -169,7 +203,7 @@ class belt extends database
                             <td>
                                     <form method="POST" action="editbelt.php">
                                     <input type="hidden" value="' . $row['id'] . '" name="id"/>
-                                    <input type="submit" class="btn btn-info" value="Edit ID=' . $row['id'] . '"/>
+                                    <input type="submit" class="btn btn-info" value="Edit"/>
                                     </form>
                            </td>
                 </tr>
@@ -410,9 +444,10 @@ class belt extends database
     public function addbeltdata()
     {
 
-        echo $_POST["addtype"];
-        echo $_POST["addlength"];
-        echo $_POST["addwidth"];
+       // CHECK ADD BELT
+       // echo $_POST["addtype"];
+       // echo $_POST["addlength"];
+       // echo $_POST["addwidth"];
 
         $addbelttype = $_POST["addtype"];
         $addbeltlength = $_POST["addlength"];
@@ -424,6 +459,34 @@ class belt extends database
         $editorBelt->bindValue(':width', $addbeltwidth, PDO::PARAM_INT);
         $editorBelt->bindValue(':type', $addbelttype, PDO::PARAM_STR);
         $editorBelt->execute();
+
+        // START - successful add
+
+        echo '
+        </br>
+        
+        <div class="row">
+        
+            <div class="col-md-3">
+            </div>
+            
+            <div class="col-md-6">
+                <div class="alert alert-success text-center" role="alert">
+                    <h4 class="alert-heading">Well done!</h4>
+                         <p class="text-center">The belt has been successfully added!</p>
+                         <p><a class="btn btn-success btn-lg btn-block" href="../index.php" role="button">OK &raquo;</a></p>
+                 </div>
+            </div>
+                
+            <div class="col-md-3">
+                
+            </div>
+        
+        </div>
+
+            ';
+
+        // END - successful add
 
 
     }
