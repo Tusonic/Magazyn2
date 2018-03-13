@@ -255,7 +255,8 @@ INNER JOIN user ON transaction.user = user.id
 
 
         echo ' 
- 
+        <h3><p class="text-center">Edit Transaction</p></h3></br>
+        
              <table id="table-full" class="table table-striped table-bordered" width="100%" cellspacing="0">
                  <thead>
                        <tr> 
@@ -289,7 +290,7 @@ INNER JOIN user ON transaction.user = user.id
                             <td>
                                     <form method="POST" action="edittransaction.php">
                                     <input type="hidden" value="' . $row['id'] . '" name="id"/>
-                                    <input type="submit" class="btn btn-info" value="Edit ID=' . $row['id'] . '"/>
+                                    <input type="submit" class="btn btn-info" value="Edit"/>
                                     </form>
                            </td>
 
@@ -352,35 +353,26 @@ INNER JOIN user ON transaction.user = user.id
                             ' . $id . '
                             <input type="hidden" value="' . $row['id'] . '" name="id"/>
                             </th>
-                            
-                            <td>
-                                <input  name="iduser" class="form-control" type="text"  value="'.$iduser.'" placeholder=" ' . $iduser . ' ">
-                             
-                            </td>
-                            
-                            <td>
-                                <input name="idbelt" class="form-control" type="text" value="' . $idbelt . '" placeholder=" ' . $idbelt . '">
-                            </td>
-                            
-                            <td>
-                                <input name="idclient" class="form-control" type="text" value="' . $idclient . '" placeholder=" ' . $idclient . '">
-                            </td>
-                            
-                            <td>
-                                <input type="submit" class="btn btn-info" value="Change ID=' . $row['id'] . '"/> 
-                            </td>
+                                <td>
+                                    <input  name="iduser" class="form-control" type="text"  value="'.$iduser.'" placeholder=" ' . $iduser . ' ">
+                                </td>
+                                <td>
+                                    <input name="idbelt" class="form-control" type="text" value="' . $idbelt . '" placeholder=" ' . $idbelt . '">
+                                </td>
+                                <td>
+                                    <input name="idclient" class="form-control" type="text" value="' . $idclient . '" placeholder=" ' . $idclient . '">
+                                </td>
+                                <td>
+                                    <input type="submit" class="btn btn-info" value="Change"/> 
+                                </td>
              </form>  
                     
             <form method="POST" action="deletetransaction.php">
                             <td>  
-                                    <input type="submit" class="btn btn-info" value="Delete ID=' . $row['id'] . '"/>
                                     <input type="hidden" value="' . $row['id'] . '" name="id"/>
-                                    
-                                    
-                                    
+                                    <input type="submit" class="btn btn-info" value="Delete"/>
                             </td>
             </form> 
-            
                 </tr>
                             
             
