@@ -6,9 +6,10 @@ ob_start();
 session_start();
 
 $site = new viewsite();
-$site->starthead();
-
 $client = new client();
+
+$site->starthead();
+$site->backmenu();
 $client->deleteclientdata();
 $site->endhead();
 

@@ -169,7 +169,7 @@ class belt extends database
 
 
         echo ' 
- 
+        <h3><p class="text-center">Edit Belt</p></h3></br> 
             <table id="table-full" class="table table-striped table-bordered" width="100%" cellspacing="0">
                  <thead>
                        <tr> 
@@ -255,9 +255,7 @@ class belt extends database
 
 
             echo '
-
-
-                
+  
                 
             <form method="POST" action="editbeltchange.php">
             
@@ -281,17 +279,14 @@ class belt extends database
                             </td>
                             
                             <td>
-                                <input type="submit" class="btn btn-info" value="Change ID=' . $row['id'] . '"/> 
+                                <input type="submit" class="btn btn-info" value="Change"/> 
                             </td>
              </form>  
                     
             <form method="POST" action="deletebelt.php">
                             <td>  
-                                    <input type="submit" class="btn btn-info" value="Delete ID=' . $row['id'] . '"/>
                                     <input type="hidden" value="' . $row['id'] . '" name="id"/>
-                                    
-                                    
-                                    
+                                    <input type="submit" class="btn btn-info" value="Delete "/>      
                             </td>
             </form> 
             
@@ -317,12 +312,11 @@ class belt extends database
     public function checkeditorbelt()
     {
 
-
-
         if (!empty($_POST["length"]) || ($_POST["width"]) || ($_POST["type"]) )
         {
 
-            echo "Yes, POST is set </br>";
+            // CHECK POST IS SET
+            // echo "Yes, POST is set </br>";
             $beltid = $_POST["id"];
             $beltlength = $_POST["length"];
             $beltwidth = $_POST["width"];
@@ -370,8 +364,41 @@ class belt extends database
                 $editorBelt->bindValue(':width', $beltwidth, PDO::PARAM_INT);
                 $editorBelt->bindValue(':type', $belttype, PDO::PARAM_STR);
                 $editorBelt->execute();
-                echo 'change OK';
-                echo $beltid;
+
+                // START - successful edit change
+
+                echo '
+
+            </br>
+
+            <div class="row">
+            
+                <div class="col-md-3">
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="alert alert-success text-center" role="alert">
+                        <h4 class="alert-heading">Edited!</h4>
+                             <p class="text-center">The belt  has been successfully editeded!</p>
+                             <p><a class="btn btn-success btn-lg btn-block" href="../index.php" role="button">OK &raquo;</a></p>
+                     </div>
+                </div>
+                    
+                <div class="col-md-3">
+                    
+                </div>
+            
+            </div>
+
+
+            ';
+
+                // END - successful edit change
+
+
+              // CHECK EDIT CHANGE
+              //  echo 'change OK';
+              //  echo $beltid;
             }
 
         }
@@ -388,7 +415,7 @@ class belt extends database
     public function addbelt()
     {
         echo'
-
+<h3><p class="text-center">Add Belt</p></h3></br>
 
 <form  method="POST" action="addbelt.php" class="container" id="needs-validation" novalidate>
   

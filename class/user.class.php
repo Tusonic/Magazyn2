@@ -13,6 +13,8 @@ class user extends database
 
         echo ' 
  
+        <h3><p class="text-center">View User</p></h3></br>
+ 
             <table id="table-full" class="table table-striped table-bordered" width="100%" cellspacing="0">
                  <thead>
                        <tr> 
@@ -67,6 +69,8 @@ class user extends database
 
 
         echo ' 
+
+        <h3><p class="text-center">Delete User</p></h3></br>
  
             <table id="table-full" class="table table-striped table-bordered" width="100%" cellspacing="0">
                  <thead>
@@ -101,7 +105,7 @@ class user extends database
                             <td>
                                     <form method="POST" action="deleteuser.php">
                                     <input type="hidden" value="' . $row['id'] . '" name="id"/>
-                                    <input type="submit" class="btn btn-info" value="Delete ID=' . $row['id'] . '"/>
+                                    <input type="submit" class="btn btn-info" value="Delete"/>
                                     </form>
                            </td>
                 </tr>
@@ -122,13 +126,44 @@ class user extends database
     public function deleteuserdata()
     {
 
-        echo '</br> post=';
         $deleteuserid = $_POST['id'];
-        echo $deleteuserid  ;
+
+        // CHECK DELETE POST
+        //echo '</br> post=';
+        //echo $deleteuserid  ;
 
         $editorBelt = $this->pdo->prepare("DELETE FROM user WHERE id=:id");
         $editorBelt->bindValue(':id', $deleteuserid, PDO::PARAM_INT);
         $editorBelt->execute();
+
+        // START - successful add
+
+        echo '
+
+            </br>
+
+            <div class="row">
+            
+                <div class="col-md-3">
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="alert alert-success text-center" role="alert">
+                        <h4 class="alert-heading">Deleted!</h4>
+                             <p class="text-center">The user has been successfully deleted!</p>
+                             <p><a class="btn btn-success btn-lg btn-block" href="../index.php" role="button">OK &raquo;</a></p>
+                     </div>
+                </div>
+                    
+                <div class="col-md-3">
+                    
+                </div>
+            
+            </div>
+
+            ';
+
+        // END - successful add
 
     }
 
@@ -142,7 +177,9 @@ class user extends database
 
         echo ' 
  
-            <table class="table">
+ <h3><p class="text-center">Edit User</p></h3></br>
+ 
+            <table id="table-full" class="table table-striped table-bordered" width="100%" cellspacing="0">
                  <thead>
                        <tr> 
                              <th scope="col">#</th>
@@ -175,7 +212,7 @@ class user extends database
                             <td>
                                     <form method="POST" action="edituser.php">
                                     <input type="hidden" value="' . $row['id'] . '" name="id"/>
-                                    <input type="submit" class="btn btn-info" value="Edit ID=' . $row['id'] . '"/>
+                                    <input type="submit" class="btn btn-info" value="Edit"/>
                                     </form>
                            </td>
                 </tr>
@@ -202,7 +239,7 @@ class user extends database
 
 
         echo ' 
- 
+  
             <table class="table">
                  <thead>
                        <tr> 
@@ -251,17 +288,14 @@ class user extends database
                             </td>
                             
                             <td>
-                                <input type="submit" class="btn btn-info" value="Change ID=' . $row['id'] . '"/> 
+                                <input type="submit" class="btn btn-info" value="Change"/> 
                             </td>
              </form>  
                     
             <form method="POST" action="deleteuser.php">
                             <td>  
-                                    <input type="submit" class="btn btn-info" value="Delete ID=' . $row['id'] . '"/>
-                                    <input type="hidden" value="' . $row['id'] . '" name="id"/>
-                                    
-                                    
-                                    
+                                    <input type="submit" class="btn btn-info" value="Delete"/>
+                                    <input type="hidden" value="' . $row['id'] . '" name="id"/>   
                             </td>
             </form> 
             
@@ -292,7 +326,8 @@ class user extends database
         if (!empty($_POST["login"]) || ($_POST["pass"]) || ($_POST["access"]) )
         {
 
-            echo "Yes, POST is set </br>";
+            // CHECK SET EDIT POST USER
+            // echo "Yes, POST is set </br>";
             $userid = $_POST["id"];
             $userlogin = $_POST["login"];
             $userpass = $_POST["pass"];
@@ -340,8 +375,42 @@ class user extends database
                 $editorUser->bindValue(':pass', $userpass, PDO::PARAM_INT);
                 $editorUser->bindValue(':access', $useraccess, PDO::PARAM_STR);
                 $editorUser->execute();
-                echo 'change OK';
-                echo $userid;
+
+                // CHECK CHANGE OK
+                //echo 'change OK';
+                //echo $userid;
+
+                // START - successful add
+
+                echo '
+
+            </br>
+
+            <div class="row">
+            
+                <div class="col-md-3">
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="alert alert-success text-center" role="alert">
+                        <h4 class="alert-heading">Edited!</h4>
+                             <p class="text-center">The user has been successfully edited!</p>
+                             <p><a class="btn btn-success btn-lg btn-block" href="../index.php" role="button">OK &raquo;</a></p>
+                     </div>
+                </div>
+                    
+                <div class="col-md-3">
+                    
+                </div>
+            
+            </div>
+
+
+     
+
+            ';
+
+                // END - successful add
             }
 
         }
@@ -358,6 +427,8 @@ class user extends database
     public function adduser()
     {
         echo'
+
+        <h3><p class="text-center">Add User</p></h3></br>
 
 
 <form  method="POST" action="adduser.php" class="container" id="needs-validation" novalidate>
@@ -414,9 +485,10 @@ class user extends database
     public function adduserdata()
     {
 
-        echo $_POST["addlogin"];
-        echo $_POST["addpass"];
-        echo $_POST["addaccess"];
+        // CHECK VARIBLE ADD USER
+        // echo $_POST["addlogin"];
+        // echo $_POST["addpass"];
+        // echo $_POST["addaccess"];
 
         $adduserlogin = $_POST["addlogin"];
         $addusertadres = $_POST["addpass"];
@@ -427,6 +499,35 @@ class user extends database
         $editorUser->bindValue(':pass', $addusertadres, PDO::PARAM_STR);
         $editorUser->bindValue(':access', $adduseraccess, PDO::PARAM_INT);
         $editorUser->execute();
+
+        // START - successful add
+
+        echo '
+
+            </br>
+
+            <div class="row">
+            
+                <div class="col-md-3">
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="alert alert-success text-center" role="alert">
+                        <h4 class="alert-heading">Well Done!</h4>
+                             <p class="text-center">The user has been successfully added!</p>
+                             <p><a class="btn btn-success btn-lg btn-block" href="../index.php" role="button">OK &raquo;</a></p>
+                     </div>
+                </div>
+                    
+                <div class="col-md-3">
+                    
+                </div>
+            
+            </div>
+
+            ';
+
+        // END - successful add
 
     }
 

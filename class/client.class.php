@@ -13,6 +13,8 @@ class client extends database
 
         echo ' 
  
+         <h3><p class="text-center">View Client</p></h3></br>
+ 
             <table id="table-full" class="table table-striped table-bordered" width="100%" cellspacing="0">
                  <thead>
                        <tr> 
@@ -64,6 +66,8 @@ class client extends database
         $viewBelt->execute();
 
         echo ' 
+ 
+        <h3><p class="text-center">Delete Belt</p></h3></br>
  
             <table id="table-full" class="table table-striped table-bordered" width="100%" cellspacing="0">
                  <thead>
@@ -119,13 +123,44 @@ class client extends database
     public function deleteclientdata()
     {
 
-        echo '</br> post=';
         $deleteclientid = $_POST['id'];
-        echo $deleteclientid ;
+
+        // CHECK DELETE POST
+        // echo '</br> post=';
+        // echo $deleteclientid ;
 
         $editorBelt = $this->pdo->prepare("DELETE FROM client WHERE id=:id");
         $editorBelt->bindValue(':id', $deleteclientid, PDO::PARAM_INT);
         $editorBelt->execute();
+
+        // START - successful add
+
+        echo '
+
+            </br>
+
+            <div class="row">
+            
+                <div class="col-md-3">
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="alert alert-success text-center" role="alert">
+                        <h4 class="alert-heading">Deleted!</h4>
+                             <p class="text-center">The client has been successfully deleted!</p>
+                             <p><a class="btn btn-success btn-lg btn-block" href="../index.php" role="button">OK &raquo;</a></p>
+                     </div>
+                </div>
+                    
+                <div class="col-md-3">
+                    
+                </div>
+            
+            </div>
+
+            ';
+
+        // END - successful add
 
     }
 
@@ -138,6 +173,8 @@ class client extends database
 
 
         echo ' 
+ 
+         <h3><p class="text-center">Edit Belt</p></h3></br>
  
             <table id="table-full" class="table table-striped table-bordered" width="100%" cellspacing="0">
                  <thead>
@@ -172,7 +209,7 @@ class client extends database
                             <td>
                                     <form method="POST" action="editclient.php">
                                     <input type="hidden" value="' . $row['id'] . '" name="id"/>
-                                    <input type="submit" class="btn btn-info" value="Edit ID=' . $row['id'] . '"/>
+                                    <input type="submit" class="btn btn-info" value="Edit"/>
                                     </form>
                            </td>
                 </tr>
@@ -243,15 +280,14 @@ class client extends database
                             </td>
                             
                             <td>
-                                <input type="submit" class="btn btn-info" value="Change ID=' . $row['id'] . '"/> 
+                                <input type="submit" class="btn btn-info" value="Change"/> 
                             </td>
              </form>  
                     
             <form method="POST" action="deleteclient.php">
                             <td>  
-                                    <input type="submit" class="btn btn-info" value="Delete ID=' . $row['id'] . '"/>
-                                    <input type="hidden" value="' . $row['id'] . '" name="id"/>
-                                                                                                        
+                                    <input type="submit" class="btn btn-info" value="Delete"/>
+                                    <input type="hidden" value="' . $row['id'] . '" name="id"/>                                                                    
                             </td>
             </form> 
             
@@ -269,13 +305,15 @@ class client extends database
          ';
     }
 
-    public function checkeditorbelt()
+    public function checkeditorclient()
     {
 
         if (!empty($_POST["name"]) || ($_POST["adres"]) || ($_POST["note"]) )
         {
 
-            echo "Yes, POST is set </br>";
+            // CHECK EDIT CLIENT POST
+            //echo "Yes, POST is set </br>";
+
             $clientid = $_POST["id"];
             $clientname = $_POST["name"];
             $clientadres = $_POST["adres"];
@@ -323,8 +361,41 @@ class client extends database
                 $editorBelt->bindValue(':adres', $clientadres, PDO::PARAM_INT);
                 $editorBelt->bindValue(':note', $clientnote, PDO::PARAM_STR);
                 $editorBelt->execute();
-                echo 'change OK';
-                echo $clientid;
+
+                // START - successful edit
+
+                echo '
+
+            </br>
+
+            <div class="row">
+            
+                <div class="col-md-3">
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="alert alert-success text-center" role="alert">
+                        <h4 class="alert-heading">Edited!</h4>
+                             <p class="text-center">The client has been successfully editeded!</p>
+                             <p><a class="btn btn-success btn-lg btn-block" href="../index.php" role="button">OK &raquo;</a></p>
+                     </div>
+                </div>
+                    
+                <div class="col-md-3">
+                    
+                </div>
+            
+            </div>
+
+
+            ';
+
+                // END - successful edit
+
+
+                // CHECK EDIT CLIENT CHANGE
+                //echo 'change OK';
+                //echo $clientid;
             }
         }
 

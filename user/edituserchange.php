@@ -6,13 +6,14 @@ ob_start();
 session_start();
 
 $site = new viewsite();
-$site->starthead();
-
 $user = new user();
+
+$site->starthead();
+$site->backmenu();
 $user->checkeditoruser();
 
 $site->endhead();
 
 ob_end_flush();
-
+?>
 

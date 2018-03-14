@@ -6,10 +6,10 @@ ob_start();
 session_start();
 
 $site = new viewsite();
-$site->starthead();
-
 $user = new user();
-$user->viewuser();
+
+$site->starthead();
+$site->backmenu();
 $user->editoruser();
 
 $site->endhead();

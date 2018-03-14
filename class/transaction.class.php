@@ -486,7 +486,7 @@ INNER JOIN user ON transaction.user = user.id
                 <div class="col-md-6">
                     <div class="alert alert-success text-center" role="alert">
                         <h4 class="alert-heading">Deleted!</h4>
-                             <p class="text-center">The transaction  has been successfully deleteded!</p>
+                             <p class="text-center">The transaction has been successfully deleted!</p>
                              <p><a class="btn btn-success btn-lg btn-block" href="../index.php" role="button">OK &raquo;</a></p>
                      </div>
                 </div>
@@ -522,7 +522,7 @@ INNER JOIN user ON transaction.user = user.id
 
 
         echo ' 
- 
+        <h3><p class="text-center">Delete Transaction</p></h3></br>
              <table id="table-full" class="table table-striped table-bordered" width="100%" cellspacing="0">
                  <thead>
                        <tr> 

@@ -6,9 +6,10 @@ ob_start();
 session_start();
 
 $site = new viewsite();
-$site->starthead();
-
 $editbelt = new belt();
+
+$site->starthead();
+$site->backmenu();
 $editbelt->checkeditorbelt();
 $site->endhead();
 

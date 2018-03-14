@@ -12,5 +12,7 @@ $site->starthead();
 $site->backmenu();
 $adduser->adduser();
 
+$site->endhead();
+
 ob_end_flush();
 ?>
