@@ -11,7 +11,7 @@ class transaction extends database
 FROM transaction
 INNER JOIN belt ON transaction.belt = belt.id
 INNER JOIN client ON transaction.client = client.id
-INNER JOIN user ON transaction.user = user.id
+INNER JOIN user ON transaction.user = user.login
         
         ');
         $viewBelt->execute();
@@ -261,9 +261,9 @@ INNER JOIN user ON transaction.user = user.id
                  <thead>
                        <tr> 
                              <th scope="col">#</th>
-                             <th scope="col">Length</th>
-                             <th scope="col">Width</th>
-                             <th scope="col">Type</th>
+                             <th scope="col">ID User</th>
+                             <th scope="col">ID Belt</th>
+                             <th scope="col">ID Client</th>
                              <th scope="col">Edit</th>
                         </tr>
                    </thead>
@@ -515,7 +515,7 @@ INNER JOIN user ON transaction.user = user.id
 FROM transaction
 INNER JOIN belt ON transaction.belt = belt.id
 INNER JOIN client ON transaction.client = client.id
-INNER JOIN user ON transaction.user = user.id
+INNER JOIN user ON transaction.user = user.login
         
         ');
         $viewBelt->execute();

@@ -102,7 +102,7 @@ class client extends database
                             <td>
                                     <form method="POST" action="deleteclient.php">
                                     <input type="hidden" value="' . $row['id'] . '" name="id"/>
-                                    <input type="submit" class="btn btn-info" value="Delete ID=' . $row['id'] . '"/>
+                                    <input type="submit" class="btn btn-info" value="Delete"/>
                                     </form>
                            </td>
                 </tr>

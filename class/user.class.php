@@ -244,9 +244,9 @@ class user extends database
                  <thead>
                        <tr> 
                              <th scope="col">#</th>
-                             <th scope="col">Nameh</th>
-                             <th scope="col">Adres</th>
-                             <th scope="col">Note</th>
+                             <th scope="col">Login</th>
+                             <th scope="col">Password</th>
+                             <th scope="col">Access</th>
                              <th scope="col">Change</th>
                              <th scope="col">Delete</th>
                         </tr>
@@ -435,21 +435,21 @@ class user extends database
   
   <div class="row">
         <div class="col-md-6 mb-3">
-          <label for="validationCustom03">Name</label>
+          <label for="validationCustom03">Name / Login</label>
           <input name="addlogin" type="text" class="form-control" id="validationCustom03" placeholder="Login" required>
               <div class="invalid-feedback">
                 Please provide a valid Name.
               </div>
         </div>
     <div class="col-md-3 mb-3">
-      <label for="validationCustom04">Adres</label>
+      <label for="validationCustom04">Password</label>
       <input name="addpass" type="text" class="form-control" id="validationCustom04" placeholder="Pass" required>
           <div class="invalid-feedback">
             Please provide a valid adres.
           </div>
     </div>
         <div class="col-md-3 mb-3">
-          <label for="validationCustom05">Note</label>
+          <label for="validationCustom05">Access</label>
           <input name="addaccess" type="text" class="form-control" id="validationCustom05" placeholder="Access" required>
               <div class="invalid-feedback">
                 Please provide a valid width.
@@ -528,6 +528,7 @@ class user extends database
             ';
 
         // END - successful add
+
 
     }
 
