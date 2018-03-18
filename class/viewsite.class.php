@@ -9,7 +9,7 @@ class viewsite extends database {
     public $_user = 1;
     public $_moderator = 2;
     public $_adminstrator = 3;
-
+/*
     public function starthead()
         {
             echo'
@@ -38,6 +38,40 @@ class viewsite extends database {
 
 
         }
+*/
+
+    public function starthead()
+    {
+        echo'
+
+                <!doctype html>
+                <html lang="en">
+                    <head>
+                        <title>Magazyn 2</title>
+
+                        <meta charset="utf-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                                                
+                         <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+     
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+                        
+                        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.0.0/dt-1.10.16/fc-3.2.4/fh-3.1.3/datatables.min.css"/>
+                        <script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.0.0/dt-1.10.16/fc-3.2.4/fh-3.1.3/datatables.min.js"></script>
+                 
+                    </head>
+                <body>
+                <div class="container">
+
+
+                ';
+
+
+    } //test bootstrap 4.0.0
 
     public function login()
     {
@@ -82,30 +116,46 @@ class viewsite extends database {
         {
                 if ($_SESSION['login_in'] == 0) {
                     echo '
-                        <form action="index.php" method="POST">
-                            <div class="col-md-12">
-                                <div class="modal-dialog" style="margin-bottom:0">
-                                    <div class="modal-content">
-                                        <div class="panel-heading">
-                                            <h3 class="panel-title">LOGIN</h3>
-                                        </div>
-                                        <div class="panel-body">
-                                            <form role="form">
-                                                <fieldset>
-                                                    <div class="form-group">
-                                                        <input class="form-control" placeholder="Login" name="login" type="login">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <input class="form-control" placeholder="Password" name="password" type="password">
-                                                    </div>
-                                                    <button class="btn btn-primary" type="submit">ENTER</button>
-                                                </fieldset>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
+                         <!-- CODE LOGIN START-->
+                           
+<form action="index.php" method="POST">
+                    </br>
+                    
+    <div class="row"> 
+         <div class="col-md-3"> </div>                
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Magazyn 2</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form accept-charset="UTF-8" role="form">
+                        <fieldset>
+                        
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Login" name="login" type="text">
                             </div>
+                            
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                            </div>
+                            
+                            <input class="btn btn-lg btn-success btn-block" type="submit" value="Login">
+                            
+                        </fieldset>
                         </form>
+                        
+                          <hr/>
+                   
+                    </div>
+                </div>
+            </div>
+		<div class="col-md-3"> </div> 
+    </div> 
+            
+</form>
+            
+              <!-- CODE LOGIN END -->      
                         ';
 
                 } else {
@@ -136,10 +186,10 @@ class viewsite extends database {
     <div class="col-md-4">
         <h2><p class="text-center">TRANSACTION</p></h2>
         <p></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="transaction/view.php" role="button">View &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="transaction/add.php" role="button">Add &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="transaction/edit.php" role="button">Edit &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="transaction/delete.php" role="button">Delete &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="transaction/view.php" role="button">View &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="transaction/add.php" role="button">Add &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="transaction/edit.php" role="button">Edit &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="transaction/delete.php" role="button">Delete &raquo;</a></p>
     </div>
     
     <div class="col-md-4">
@@ -152,7 +202,7 @@ class viewsite extends database {
         
     <div class="col-md-4">
         <h2><p class="text-center">ACCOUNT</p></h2>
-        <p><a class="btn btn-primary btn-lg btn-block" href="logout.php" role="button">LOGOUT &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="logout.php" role="button">LOGOUT &raquo;</a></p>
       </div>
 
 
@@ -162,26 +212,26 @@ class viewsite extends database {
     <div class="col-md-4">
         <h2><p class="text-center">BELT</p></h2>
         <p></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="belt/view.php" role="button">View &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="belt/add.php" role="button">Add &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="belt/edit.php" role="button">Edit &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="belt/delete.php" role="button">Delete &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="belt/view.php" role="button">View &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="belt/add.php" role="button">Add &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="belt/edit.php" role="button">Edit &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="belt/delete.php" role="button">Delete &raquo;</a></p>
     </div>
     <div class="col-md-4">
         <h2><p class="text-center">CLIENT</p></h2>
         <p></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="client/view.php" role="button">View &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="client/add.php" role="button">Add &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="client/edit.php" role="button">Edit &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="client/delete.php" role="button">Delete &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="client/view.php" role="button">View &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="client/add.php" role="button">Add &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="client/edit.php" role="button">Edit &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="client/delete.php" role="button">Delete &raquo;</a></p>
     </div>
     <div class="col-md-4">
         <h2><p class="text-center">USER</p></h2>
         <p></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="user/view.php" role="button">View &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="user/add.php" role="button">Add &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="user/edit.php" role="button">Edit &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="user/delete.php" role="button">Delete &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="user/view.php" role="button">View &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="user/add.php" role="button">Add &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="user/edit.php" role="button">Edit &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="user/delete.php" role="button">Delete &raquo;</a></p>
     </div>
 
 </div>
@@ -211,10 +261,10 @@ class viewsite extends database {
     <div class="col-md-4">
         <h2><p class="text-center">TRANSACTION</p></h2>
         <p></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="transaction/view.php" role="button">View &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="transaction/add.php" role="button">Add &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="transaction/edit.php" role="button">Edit &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="transaction/delete.php" role="button">Delete &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="transaction/view.php" role="button">View &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="transaction/add.php" role="button">Add &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="transaction/edit.php" role="button">Edit &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="transaction/delete.php" role="button">Delete &raquo;</a></p>
     </div>
     
     <div class="col-md-4">
@@ -227,7 +277,7 @@ class viewsite extends database {
     
     <div class="col-md-4">
         <h2><p class="text-center">ACCOUNT</p></h2>
-        <p><a class="btn btn-primary btn-lg btn-block" href="logout.php" role="button">LOGOUT &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="logout.php" role="button">LOGOUT &raquo;</a></p>
      </div>
 
 
@@ -237,26 +287,26 @@ class viewsite extends database {
     <div class="col-md-4">
         <h2><p class="text-center">BELT</p></h2>
         <p></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="belt/view.php" role="button">View &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="belt/add.php" role="button">Add &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="belt/edit.php" role="button">Edit &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="belt/delete.php" role="button">Delete &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="belt/view.php" role="button">View &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="belt/add.php" role="button">Add &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="belt/edit.php" role="button">Edit &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="belt/delete.php" role="button">Delete &raquo;</a></p>
     </div>
     <div class="col-md-4">
         <h2><p class="text-center">CLIENT</p></h2>
         <p></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="client/view.php" role="button">View &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="client/add.php" role="button">Add &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="client/edit.php" role="button">Edit &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="client/delete.php" role="button">Delete &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="client/view.php" role="button">View &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="client/add.php" role="button">Add &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="client/edit.php" role="button">Edit &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="client/delete.php" role="button">Delete &raquo;</a></p>
     </div>
     <div class="col-md-4">
         <h2><p class="text-center">USER</p></h2>
         <p></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="user/view.php" role="button">View &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="user/add.php" role="button">Add &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="user/edit.php" role="button">Edit &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="user/delete.php" role="button">Delete &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="user/view.php" role="button">View &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="user/add.php" role="button">Add &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="user/edit.php" role="button">Edit &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="user/delete.php" role="button">Delete &raquo;</a></p>
     </div>
 
 </div>
@@ -286,10 +336,10 @@ class viewsite extends database {
     <div class="col-md-4">
         <h2><p class="text-center">TRANSACTION</p></h2>
         <p></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="transaction/view.php" role="button">View &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="transaction/add.php" role="button">Add &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="transaction/edit.php" role="button">Edit &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="transaction/delete.php" role="button">Delete &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="transaction/view.php" role="button">View &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="transaction/add.php" role="button">Add &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="transaction/edit.php" role="button">Edit &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="transaction/delete.php" role="button">Delete &raquo;</a></p>
     </div>
     
     <div class="col-md-4">
@@ -302,7 +352,7 @@ class viewsite extends database {
         
     <div class="col-md-4">
         <h2><p class="text-center">ACCOUNT</p></h2>
-        <p><a class="btn btn-primary btn-lg btn-block" href="logout.php" role="button">LOGOUT &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="logout.php" role="button">LOGOUT &raquo;</a></p>
        </div>
 
 
@@ -312,26 +362,26 @@ class viewsite extends database {
     <div class="col-md-4">
         <h2><p class="text-center">BELT</p></h2>
         <p></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="belt/view.php" role="button">View &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="belt/add.php" role="button">Add &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="belt/edit.php" role="button">Edit &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="belt/delete.php" role="button">Delete &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="belt/view.php" role="button">View &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="belt/add.php" role="button">Add &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="belt/edit.php" role="button">Edit &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="belt/delete.php" role="button">Delete &raquo;</a></p>
     </div>
     <div class="col-md-4">
         <h2><p class="text-center">CLIENT</p></h2>
         <p></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="client/view.php" role="button">View &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="client/add.php" role="button">Add &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="client/edit.php" role="button">Edit &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="client/delete.php" role="button">Delete &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="client/view.php" role="button">View &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="client/add.php" role="button">Add &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="client/edit.php" role="button">Edit &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="client/delete.php" role="button">Delete &raquo;</a></p>
     </div>
     <div class="col-md-4">
         <h2><p class="text-center">USER</p></h2>
         <p></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="user/view.php" role="button">View &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="user/add.php" role="button">Add &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="user/edit.php" role="button">Edit &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="user/delete.php" role="button">Delete &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="user/view.php" role="button">View &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="user/add.php" role="button">Add &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="user/edit.php" role="button">Edit &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="user/delete.php" role="button">Delete &raquo;</a></p>
     </div>
 
 </div>
@@ -352,30 +402,46 @@ class viewsite extends database {
 
         {
             echo '
-                        <form action="index.php" method="POST">
-                            <div class="col-md-12">
-                                <div class="modal-dialog" style="margin-bottom:0">
-                                    <div class="modal-content">
-                                        <div class="panel-heading">
-                                            <h3 class="panel-title">LOGIN</h3>
-                                        </div>
-                                        <div class="panel-body">
-                                            <form role="form">
-                                                <fieldset>
-                                                    <div class="form-group">
-                                                        <input class="form-control" placeholder="Login" name="login" type="login">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <input class="form-control" placeholder="Password" name="password" type="password">
-                                                    </div>
-                                                    <button class="btn btn-primary" type="submit">ENTER</button>
-                                                </fieldset>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
+                           <!-- CODE LOGIN START-->
+                           
+<form action="index.php" method="POST">
+                    </br>
+                    
+    <div class="row"> 
+         <div class="col-md-3"> </div>                
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Magazyn 2</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form accept-charset="UTF-8" role="form">
+                        <fieldset>
+                        
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Login" name="login" type="text">
                             </div>
+                            
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                            </div>
+                            
+                            <input class="btn btn-lg btn-success btn-block" type="submit" value="Login">
+                            
+                        </fieldset>
                         </form>
+                        
+                          <hr/>
+                   
+                    </div>
+                </div>
+            </div>
+		<div class="col-md-3"> </div> 
+    </div> 
+            
+</form>
+            
+              <!-- CODE LOGIN END -->      
                         ';
         }
 
@@ -446,7 +512,7 @@ class viewsite extends database {
 
     <div class="col-md-4">
         <p class="text-center"></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="../index.php" role="button">Back &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="../index.php" role="button">Back &raquo;</a></p>
     </div>
 
         </div> 

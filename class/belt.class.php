@@ -21,6 +21,7 @@ class belt extends database
                              <th scope="col">Length</th>
                              <th scope="col">Width</th>
                              <th scope="col">Type</th>
+                             <th scope="col">Available</th>
                         </tr>
                    </thead>
                 <tbody>               
@@ -31,6 +32,7 @@ class belt extends database
             $length = $row['length'];
             $width = $row['width'];
             $type = $row['type'];
+            $available = $row['available'];
 
 
             echo '
@@ -40,6 +42,24 @@ class belt extends database
                             <td>' . $length . '</td>
                             <td>' . $width . '</td>
                             <td>' . $type . '</td>
+                            <td>
+                                ';
+
+                            //CHECK AVALIBLE BELT
+                               if ($available == 0)
+                                {
+
+                                    echo '<span class="badge badge-pill badge-success">YES</span>';
+
+                                }
+
+                                if ($available == 1)
+                                {
+                                    echo '<span class="badge badge-pill badge-danger">NO</span>';
+                                }
+
+
+                     echo '</td>
                 </tr>
                             ';
 

@@ -2,6 +2,10 @@
 ale musi zostać w bazie dla porównywania wyników -> rozwiązać kolorowymi
 znacznikami która taśma jest dostępna a która nie
 
+- edytowana tasma nie moze miec mozliwosci zmiany jej dostepnosci
+
+- sprzedana tasma nie moze miec mozliwosci jej usuniecia (nie da sie usunac czegos co fizycznie zostalo sprzedane)
+
 - doprowadzić do porządku uprawnienia
 
 - zrobić panel kopi bezpieczeństwa / import export baz danych
