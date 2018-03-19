@@ -455,7 +455,8 @@ class viewsite extends database {
               </div> <!-- /container -->  
               
                <footer class="container">
-                     <p>&copy; Magazyn 2 Tusonic 2018</p>
+               <hr/>
+                     <p align="right">&copy; Magazyn 2 Tusonic 2018</p>
                </footer>
                
         <!-- JAVA SCRIPT START  -->

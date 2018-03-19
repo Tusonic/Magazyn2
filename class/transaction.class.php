@@ -25,11 +25,12 @@ INNER JOIN user ON transaction.user = user.login
                  <thead>
                        <tr> 
                              <th scope="col">#</th>
-                             <th scope="col">Type</th>
-                             <th scope="col">Length</th>
-                             <th scope="col">Width</th>
-                             <th scope="col">Name</th>
+                             <th scope="col">Belt Type</th>
+                             <th scope="col">Belt Length</th>
+                             <th scope="col">Belt Width</th>
+                             <th scope="col">Client</th>
                              <th scope="col">Login</th>
+                             <th scope="col">Data</th>
                         </tr>
                    </thead>
                 <tbody>
@@ -40,11 +41,12 @@ INNER JOIN user ON transaction.user = user.login
                                                 // ASSOC or NUM
         while ($row = $viewBelt->fetch(PDO::FETCH_NUM)) {
             $id = $row['0'];
-            $type = $row['7'];
-            $length = $row['5'];
-            $width = $row['6'];
-            $name = $row['9'];
-            $login = $row['13'];
+            $type = $row['8'];
+            $length = $row['6'];
+            $width = $row['7'];
+            $name = $row['13'];
+            $login = $row['16'];
+            $date = $row['4'];
 
 
             echo '
@@ -56,6 +58,7 @@ INNER JOIN user ON transaction.user = user.login
                             <td>' . $width . '</td>
                             <td>' . $name . '</td>
                             <td>' . $login . '</td>
+                            <td>' . $date . '</td>
 
                 </tr>
                             ';
@@ -114,7 +117,7 @@ INNER JOIN user ON transaction.user = user.login
                             <td>
                                     <form method="GET" action="add.php?id_client=' . $row['id'] . '">
                                     <input type="hidden" value="' . $row['id'] . '" name="id_client"/>
-                                    <input type="submit" class="btn btn-info" value="ADD CLIENT"/>
+                                    <input type="submit" class="btn btn-info" value="Add"/>
                                     </form>
                            </td>
                 </tr>
@@ -135,7 +138,7 @@ INNER JOIN user ON transaction.user = user.login
     public function addbelttransaction()
     {
 
-        $viewBelt = $this->pdo->prepare('select * from belt');
+        $viewBelt = $this->pdo->prepare('select * from belt where available = 0');
         $viewBelt->execute();
 
         echo ' 
@@ -149,7 +152,7 @@ INNER JOIN user ON transaction.user = user.login
                              <th scope="col">Length</th>
                              <th scope="col">Width</th>
                              <th scope="col">Type</th>
-                             <th scope="col">Delete</th>
+                             <th scope="col">Add Belt</th>
                         </tr>
                    </thead>
                 <tbody>
@@ -175,7 +178,7 @@ INNER JOIN user ON transaction.user = user.login
                                     <form method="GET" action="add.php?id_client=' . $_GET['id_client'] . '&id_belt=' . $row['id'] . '">
                                     <input type="hidden" value="' . $_GET['id_client'] . '" name="id_client"/>
                                     <input type="hidden" value="' . $row['id'] . '" name="id_belt"/>
-                                    <input type="submit" class="btn btn-info" value="ADD BELT"/>
+                                    <input type="submit" class="btn btn-info" value="Add"/>
                                     </form>
                            </td>
                 </tr>
@@ -210,6 +213,10 @@ INNER JOIN user ON transaction.user = user.login
         $addtransaction->bindValue(':belt', $idbelt, PDO::PARAM_INT);
         $addtransaction->bindValue(':client', $idclient, PDO::PARAM_INT);
         $addtransaction->execute();
+
+        $addtransactioneditbelt = $this->pdo->prepare("UPDATE belt SET available = 1 WHERE belt.id = :id");
+        $addtransactioneditbelt->bindValue(':id', $idbelt, PDO::PARAM_INT);
+        $addtransactioneditbelt->execute();
 
         // START - successful add
 
@@ -464,6 +471,9 @@ INNER JOIN user ON transaction.user = user.login
 
 
         $deletetransactionid = $_POST['id'];
+        $beltid = $_POST['beltid'];
+
+        // echo $beltid;
         // CHECK DELETE ID
         // echo '</br> post=';
         // echo $deletetransactionid;
@@ -471,6 +481,14 @@ INNER JOIN user ON transaction.user = user.login
         $editorBelt = $this->pdo->prepare("DELETE FROM transaction WHERE id=:id");
         $editorBelt->bindValue(':id', $deletetransactionid, PDO::PARAM_INT);
         $editorBelt->execute();
+
+        // CHANGE BELT ID
+        $changetransactioneditbelt = $this->pdo->prepare("UPDATE belt SET available = 0 WHERE belt.id = :id");
+        $changetransactioneditbelt->bindValue(':id', $beltid, PDO::PARAM_INT);
+        $changetransactioneditbelt->execute();
+
+
+
 
         // START - successful add
 
@@ -526,11 +544,11 @@ INNER JOIN user ON transaction.user = user.login
              <table id="table-full" class="table table-striped table-bordered" width="100%" cellspacing="0">
                  <thead>
                        <tr> 
-                             <th scope="col">#</th>
-                             <th scope="col">Type</th>
-                             <th scope="col">Length</th>
-                             <th scope="col">Width</th>
-                             <th scope="col">Name</th>
+                           <th scope="col">#</th>
+                             <th scope="col">Belt Type</th>
+                             <th scope="col">Belt Length</th>
+                             <th scope="col">Belt Width</th>
+                             <th scope="col">Client</th>
                              <th scope="col">Login</th>
                              <th scope="col">Delete</th>
                         </tr>
@@ -546,8 +564,9 @@ INNER JOIN user ON transaction.user = user.login
             $type = $row['7'];
             $length = $row['5'];
             $width = $row['6'];
-            $name = $row['9'];
+            $name = $row['10'];
             $login = $row['13'];
+            $beltid = $row['2'];
 
 
             echo '
@@ -562,7 +581,8 @@ INNER JOIN user ON transaction.user = user.login
                             
                              <form method="POST" action="deletetransaction.php">
                             <td>  
-                                     <input type="hidden" value="' . $row['0'] . '" name="id"/>
+                                    <input type="hidden" value="' . $row['0'] . '" name="id"/>
+                                    <input type="hidden" value="' . $row['2'] . '" name="beltid"/>
                                     <input type="submit" class="btn btn-info" value="Delete"/>
                                                          
                             </td>

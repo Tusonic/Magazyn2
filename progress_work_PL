@@ -1,11 +1,21 @@
 - gdy się doda transakcję musi być zablokowana taśma do ponownego dodania,
 ale musi zostać w bazie dla porównywania wyników -> rozwiązać kolorowymi
 znacznikami która taśma jest dostępna a która nie
+//znaczyniki rozwiazane, tasmy dodawane na magazynie na podstawie ID który jest unikalny
+// nie ma mozliwosci edytowania tasmy ktora sie sprzedala
+// nie ma mozliwosci dodania tej samej tasmy ktora sie sprzedala
 
 - edytowana tasma nie moze miec mozliwosci zmiany jej dostepnosci
+// where available = 0
 
 - sprzedana tasma nie moze miec mozliwosci jej usuniecia (nie da sie usunac czegos co fizycznie zostalo sprzedane)
+// where available = 0
+
+- wprowadzic czas w tranzakcjach i przyjeciach tasm
+// dodane na poziome mysql
 
 - doprowadzić do porządku uprawnienia
 
 - zrobić panel kopi bezpieczeństwa / import export baz danych
+
+

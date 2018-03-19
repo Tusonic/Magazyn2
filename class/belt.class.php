@@ -78,7 +78,7 @@ class belt extends database
     public function deletebelt()
     {
 
-        $viewBelt = $this->pdo->prepare('select * from belt');
+        $viewBelt = $this->pdo->prepare('select * from belt where available = 0 ');
         $viewBelt->execute();
 
 
@@ -103,6 +103,7 @@ class belt extends database
             $length = $row['length'];
             $width = $row['width'];
             $type = $row['type'];
+            // $available = $row['available'];
 
 
             echo '
@@ -118,7 +119,7 @@ class belt extends database
                                     <input type="hidden" value="' . $row['id'] . '" name="id"/>
                                     <input type="submit" class="btn btn-info" value="Delete"/>
                                     </form>
-                           </td>
+                            </td>
                 </tr>
                             ';
 
@@ -184,7 +185,8 @@ class belt extends database
     public function editbelt()
     {
 
-        $viewBelt = $this->pdo->prepare('select * from belt');
+        $viewBelt = $this->pdo->prepare('select * from belt where available = 0');
+      //  $viewBelt = $this->pdo->prepare('select * from belt');
         $viewBelt->execute();
 
 
@@ -197,6 +199,7 @@ class belt extends database
                              <th scope="col">Length</th>
                              <th scope="col">Width</th>
                              <th scope="col">Type</th>
+                             <th scope="col">Available</th>
                              <th scope="col">Edit</th>
                         </tr>
                    </thead>
@@ -211,6 +214,7 @@ class belt extends database
             $length = $row['length'];
             $width = $row['width'];
             $type = $row['type'];
+            $available = $row['available'];
 
 
             echo '
@@ -220,6 +224,24 @@ class belt extends database
                             <td>' . $length . '</td>
                             <td>' . $width . '</td>
                             <td>' . $type . '</td>
+                            <td>
+                                ';
+
+                            //CHECK AVALIBLE BELT
+                               if ($available == 0)
+                                {
+
+                                    echo '<span class="badge badge-pill badge-success">YES</span>';
+
+                                }
+
+                                if ($available == 1)
+                                {
+                                    echo '<span class="badge badge-pill badge-danger">NO</span>';
+                                }
+
+
+                     echo ' </td>
                             <td>
                                     <form method="POST" action="editbelt.php">
                                     <input type="hidden" value="' . $row['id'] . '" name="id"/>
