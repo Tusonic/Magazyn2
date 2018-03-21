@@ -62,7 +62,7 @@ class client extends database
 
     public function deleteclient()
     {
-        $viewBelt = $this->pdo->prepare('select * from client');
+        $viewBelt = $this->pdo->prepare('select * from client where flag = 0');
         $viewBelt->execute();
 
         echo ' 
@@ -168,7 +168,7 @@ class client extends database
     {
 
 
-        $viewBelt = $this->pdo->prepare('select * from client');
+        $viewBelt = $this->pdo->prepare('select * from client where flag = 0');
         $viewBelt->execute();
 
 

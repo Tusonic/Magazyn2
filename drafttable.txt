@@ -19,6 +19,7 @@ id =>
 length
 width
 type
+date
 
 
 
@@ -29,6 +30,7 @@ id =>
 name
 adress
 note
+flag
 
 
 
@@ -39,4 +41,5 @@ id
 => id.user 
 => id.belt
 => id.client
+date
 

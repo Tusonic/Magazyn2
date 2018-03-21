@@ -44,8 +44,8 @@ INNER JOIN user ON transaction.user = user.login
             $type = $row['8'];
             $length = $row['6'];
             $width = $row['7'];
-            $name = $row['13'];
-            $login = $row['16'];
+            $name = $row['12'];
+            $login = $row['17'];
             $date = $row['4'];
 
 
@@ -217,6 +217,10 @@ INNER JOIN user ON transaction.user = user.login
         $addtransactioneditbelt = $this->pdo->prepare("UPDATE belt SET available = 1 WHERE belt.id = :id");
         $addtransactioneditbelt->bindValue(':id', $idbelt, PDO::PARAM_INT);
         $addtransactioneditbelt->execute();
+
+        $addtransactioneditclient = $this->pdo->prepare("UPDATE client SET flag = 1 WHERE client.id = :id");
+        $addtransactioneditclient->bindValue(':id', $idclient, PDO::PARAM_INT);
+        $addtransactioneditclient->execute();
 
         // START - successful add
 
@@ -472,7 +476,9 @@ INNER JOIN user ON transaction.user = user.login
 
         $deletetransactionid = $_POST['id'];
         $beltid = $_POST['beltid'];
+        $clientid = $_POST['clientid'];
 
+        // echo $clientid;
         // echo $beltid;
         // CHECK DELETE ID
         // echo '</br> post=';
@@ -482,10 +488,16 @@ INNER JOIN user ON transaction.user = user.login
         $editorBelt->bindValue(':id', $deletetransactionid, PDO::PARAM_INT);
         $editorBelt->execute();
 
-        // CHANGE BELT ID
+        // CHANGE BELT AVALIBLE
         $changetransactioneditbelt = $this->pdo->prepare("UPDATE belt SET available = 0 WHERE belt.id = :id");
         $changetransactioneditbelt->bindValue(':id', $beltid, PDO::PARAM_INT);
         $changetransactioneditbelt->execute();
+
+        // CHANGE CLIENT FLAG
+        $changetransactioneditbelt = $this->pdo->prepare("UPDATE client SET flag = 0 WHERE client.id = :id");
+        $changetransactioneditbelt->bindValue(':id', $clientid, PDO::PARAM_INT);
+        $changetransactioneditbelt->execute();
+
 
 
 
@@ -564,9 +576,10 @@ INNER JOIN user ON transaction.user = user.login
             $type = $row['7'];
             $length = $row['5'];
             $width = $row['6'];
-            $name = $row['10'];
-            $login = $row['13'];
+            $name = $row['12'];
+            $login = $row['17'];
             $beltid = $row['2'];
+            $clientid = $row['11'];
 
 
             echo '
@@ -583,6 +596,8 @@ INNER JOIN user ON transaction.user = user.login
                             <td>  
                                     <input type="hidden" value="' . $row['0'] . '" name="id"/>
                                     <input type="hidden" value="' . $row['2'] . '" name="beltid"/>
+                                    <input type="hidden" value="' . $row['11'] . '" name="clientid"/>
+                                    
                                     <input type="submit" class="btn btn-info" value="Delete"/>
                                                          
                             </td>

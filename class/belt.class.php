@@ -462,13 +462,7 @@ class belt extends database
 <form  method="POST" action="addbelt.php" class="container" id="needs-validation" novalidate>
   
   <div class="row">
-        <div class="col-md-6 mb-3">
-          <label for="validationCustom03">Type</label>
-          <input name="addtype" type="text" class="form-control" id="validationCustom03" placeholder="Type" required>
-              <div class="invalid-feedback">
-                Please provide a valid type.
-              </div>
-        </div>
+      
     <div class="col-md-3 mb-3">
       <label for="validationCustom04">Length</label>
       <input name="addlength" type="text" class="form-control" id="validationCustom04" placeholder="Length in millimeters" required>
@@ -476,6 +470,7 @@ class belt extends database
             Please provide a valid length.
           </div>
     </div>
+    
         <div class="col-md-3 mb-3">
           <label for="validationCustom05">Width</label>
           <input name="addwidth" type="text" class="form-control" id="validationCustom05" placeholder="Width in millimeters" required>
@@ -483,6 +478,14 @@ class belt extends database
                 Please provide a valid width.
               </div>
          </div>
+         
+           <div class="col-md-6 mb-3">
+          <label for="validationCustom03">Type</label>
+          <input name="addtype" type="text" class="form-control" id="validationCustom03" placeholder="Type" required>
+              <div class="invalid-feedback">
+                Please provide a valid type.
+              </div>
+        </div>
   </div>
   <button class="btn btn-primary" type="submit">Add Belt</button>
 </form>

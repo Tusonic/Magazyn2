@@ -14,7 +14,20 @@ znacznikami która taśma jest dostępna a która nie
 - wprowadzic czas w tranzakcjach i przyjeciach tasm
 // dodane na poziome mysql
 
+- ustawic css i js tutaj + wywalic git.php
+// gotowe
+
+- client nie moze zostac usuniety jezeli jest w tranzakcji
+// where flag = 0
+
+- zabezpieczenie na edycji w przypadku usuwania
+// zrobione -> where flag = 0 rozwiazuje problem
+
 - doprowadzić do porządku uprawnienia
+// gotowe
+
+- uzytkownik musi dac sie usunac jezeli nic nie sprzedal, jezeli sprzedal tylko blokowac
+zrobic blokowanie logowania uzytkownika
 
 - zrobić panel kopi bezpieczeństwa / import export baz danych
 

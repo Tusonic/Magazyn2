@@ -9,36 +9,6 @@ class viewsite extends database {
     public $_user = 1;
     public $_moderator = 2;
     public $_adminstrator = 3;
-/*
-    public function starthead()
-        {
-            echo'
-
-                <!doctype html>
-                <html lang="en">
-                    <head>
-                        <title>Magazyn 2</title>
-
-                        <meta charset="utf-8">
-                        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-                                                
-                        <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
-                        <link rel="stylesheet" type="text/css" href="/css/tablebootstrap.css">
-                   
-                        <script src="/js/jquery.1.12.4.js"></script>
-                        <script src="/js/jquery.dataTables.js"></script> 
-                        <script src="/js/datatables.bootstrap.js"></script>   
-                 
-                    </head>
-                <body>
-                <div class="container">
-
-
-                ';
-
-
-        }
-*/
 
     public function starthead()
     {
@@ -53,25 +23,21 @@ class viewsite extends database {
                         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
                                                 
                          <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-     
-      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-                        
-                        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.0.0/dt-1.10.16/fc-3.2.4/fh-3.1.3/datatables.min.css"/>
-                        <script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.0.0/dt-1.10.16/fc-3.2.4/fh-3.1.3/datatables.min.js"></script>
+                        <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+                        <link rel="stylesheet" type="text/css" href="/css/datatables.css"/>
+                          <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+                        <script type="text/javascript" src="/js/jquery-3.2.1.slim.min.js"></script>
+                        <script type="text/javascript" src="/js/popper.min.js"></script>
+                        <script type="text/javascript" src="/js/bootstrap.js"></script>
+                        <script type="text/javascript" src="/js/datatables.js"></script>
                  
                     </head>
                 <body>
                 <div class="container">
 
-
                 ';
 
-
-    } //test bootstrap 4.0.0
+    }
 
     public function login()
     {
@@ -188,8 +154,8 @@ class viewsite extends database {
         <p></p>
         <p><a class="btn btn-info btn-lg btn-block" href="transaction/view.php" role="button">View &raquo;</a></p>
         <p><a class="btn btn-info btn-lg btn-block" href="transaction/add.php" role="button">Add &raquo;</a></p>
-        <p><a class="btn btn-info btn-lg btn-block" href="transaction/edit.php" role="button">Edit &raquo;</a></p>
-        <p><a class="btn btn-info btn-lg btn-block" href="transaction/delete.php" role="button">Delete &raquo;</a></p>
+     <!--   <p><a class="btn btn-info btn-lg btn-block" href="transaction/edit.php" role="button">Edit &raquo;</a></p> -->
+     <!--   <p><a class="btn btn-info btn-lg btn-block" href="transaction/delete.php" role="button">Delete &raquo;</a></p> -->
     </div>
     
     <div class="col-md-4">
@@ -225,6 +191,7 @@ class viewsite extends database {
         <p><a class="btn btn-info btn-lg btn-block" href="client/edit.php" role="button">Edit &raquo;</a></p>
         <p><a class="btn btn-info btn-lg btn-block" href="client/delete.php" role="button">Delete &raquo;</a></p>
     </div>
+    <!-- DONT SEE USER
     <div class="col-md-4">
         <h2><p class="text-center">USER</p></h2>
         <p></p>
@@ -232,7 +199,7 @@ class viewsite extends database {
         <p><a class="btn btn-info btn-lg btn-block" href="user/add.php" role="button">Add &raquo;</a></p>
         <p><a class="btn btn-info btn-lg btn-block" href="user/edit.php" role="button">Edit &raquo;</a></p>
         <p><a class="btn btn-info btn-lg btn-block" href="user/delete.php" role="button">Delete &raquo;</a></p>
-    </div>
+    </div> -->
 
 </div>
 
@@ -305,7 +272,7 @@ class viewsite extends database {
         <p></p>
         <p><a class="btn btn-info btn-lg btn-block" href="user/view.php" role="button">View &raquo;</a></p>
         <p><a class="btn btn-info btn-lg btn-block" href="user/add.php" role="button">Add &raquo;</a></p>
-        <p><a class="btn btn-info btn-lg btn-block" href="user/edit.php" role="button">Edit &raquo;</a></p>
+        <!-- <p><a class="btn btn-info btn-lg btn-block" href="user/edit.php" role="button">Edit &raquo;</a></p> -->
         <p><a class="btn btn-info btn-lg btn-block" href="user/delete.php" role="button">Delete &raquo;</a></p>
     </div>
 
