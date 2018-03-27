@@ -3,12 +3,13 @@
 class belt extends database
 {
 
-
     public function viewbelt()
     {
 
         $viewBelt = $this->pdo->prepare('select * from belt');
         $viewBelt->execute();
+
+
 
         echo ' 
  

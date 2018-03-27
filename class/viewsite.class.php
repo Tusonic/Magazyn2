@@ -1,14 +1,12 @@
 <?php
 
-class viewsite extends database {
+class viewsite extends database  {
 
-   public $_login = null;
-
-    // CONFIG ACCESS
-
+    public $_login = null;
     public $_user = 1;
     public $_moderator = 2;
     public $_adminstrator = 3;
+
 
     public function starthead()
     {
@@ -131,6 +129,8 @@ class viewsite extends database {
                     $systemaccess = $this->pdo->prepare("SELECT access from user WHERE login = '{$_SESSION['login']}' AND pass = '{$_SESSION['password']}'");
                     $systemaccess->execute();
                     $num_access = $systemaccess->fetchColumn();
+                    $_SESSION['access'] = $num_access;
+
 
                     // DISPLAY ACTUALITY ACCESS
                    // echo $num_access;
@@ -445,6 +445,8 @@ class viewsite extends database {
                 
             ';
 
+
+
         }
 
     public function setlogin($loginid)
@@ -487,6 +489,64 @@ class viewsite extends database {
                </br>
         ';
 
+
+    }
+
+    public function error()
+    {
+        echo'
+
+                <!doctype html>
+                <html lang="en">
+                    <head>
+                        <title>Magazyn 2</title>
+
+                        <meta charset="utf-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                                                
+                         <!-- Bootstrap CSS -->
+                        <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+                        <link rel="stylesheet" type="text/css" href="/css/datatables.css"/>
+                          <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+                        <script type="text/javascript" src="/js/jquery-3.2.1.slim.min.js"></script>
+                        <script type="text/javascript" src="/js/popper.min.js"></script>
+                        <script type="text/javascript" src="/js/bootstrap.js"></script>
+                        <script type="text/javascript" src="/js/datatables.js"></script>
+                 
+                    </head>
+                <body>
+    <div class="container">
+                
+                 </br></br>
+
+         <div class="row">
+            
+                <div class="col-md-3">
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="alert alert-danger text-center" role="alert">
+                        <h4 class="alert-heading">ACCESS DENIED!</h4>
+                             <p class="text-center">ACCESS DENIED! PLEASE CONTACT TO ADMIN!</p>
+                             <p><a class="btn btn-danger btn-lg btn-block" href="../index.php" role="button">BACK TO MENU &raquo;</a></p>
+                     </div>
+                </div>
+                    
+                <div class="col-md-3">
+                </div>
+                
+         </div>
+    </div>
+         
+         <footer class="container">
+               <hr/>
+                     <p align="right">&copy; Magazyn 2 Tusonic 2018</p>
+               </footer>
+               </body>
+               </html>
+               
+
+                ';
 
     }
 

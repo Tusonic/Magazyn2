@@ -12,5 +12,8 @@ $site->starthead();
 $site->backmenu();
 $belt->addbelt();
 
+$site->endhead();
+
+
 ob_end_flush();
 ?>
