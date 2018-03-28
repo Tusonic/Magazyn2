@@ -8,10 +8,29 @@ session_start();
 $site = new viewsite();
 $client = new client();
 
-$site->starthead();
-$site->backmenu();
-$client->editclient();
-$site->endhead();
+if (isset($_SESSION['access']))
+
+{
+    if ($_SESSION['access'] >= 1)
+    {
+        $site->starthead();
+        $site->backmenu();
+        $client->editclient();
+        $site->endhead();
+    }
+    else
+    {
+        $site->error();
+    }
+}
+
+else
+
+{
+    $site->error();
+}
+
+
 
 ob_end_flush();
 ?>

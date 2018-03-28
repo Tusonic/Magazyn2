@@ -8,10 +8,29 @@ session_start();
 $site = new viewsite();
 $belt = new belt();
 
-$site->starthead();
-$site->backmenu();
-$belt->deletebelt();
-$site->endhead();
+if (isset($_SESSION['access']))
+
+{
+    if ($_SESSION['access'] >= 1)
+    {
+        $site->starthead();
+        $site->backmenu();
+        $belt->deletebelt();
+        $site->endhead();
+    }
+    else
+    {
+        $site->error();
+    }
+}
+
+else
+
+{
+    $site->error();
+}
+
+
 
 ob_end_flush();
 ?>
