@@ -20,7 +20,6 @@ class user extends database
                        <tr> 
                              <th scope="col">#</th>
                              <th scope="col">Login</th>
-                             <th scope="col">Pass</th>
                              <th scope="col">Access</th>
                         </tr>
                    </thead>
@@ -33,7 +32,6 @@ class user extends database
         while ($row = $viewBelt->fetch(PDO::FETCH_ASSOC)) {
             $id = $row['id'];
             $login = $row['login'];
-            $pass = $row['pass'];
             $access = $row['access'];
 
 
@@ -42,9 +40,7 @@ class user extends database
                 <tr>
                             <th scope="row">' . $id . '</th>
                             <td>' . $login . '</td>
-                            <td>' . $pass . '</td>
                             <td>' . $access . '</td>
-
                 </tr>
                             ';
 

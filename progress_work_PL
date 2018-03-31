@@ -1,36 +1,38 @@
 - gdy się doda transakcję musi być zablokowana taśma do ponownego dodania,
 ale musi zostać w bazie dla porównywania wyników -> rozwiązać kolorowymi
 znacznikami która taśma jest dostępna a która nie
-//znaczyniki rozwiazane, tasmy dodawane na magazynie na podstawie ID który jest unikalny
-// nie ma mozliwosci edytowania tasmy ktora sie sprzedala
-// nie ma mozliwosci dodania tej samej tasmy ktora sie sprzedala
+//znaczniki rozwiązane, taśmy dodawane na magazynie na podstawie ID który jest unikalny
+// nie ma możliwości edytowania taśmy która sie sprzedała
+// nie ma możliwości dodania tej samej taśmy która sie sprzedała
 
-- edytowana tasma nie moze miec mozliwosci zmiany jej dostepnosci
+- edytowana taśma nie może mieć możliwości zmiany jej dostępności
 // where available = 0
 
-- sprzedana tasma nie moze miec mozliwosci jej usuniecia (nie da sie usunac czegos co fizycznie zostalo sprzedane)
+- sprzedana taśma nie może mięć możliwości jej usunięcia (nie da sie usunąć czegoś co fizycznie zostało sprzedane)
 // where available = 0
 
-- wprowadzic czas w tranzakcjach i przyjeciach tasm
+- wprowadzic czas w transakcjach i przyjęciach taśm
 // dodane na poziome mysql
 
-- ustawic css i js tutaj + wywalic git.php
+- ustawić css i js tutaj + wywalic git.php
 // gotowe
 
-- client nie moze zostac usuniety jezeli jest w tranzakcji
+- client nie może zostać usunięty jeżeli jest w transakcji
 // where flag = 0
 
 - zabezpieczenie na edycji w przypadku usuwania
-// zrobione -> where flag = 0 rozwiazuje problem
+// zrobione -> where flag = 0 rozwiązuje problem
 
 - doprowadzić do porządku uprawnienia
 // gotowe
 
-- uzytkownik musi dac sie usunac jezeli nic nie sprzedal, jezeli sprzedal tylko blokowac
-zrobic blokowanie logowania uzytkownika
+- zrobić panel kopi bezpieczeństwa
+// gotowe
 
-- zrobić panel kopi bezpieczeństwa / import export baz danych
+- zrobić zabezpieczenie przed wejściem w dalsze podstrony nie będąc zalogowanym
+// gotowe
 
-- zrobic zabezpieczenie przed wejsciem w dalsze podstrony nie bedac zalogowanym
+- użytkownik musi dąć sie usunąć jeżeli nic nie sprzedał, jeżeli sprzedał tylko blokować
 
+- zrobić blokowanie logowania użytkownika
 

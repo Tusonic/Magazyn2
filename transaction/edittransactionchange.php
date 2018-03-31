@@ -8,9 +8,26 @@ session_start();
 $site = new viewsite();
 $transaction = new transaction();
 
-$site->starthead();
-$transaction->edittransactionchange();
-$site->endhead();
+if (isset($_SESSION['access']))
+
+{
+    if ($_SESSION['access'] >= 2)
+    {
+        $site->starthead();
+        $transaction->edittransactionchange();
+        $site->endhead();
+    }
+    else
+    {
+        $site->error();
+    }
+}
+
+else
+
+{
+    $site->error();
+}
 
 ob_end_flush();
 ?>

@@ -8,11 +8,27 @@ session_start();
 $site = new viewsite();
 $user = new user();
 
-$site->starthead();
-$site->backmenu();
-$user->adduserdata();
+if (isset($_SESSION['access']))
 
-$site->endhead();
+{
+    if ($_SESSION['access'] >= 2)
+    {
+        $site->starthead();
+        $site->backmenu();
+        $user->adduserdata();
+        $site->endhead();
+    }
+    else
+    {
+        $site->error();
+    }
+}
+
+else
+
+{
+    $site->error();
+}
 
 ob_end_flush();
 ?>

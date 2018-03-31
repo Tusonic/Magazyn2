@@ -409,7 +409,8 @@ INNER JOIN user ON transaction.user = user.login
         if (!empty($_POST["iduser"]) || ($_POST["idbelt"]) || ($_POST["idclient"]) )
         {
 
-            echo "Yes, POST is set </br>";
+            // CHECK POST
+            // echo "Yes, POST is set </br>";
             $id = $_POST["id"];
             $iduser = $_POST["iduser"];
             $idbelt = $_POST["idbelt"];
@@ -457,8 +458,43 @@ INNER JOIN user ON transaction.user = user.login
                 $editorBelt->bindValue(':belt', $idbelt, PDO::PARAM_INT);
                 $editorBelt->bindValue(':client', $idclient, PDO::PARAM_INT);
                 $editorBelt->execute();
-                echo 'change OK';
-                echo $id;
+
+                // CHECK CHANGE
+                // echo 'change OK';
+                // echo $id;
+
+                // START - successful add
+
+                echo '
+
+            </br>
+
+            <div class="row">
+            
+                <div class="col-md-3">
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="alert alert-success text-center" role="alert">
+                        <h4 class="alert-heading">Added!</h4>
+                             <p class="text-center">The transaction has been successfully added!</p>
+                             <p><a class="btn btn-success btn-lg btn-block" href="../index.php" role="button">OK &raquo;</a></p>
+                     </div>
+                </div>
+                    
+                <div class="col-md-3">
+                    
+                </div>
+            
+            </div>
+
+
+     
+
+            ';
+
+                // END - successful add
+
             }
 
         }

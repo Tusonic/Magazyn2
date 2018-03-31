@@ -8,11 +8,27 @@ session_start();
 $site = new viewsite();
 $user = new user();
 
-$site->starthead();
-$site->backmenu();
-$user->editoruser();
+if (isset($_SESSION['access']))
 
-$site->endhead();
+{
+    if ($_SESSION['access'] >= 3)
+    {
+        $site->starthead();
+        $site->backmenu();
+        $user->editoruser();
+        $site->endhead();
+    }
+    else
+    {
+        $site->error();
+    }
+}
+
+else
+
+{
+    $site->error();
+}
 
 ob_end_flush();
 ?>
