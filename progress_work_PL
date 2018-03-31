@@ -33,6 +33,13 @@ znacznikami która taśma jest dostępna a która nie
 // gotowe
 
 - użytkownik musi dąć sie usunąć jeżeli nic nie sprzedał, jeżeli sprzedał tylko blokować
+=> blokowanie po where jezeli znajdzie 1 wiersz
 
 - zrobić blokowanie logowania użytkownika
+=> zwykle blokowanie 0/1
+
+- bug=>clientów może być więcej, gdy usuniemy 1 tranzakcje clienta można usunac
+=>sprawdzac po id czy client wystepuje w bazie, jezeli tak do 0 jezeli nie to 1, podobnie wykonac usera
+
+
 

@@ -72,8 +72,8 @@ class viewsite extends database  {
         else
 
         {
-        // COULD START
-        // echo 'EMPTY LOGIN';
+         //COULD START
+         //echo 'EMPTY LOGIN';
         }
 
         if (isset($_SESSION['login_in']))
@@ -92,9 +92,18 @@ class viewsite extends database  {
                     <div class="panel-heading">
                         <h3 class="panel-title">Magazyn 2</h3>
                     </div>
+                    
                     <div class="panel-body">
                         <form accept-charset="UTF-8" role="form">
                         <fieldset>
+                        
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                              <strong>Error </strong>Login or password incorrect!
+                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            </br>
                         
                             <div class="form-group">
                                 <input class="form-control" placeholder="Login" name="login" type="text">
@@ -105,7 +114,8 @@ class viewsite extends database  {
                             </div>
                             
                             <input class="btn btn-lg btn-success btn-block" type="submit" value="Login">
-                            
+                           
+                                                      
                         </fieldset>
                         </form>
                         
@@ -131,10 +141,8 @@ class viewsite extends database  {
                     $num_access = $systemaccess->fetchColumn();
                     $_SESSION['access'] = $num_access;
 
-
                     // DISPLAY ACTUALITY ACCESS
-                   // echo $num_access;
-
+                    // echo $num_access;
 
                     // START ACCESS USER
                     if ($num_access == $this->_user) {
@@ -320,6 +328,7 @@ class viewsite extends database  {
     <div class="col-md-4">
         <h2><p class="text-center">ACCOUNT</p></h2>
         <p><a class="btn btn-info btn-lg btn-block" href="logout.php" role="button">LOGOUT &raquo;</a></p>
+        <p><a class="btn btn-info btn-lg btn-block" href="database/export.php" role="button">BACKUP &raquo;</a></p>
        </div>
 
 
