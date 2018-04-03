@@ -513,12 +513,16 @@ INNER JOIN user ON transaction.user = user.login
         $deletetransactionid = $_POST['id'];
         $beltid = $_POST['beltid'];
         $clientid = $_POST['clientid'];
+        $userid = $_POST['userid'];
 
         // echo $clientid;
         // echo $beltid;
         // CHECK DELETE ID
         // echo '</br> post=';
         // echo $deletetransactionid;
+        echo $userid;
+
+
 
         $editorBelt = $this->pdo->prepare("DELETE FROM transaction WHERE id=:id");
         $editorBelt->bindValue(':id', $deletetransactionid, PDO::PARAM_INT);
@@ -533,6 +537,8 @@ INNER JOIN user ON transaction.user = user.login
         $changetransactioneditbelt = $this->pdo->prepare("UPDATE client SET flag = 0 WHERE client.id = :id");
         $changetransactioneditbelt->bindValue(':id', $clientid, PDO::PARAM_INT);
         $changetransactioneditbelt->execute();
+
+
 
 
 
@@ -633,6 +639,7 @@ INNER JOIN user ON transaction.user = user.login
                                     <input type="hidden" value="' . $row['0'] . '" name="id"/>
                                     <input type="hidden" value="' . $row['2'] . '" name="beltid"/>
                                     <input type="hidden" value="' . $row['11'] . '" name="clientid"/>
+                                    <input type="hidden" value="' . $row['16'] . '" name="userid"/>
                                     
                                     <input type="submit" class="btn btn-info" value="Delete"/>
                                                          
