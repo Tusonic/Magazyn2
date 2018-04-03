@@ -11,7 +11,7 @@ class transaction extends database
 FROM transaction
 INNER JOIN belt ON transaction.belt = belt.id
 INNER JOIN client ON transaction.client = client.id
-INNER JOIN user ON transaction.user = user.login
+INNER JOIN user ON transaction.user = user.id
         
         ');
         $viewBelt->execute();
@@ -208,8 +208,18 @@ INNER JOIN user ON transaction.user = user.login
         $iduser = $_SESSION['login'];
         // echo $iduser;
 
+
+        $getuserid = $this->pdo->prepare("SELECT * FROM user WHERE login = :getuserid ");
+        $getuserid->bindValue(':getuserid', $iduser, PDO::PARAM_STR);
+        $getuserid ->execute();
+        $row = $getuserid->fetch(PDO::FETCH_ASSOC);
+        $getidusersesion = $row['id'];
+       // echo $getidusersesion;
+
+
+
         $addtransaction = $this->pdo->prepare("INSERT INTO transaction (user, belt, client) VALUES (:user,:belt,:client)");
-        $addtransaction->bindValue(':user', $iduser, PDO::PARAM_INT);
+        $addtransaction->bindValue(':user', $getidusersesion, PDO::PARAM_INT);
         $addtransaction->bindValue(':belt', $idbelt, PDO::PARAM_INT);
         $addtransaction->bindValue(':client', $idclient, PDO::PARAM_INT);
         $addtransaction->execute();
@@ -520,7 +530,6 @@ INNER JOIN user ON transaction.user = user.login
         // CHECK DELETE ID
         // echo '</br> post=';
         // echo $deletetransactionid;
-        echo $userid;
 
 
 
@@ -533,15 +542,28 @@ INNER JOIN user ON transaction.user = user.login
         $changetransactioneditbelt->bindValue(':id', $beltid, PDO::PARAM_INT);
         $changetransactioneditbelt->execute();
 
-        // CHANGE CLIENT FLAG
-        $changetransactioneditbelt = $this->pdo->prepare("UPDATE client SET flag = 0 WHERE client.id = :id");
+        // CHANGE CLIENT FLAG + CHECK ID CLIENT FLAG
+        $checkidclient = $this->pdo->prepare("SELECT COUNT(client) FROM transaction WHERE client = :clientid");
+        $checkidclient->bindValue(':clientid', $clientid, PDO::PARAM_INT);
+        $checkidclient ->execute();
+        $row = $checkidclient->fetch(PDO::FETCH_NUM);
+        $resultcheckuserid = $row['0'];
+        echo $resultcheckuserid;
+
+        $changetransactioneditbelt = $this->pdo->prepare("UPDATE client SET flag = :flag WHERE client.id = :id");
+        $changetransactioneditbelt->bindValue(':flag', $resultcheckuserid, PDO::PARAM_INT);
         $changetransactioneditbelt->bindValue(':id', $clientid, PDO::PARAM_INT);
         $changetransactioneditbelt->execute();
 
-
-
-
-
+        // TUTAJ DOPISAC USERA !!!
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
 
 
         // START - successful add
@@ -587,7 +609,7 @@ INNER JOIN user ON transaction.user = user.login
 FROM transaction
 INNER JOIN belt ON transaction.belt = belt.id
 INNER JOIN client ON transaction.client = client.id
-INNER JOIN user ON transaction.user = user.login
+INNER JOIN user ON transaction.user = user.id
         
         ');
         $viewBelt->execute();
