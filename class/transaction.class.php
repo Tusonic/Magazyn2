@@ -208,13 +208,13 @@ INNER JOIN user ON transaction.user = user.id
         $iduser = $_SESSION['login'];
         // echo $iduser;
 
-
+     // SKRYPT DO SCIAGNIECIA ID PO LOGOWANIU !!!
         $getuserid = $this->pdo->prepare("SELECT * FROM user WHERE login = :getuserid ");
         $getuserid->bindValue(':getuserid', $iduser, PDO::PARAM_STR);
         $getuserid ->execute();
         $row = $getuserid->fetch(PDO::FETCH_ASSOC);
         $getidusersesion = $row['id'];
-       // echo $getidusersesion;
+        //echo $getidusersesion;
 
 
 
@@ -231,6 +231,13 @@ INNER JOIN user ON transaction.user = user.id
         $addtransactioneditclient = $this->pdo->prepare("UPDATE client SET flag = 1 WHERE client.id = :id");
         $addtransactioneditclient->bindValue(':id', $idclient, PDO::PARAM_INT);
         $addtransactioneditclient->execute();
+
+        $addtransactionedituser = $this->pdo->prepare("UPDATE user SET flag = 1 WHERE user.id = :id");
+        $addtransactionedituser->bindValue(':id', $getidusersesion, PDO::PARAM_INT);
+        $addtransactionedituser->execute();
+
+
+
 
         // START - successful add
 
@@ -545,25 +552,29 @@ INNER JOIN user ON transaction.user = user.id
         // CHANGE CLIENT FLAG + CHECK ID CLIENT FLAG
         $checkidclient = $this->pdo->prepare("SELECT COUNT(client) FROM transaction WHERE client = :clientid");
         $checkidclient->bindValue(':clientid', $clientid, PDO::PARAM_INT);
-        $checkidclient ->execute();
-        $row = $checkidclient->fetch(PDO::FETCH_NUM);
-        $resultcheckuserid = $row['0'];
+        $checkidclient->execute();
+        $row1 = $checkidclient->fetch(PDO::FETCH_NUM);
+        $resultcheckclinetid = $row1['0'];
+        echo $resultcheckclinetid;
+
+        $changetransactionclient = $this->pdo->prepare("UPDATE client SET flag = :flag WHERE client.id = :id");
+        $changetransactionclient->bindValue(':flag', $resultcheckclinetid, PDO::PARAM_INT);
+        $changetransactionclient->bindValue(':id', $clientid, PDO::PARAM_INT);
+        $changetransactionclient->execute();
+
+        // CHANGE USER FLAG + CHEC ID USER FLAG
+        $checkiduser = $this->pdo->prepare("SELECT COUNT(user) FROM transaction WHERE user = :userid");
+        $checkiduser->bindValue(':userid', $userid, PDO::PARAM_INT);
+        $checkiduser->execute();
+        $row2 = $checkiduser->fetch(PDO::FETCH_NUM);
+        $resultcheckuserid = $row2['0'];
         echo $resultcheckuserid;
 
-        $changetransactioneditbelt = $this->pdo->prepare("UPDATE client SET flag = :flag WHERE client.id = :id");
-        $changetransactioneditbelt->bindValue(':flag', $resultcheckuserid, PDO::PARAM_INT);
-        $changetransactioneditbelt->bindValue(':id', $clientid, PDO::PARAM_INT);
-        $changetransactioneditbelt->execute();
+        $changetransactionuser = $this->pdo->prepare("UPDATE user SET flag = :flag WHERE user.id = :id");
+        $changetransactionuser->bindValue(':flag', $resultcheckuserid, PDO::PARAM_INT);
+        $changetransactionuser->bindValue(':id', $userid, PDO::PARAM_INT);
+        $changetransactionuser->execute();
 
-        // TUTAJ DOPISAC USERA !!!
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
 
 
         // START - successful add

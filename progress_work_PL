@@ -32,14 +32,6 @@ znacznikami która taśma jest dostępna a która nie
 - zrobić zabezpieczenie przed wejściem w dalsze podstrony nie będąc zalogowanym
 // gotowe
 
-- użytkownik musi dąć sie usunąć jeżeli nic nie sprzedał, jeżeli sprzedał tylko blokować
-=> blokowanie po where jezeli znajdzie 1 wiersz
-
-- zrobić blokowanie logowania użytkownika
-=> zwykle blokowanie 0/1
-
-- clientów może być więcej, gdy usuniemy 1 tranzakcje clienta można usunac
-- to samo dokonac dla usera
-// gotowe, sprawdza i zlicza wiersze, jezeli 0 to ustawia flage na 0 i mozna usuwac
+- zrobic blokowanie !
 
 
