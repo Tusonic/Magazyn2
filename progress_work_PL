@@ -38,11 +38,8 @@ znacznikami która taśma jest dostępna a która nie
 - zrobić blokowanie logowania użytkownika
 => zwykle blokowanie 0/1
 
-- bug=>clientów może być więcej, gdy usuniemy 1 tranzakcje clienta można usunac
-=>sprawdzac po id czy client wystepuje w bazie, jezeli tak do 0 jezeli nie to 1, podobnie wykonac usera
-=> dopisywana jest kolejna liczba zczytanych tabel z tranzakcji dla clienta.flaga, jezeli przy usuwaniu client wystepuje ustawia flage na wiecej niz 0
-jezeli client uzyska 0 a uzyska tylko wtedy kiedy liczba ta bedzie wynosic 0 wierszy
-+ uzycie where flag = 0 i zblokuje usuwanie clienta po delete
-
+- clientów może być więcej, gdy usuniemy 1 tranzakcje clienta można usunac
+- to samo dokonac dla usera
+// gotowe, sprawdza i zlicza wiersze, jezeli 0 to ustawia flage na 0 i mozna usuwac
 
 
