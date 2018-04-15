@@ -182,6 +182,7 @@ class user extends database
                              <th scope="col">Login</th>
                              <th scope="col">Pass</th>
                              <th scope="col">Access</th>
+                             <th scope="col">Blocked</th>
                              <th scope="col">Edit</th>
                         </tr>
                    </thead>
@@ -196,6 +197,7 @@ class user extends database
             $login = $row['login'];
             $pass = $row['pass'];
             $access = $row['access'];
+            $blocked = $row['blocked'];
 
 
             echo '
@@ -205,6 +207,7 @@ class user extends database
                             <td>' . $login . '</td>
                             <td>' . $pass . '</td>
                             <td>' . $access . '</td>
+                            <td>' . $blocked . '</td>
                             <td>
                                     <form method="POST" action="edituser.php">
                                     <input type="hidden" value="' . $row['id'] . '" name="id"/>
@@ -243,6 +246,7 @@ class user extends database
                              <th scope="col">Login</th>
                              <th scope="col">Password</th>
                              <th scope="col">Access</th>
+                             <th scope="col">Blocked</th>
                              <th scope="col">Change</th>
                              <th scope="col">Delete</th>
                         </tr>
@@ -258,6 +262,7 @@ class user extends database
             $login = $row['login'];
             $pass = $row['pass'];
             $access = $row['access'];
+            $blocked = $row['blocked'];
 
 
             echo '
@@ -271,20 +276,27 @@ class user extends database
                             </th>
                             
                             <td>
-                                <input  name="login" class="form-control" type="text"  value="'. $login .'" placeholder=" ' . $login . ' ">
+                                <input  name="login" class="form-control" type="text"  value="" placeholder=" ' . $login . ' ">
                              
                             </td>
                             
                             <td>
-                                <input name="pass" class="form-control" type="text" value="' . $pass . '" placeholder=" ' . $pass . '">
+                                <input name="pass" class="form-control" type="text" value="" placeholder=" ' . $pass . '">
                             </td>
                             
                             <td>
-                                <input name="access" class="form-control" type="text" value="' . $access . '" placeholder=" ' . $access . '">
+                                <input name="access" class="form-control" type="text" value="" placeholder=" ' . $access . '">
                             </td>
                             
                             <td>
-                                <input type="submit" class="btn btn-info" value="Change"/> 
+                                <input name="blocked" class="form-control" type="text" value=" '. $blocked .'" placeholder=" ' . $blocked . '">
+                            </td>
+                            
+                            <td>             
+                                <form method="POST" action="edituser.php">
+                                    <input type="submit" class="btn btn-info" value="Change2"/>
+                                    <input type="hidden" value="' . $id  . '" name="id"/>
+                                 </form>
                             </td>
              </form>  
                     
@@ -317,9 +329,18 @@ class user extends database
     public function checkeditoruser()
     {
 
+        if (isset($_POST["blocked"]))
+        {
+            echo 'tak';
+            echo $_POST["blocked"];
+        }
+        else
+        {
+            echo 'nie';
+            echo $_POST["blocked"];
+        }
 
-
-        if (!empty($_POST["login"]) || ($_POST["pass"]) || ($_POST["access"]) )
+        if ((!empty($_POST["login"])) || (!empty($_POST["pass"])) || (!empty($_POST["access"]))   )
         {
 
             // CHECK SET EDIT POST USER
@@ -328,17 +349,27 @@ class user extends database
             $userlogin = $_POST["login"];
             $userpass = $_POST["pass"];
             $useraccess = $_POST["access"];
+            $userblocked = $_POST["blocked"];
+
+            // CHECK VARIBLE
+            echo $userid;
+            echo $userlogin;
+            echo $userpass;
+            echo $useraccess;
+            echo $userblocked;
 
             /* Check varible editor */
 
-            if ( (empty($userlogin)) || (empty($userpass)) || (empty($useraccess)) )
+            // DOPISAC " PODAJ LOGIN... PODAJ ACCESS ITP !!!
+
+            if ( (empty($userlogin)) || (empty($userpass)) || (empty($useraccess)) || (empty($userblocked)) )
             {
 
                 if (empty($userlogin)) {
                     echo '
                             <form method="POST" action="edituser.php">
-                            <input type="hidden" value="' . $beltid . '" name="id"/>
-                            <input type="submit" class="btn btn-info" value="BackEdit ID=' . $beltid. '"/>
+                            <input type="hidden" value="' . $userid . '" name="id"/>
+                            <input type="submit" class="btn btn-info" value="BackEdit ID1=' . $userid . '"/>
                             </form>
                         
                         ';  }
@@ -346,8 +377,8 @@ class user extends database
                 if (empty($userpass)) {
                     echo '
                             <form method="POST" action="edituser.php">
-                            <input type="hidden" value="' . $beltid . '" name="id"/>
-                            <input type="submit" class="btn btn-info" value="BackEdit ID=' . $beltid . '"/>
+                            <input type="hidden" value="' . $userid . '" name="id"/>
+                            <input type="submit" class="btn btn-info" value="BackEdit ID2=' . $userid . '"/>
                             </form>
                             
                         '; }
@@ -355,8 +386,17 @@ class user extends database
                 if (empty($useraccess)) {
                     echo '
                             <form method="POST" action="edituser.php">
-                            <input type="hidden" value="' . $beltid . '" name="id"/>
-                            <input type="submit" class="btn btn-info" value="BackEdit ID=' . $beltid . '"/>
+                            <input type="hidden" value="' . $userid . '" name="id"/>
+                            <input type="submit" class="btn btn-info" value="BackEdit ID3=' . $userid . '"/>
+                            </form>
+                        
+                        '; }
+
+                if (!isset($userblocked)) {
+                    echo '
+                            <form method="POST" action="edituser.php">
+                            <input type="hidden" value="' . $userid . '" name="id"/>
+                            <input type="submit" class="btn btn-info" value="BackEdit ID4=' . $userid . '"/>
                             </form>
                         
                         '; }
@@ -365,11 +405,12 @@ class user extends database
 
             else
             {
-                $editorUser = $this->pdo->prepare("UPDATE user SET id = :id, login = :login, pass = :pass, access = :access WHERE user.id = :id");
+                $editorUser = $this->pdo->prepare("UPDATE user SET id = :id, login = :login, pass = :pass, access = :access, blocked = :blocked WHERE user.id = :id");
                 $editorUser->bindValue(':id', $userid, PDO::PARAM_INT);
                 $editorUser->bindValue(':login', $userlogin, PDO::PARAM_INT);
                 $editorUser->bindValue(':pass', $userpass, PDO::PARAM_INT);
                 $editorUser->bindValue(':access', $useraccess, PDO::PARAM_STR);
+                $editorUser->bindValue(':blocked', $userblocked, PDO::PARAM_INT);
                 $editorUser->execute();
 
                 // CHECK CHANGE OK
@@ -413,7 +454,29 @@ class user extends database
 
         else
         {
-            echo "N0, mail is not set";
+            echo "
+            
+           <div class='row'>
+            
+                <div class='col-md-3'>
+                </div>
+                
+                <div class='col-md-6'>
+                    <div class='alert alert-danger text-center' role='alert'>
+                        <h4 class='alert-heading'>Edited Error</h4>
+                             <p class='text-center'>The user has been un-successfully edited!</p>
+                             <p><a class='btn btn-danger btn-lg btn-block' href='../index.php' role='button'>OK &raquo;</a></p>
+                     </div>
+                </div>
+                    
+                <div class='col-md-3'>
+                    
+                </div>
+            
+            </div>
+            
+            
+            ";
         }
 
 
