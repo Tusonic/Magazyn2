@@ -362,45 +362,64 @@ class user extends database
 
             // DOPISAC " PODAJ LOGIN... PODAJ ACCESS ITP !!!
 
-            if ( (empty($userlogin)) || (empty($userpass)) || (empty($useraccess)) || (empty($userblocked)) )
+            if ( (empty($userlogin)) || (empty($userpass)) || (empty($useraccess)) || (!isset($userblocked)) )
             {
+                echo '<form method="POST" action="edituser.php">
+                        
+                          <div class="col-md-6 offset-md-3"">
+                          
+                              <div class="alert alert-danger text-center" role="alert">
+                              Error, data incomplete!  </br></br>
+                              <input type="hidden" value="' . $userid . '" name="id"/>
+                              <input type="submit" class="btn btn-danger" value="Back to user ID:' . $userid . '"/>
+                              </div>
+
+                         </div> 
+               
+                          
+                ';
 
                 if (empty($userlogin)) {
                     echo '
-                            <form method="POST" action="edituser.php">
-                            <input type="hidden" value="' . $userid . '" name="id"/>
-                            <input type="submit" class="btn btn-info" value="BackEdit ID1=' . $userid . '"/>
-                            </form>
+                             <div class="col-md-6 offset-md-3">
+                    <div class="alert alert-danger text-center" role="alert">
+                             <p class="text-center">Please complete LOGIN</p>
+                      </div>
+                </div>
                         
                         ';  }
 
                 if (empty($userpass)) {
                     echo '
-                            <form method="POST" action="edituser.php">
-                            <input type="hidden" value="' . $userid . '" name="id"/>
-                            <input type="submit" class="btn btn-info" value="BackEdit ID2=' . $userid . '"/>
-                            </form>
-                            
+
+                <div class="col-md-6 offset-md-3">
+                    <div class="alert alert-danger text-center" role="alert">
+                             <p class="text-center">Please complete PASSWORD</p>
+                      </div>
+                </div>
+     
                         '; }
 
                 if (empty($useraccess)) {
                     echo '
-                            <form method="POST" action="edituser.php">
-                            <input type="hidden" value="' . $userid . '" name="id"/>
-                            <input type="submit" class="btn btn-info" value="BackEdit ID3=' . $userid . '"/>
-                            </form>
+                            <div class="col-md-6 offset-md-3">
+                    <div class="alert alert-danger text-center" role="alert">
+                             <p class="text-center">Please complete ACCESS</p>
+                      </div>
+                </div>
                         
                         '; }
 
                 if (!isset($userblocked)) {
                     echo '
-                            <form method="POST" action="edituser.php">
-                            <input type="hidden" value="' . $userid . '" name="id"/>
-                            <input type="submit" class="btn btn-info" value="BackEdit ID4=' . $userid . '"/>
-                            </form>
+                             <div class="col-md-6 offset-md-3">
+                    <div class="alert alert-danger text-center" role="alert">
+                             <p class="text-center">Please complete BLOCK</p>
+                      </div>
+                </div>
                         
                         '; }
-
+               echo ' </form>';
             }
 
             else

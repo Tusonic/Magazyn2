@@ -55,7 +55,7 @@ class viewsite extends database  {
            // echo $_SESSION['login'].'</br>';
            // echo $_SESSION['password'].'</br>';
 
-            $systemlogin = $this->pdo->prepare("SELECT COUNT(*) from user WHERE login = '{$_SESSION['login']}' AND pass = '{$_SESSION['password']}'");
+            $systemlogin = $this->pdo->prepare("SELECT COUNT(*) from user WHERE login = '{$_SESSION['login']}' AND pass = '{$_SESSION['password']}' AND blocked = 0");
             $systemlogin->execute();
 
             $num_rows = $systemlogin->fetchColumn();
@@ -96,7 +96,6 @@ class viewsite extends database  {
                     <div class="panel-body">
                         <form accept-charset="UTF-8" role="form">
                         <fieldset>
-                        
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
                               <strong>Error </strong>Login or password incorrect!
                               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
