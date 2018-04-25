@@ -206,8 +206,38 @@ class user extends database
                             <th scope="row">' . $id . '</th>
                             <td>' . $login . '</td>
                             <td>' . $pass . '</td>
-                            <td>' . $access . '</td>
-                            <td>' . $blocked . '</td>
+                            <td>';
+                            if ($access == 1)
+                            {
+                                echo 'USER';
+                            }
+                            elseif ($access == 2)
+                            {
+                                echo 'MODERATOR';
+                            }
+                            elseif ($access == 3)
+                            {
+                                echo 'ADMINSTRATOR';
+                            }
+                            else
+                            {
+                                echo 'ERROR';
+                            }
+
+                       echo'</td>
+                            <td>';
+
+                            if ($blocked == 0)
+                            {
+                                echo '<span class="badge badge-pill badge-success">NO</span>';
+                            }
+                            else
+                            {
+                                echo '<span class="badge badge-pill badge-danger">YES</span>';
+                            }
+
+                             echo
+                             '</td>
                             <td>
                                     <form method="POST" action="edituser.php">
                                     <input type="hidden" value="' . $row['id'] . '" name="id"/>
@@ -276,31 +306,52 @@ class user extends database
                             </th>
                             
                             <td>
-                                <input  name="login" class="form-control" type="text"  value="" placeholder=" ' . $login . ' ">
+                                <input  name="login" class="form-control" type="text"  value="' .$login. '" placeholder=" ' . $login . ' ">
                              
                             </td>
                             
                             <td>
-                                <input name="pass" class="form-control" type="text" value="" placeholder=" ' . $pass . '">
+                                <input name="pass" class="form-control" type="text" value="'. $pass .'" placeholder=" ' . $pass . '">
                             </td>
                             
                             <td>
                                 <input name="access" class="form-control" type="text" value="" placeholder=" ' . $access . '">
                             </td>
                             
-                            <td>
-                                <input name="blocked" class="form-control" type="text" value=" '. $blocked .'" placeholder=" ' . $blocked . '">
-                            </td>
+                            <td> ';
+
+                                if ($blocked == 0)
+                                {
+                                echo '
+                                 <select class="custom-select mr-sm-2" name="blocked">
+                                    <option selected value="0">NO</option>
+                                    <option value="1">YES</option>
+                                 </select> ';
+                                }
+                                elseif ($blocked == 1)
+                                {
+                                echo '
+                                 <select class="custom-select mr-sm-2" name="blocked">
+                                    <option value="0">NO</option>
+                                    <option selected value="1">YES</option>
+                                 </select> ';
+                                }
+                                else
+                                {
+                                    echo 'ERROR';
+                                }
+
+                           echo '</td>
                             
                             <td>             
                                 <form method="POST" action="edituser.php">
-                                    <input type="submit" class="btn btn-info" value="Change2"/>
+                                    <input type="submit" class="btn btn-info" value="Change"/>
                                     <input type="hidden" value="' . $id  . '" name="id"/>
                                  </form>
                             </td>
              </form>  
                     
-            <form method="POST" action="deleteuser.php">
+                                <form method="POST" action="deleteuser.php">
                             <td>  
                                     <input type="submit" class="btn btn-info" value="Delete"/>
                                     <input type="hidden" value="' . $row['id'] . '" name="id"/>   

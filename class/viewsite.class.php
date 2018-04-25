@@ -60,6 +60,13 @@ class viewsite extends database  {
 
             $num_rows = $systemlogin->fetchColumn();
 
+            $systemloginblock = $this->pdo->prepare("SELECT COUNT(*) from user WHERE login = '{$_SESSION['login']}' AND pass = '{$_SESSION['password']}' AND blocked = 1");
+            $systemloginblock->execute();
+
+            $num_rows_block = $systemloginblock->fetchColumn();
+           // echo $num_rows_block;
+
+
            // CHECK COUNT ROW LOGIN + PASS 1=ok/0=error
            // echo $num_rows;
 
@@ -97,7 +104,20 @@ class viewsite extends database  {
                         <form accept-charset="UTF-8" role="form">
                         <fieldset>
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                              <strong>Error </strong>Login or password incorrect!
+                        
+                        ';
+                               // echo $num_rows_block;
+                                if ($num_rows_block == 0)
+                                {
+                               echo  '<strong>Error </strong>Login or password incorrect!';
+                                }
+                                if ($num_rows_block == 1)
+                                {
+                               echo '<strong>Error </strong>Account BLOCK!';
+                                }
+
+                                echo '
+                              
                               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                               </button>
