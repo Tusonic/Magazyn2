@@ -29,13 +29,20 @@ znacznikami która taśma jest dostępna a która nie
 - zrobić panel kopi bezpieczeństwa
 // gotowe
 
-- zrobić zabezpieczenie przed wejściem w dalsze podstrony nie będąc zalogowanym
+- zrobić zabezpieczenie przed wejściem w dalsze pod_strony nie będąc zalogowanym
 // gotowe
 
-- user.class linia: 363 dopisac podawanie
+- user.class linia: 363 dopisać podawanie
 // gotowe
 
-- zrobic blokowanie !
+- zrobić blokowanie !
 // gotowe
+
+- dorobić Access jako pole wyboru
+- przy dodawaniu dać możliwość wyboru
+// gotowe
+
+sprawdzić cała aplikację
+sformatować kod
 
 

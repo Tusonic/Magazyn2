@@ -40,7 +40,25 @@ class user extends database
                 <tr>
                             <th scope="row">' . $id . '</th>
                             <td>' . $login . '</td>
-                            <td>' . $access . '</td>
+                            <td>';
+                            if ($access == 1)
+                            {
+                                echo 'USER';
+                            }
+                            elseif ($access = 2)
+                            {
+                                echo 'MODERATOR';
+                            }
+                            elseif ($access =3)
+                            {
+                                echo 'ADMIN';
+                            }
+                            else
+                            {
+                                echo 'ERROR';
+                            }
+
+                        echo '</td>
                 </tr>
                             ';
 
@@ -315,8 +333,48 @@ class user extends database
                             </td>
                             
                             <td>
-                                <input name="access" class="form-control" type="text" value="" placeholder=" ' . $access . '">
-                            </td>
+                             ';
+
+                                if ($access == 3)
+                                {
+                                    echo '
+                                 <select class="custom-select mr-sm-2" name="access">
+                                    <option value="1">USER</option>
+                                    <option value="2">MODERATOR</option>
+                                    <option selected value="3">ADMIN</option>                                 
+                                 </select> ';
+                                }
+                                elseif ($access == 2)
+                                {
+                                    echo '
+                                 <select class="custom-select mr-sm-2" name="access">
+                                    <option value="1">USER</option>
+                                    <option selected value="2">MODERATOR</option>
+                                    <option value="3">ADMIN</option>                                 
+                                 </select> ';
+                                }
+                                elseif ($access == 1)
+                                {
+                                    echo '
+                                 <select class="custom-select mr-sm-2" name="access">
+                                    <option selected value="1">USER</option>
+                                    <option value="2">MODERATOR</option>
+                                    <option value="3">ADMIN</option>                                 
+                                 </select> ';
+                                }
+                                else
+                                {
+                                    echo '
+                                 <select class="custom-select mr-sm-2" name="access">
+                                    <option selected value="1">USER</option>
+                                    <option value="2">MODERATOR</option>
+                                    <option value="3">ADMIN</option>                                 
+                                 </select> ';
+                                }
+
+
+                              echo '
+                          </td>
                             
                             <td> ';
 
@@ -578,11 +636,14 @@ class user extends database
           </div>
     </div>
         <div class="col-md-3 mb-3">
-          <label for="validationCustom05">Access</label>
-          <input name="addaccess" type="text" class="form-control" id="validationCustom05" placeholder="Access" required>
-              <div class="invalid-feedback">
-                Please provide a valid width.
-              </div>
+        
+         <label for="inputState">State</label>
+             <select id="inputState" class="form-control" name="addaccess">
+                  <option selected value="1">USER</option>
+                  <option value="2">MODERATOR</option>
+                  <option value="3">ADMIN</option>
+             </select>
+             
         </div>
   </div>
   <button class="btn btn-primary" type="submit">Add User</button>
